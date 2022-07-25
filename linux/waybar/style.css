@@ -1,0 +1,114 @@
+@define-color bar-bg rgba(0, 0, 0, 0);
+@define-color main-bg rgba(50, 50, 50, 0.5);
+@define-color main-fg rgba(255, 255, 255, 1);
+@define-color active-bg rgba(150, 150, 150, 0.5);
+@define-color active-fg rgba(255, 255, 255, 1);
+@define-color hover-bg rgba(200, 200, 200, 0.5);
+@define-color hover-fg rgba(255, 255, 255, 1);
+
+* {
+  font-family: "JetBrains Mono, Noto Sans CJK SC";
+  font-weight: bold;
+  font-size: 15px;
+  color: @main-fg;
+}
+
+window#waybar {
+  background: @bar-bg;
+}
+
+.modules-left {
+  border-radius: 15px;
+  margin: 5px 10px 0 10px;
+  background: @main-bg;
+}
+
+.modules-center {
+  background: @bar-bg;
+}
+
+.modules-right {
+  border-radius: 15px;
+  margin: 5px 10px 0 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: @main-bg;
+}
+
+#workspaces button {
+  border-radius: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
+  transition: all 0.1s ease-in-out;
+}
+
+#workspaces button.active {
+  border-radius: 15px;
+  padding-left: 12px;
+  padding-right: 12px;
+  background: @active-bg;
+  transition: all 0.1s ease-in-out;
+}
+
+#workspaces button:hover {
+  background: @hover-bg;
+}
+
+#window {
+  border-radius: 15px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+window#waybar.empty #window {
+  border-radius: 15px;
+  padding-left: 0px;
+  padding-right: 0px;
+  background: @bar-bg;
+}
+
+#mpris {
+  border-radius: 15px;
+  margin-top: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background: @main-bg;
+}
+
+#tray,
+#privacy,
+#network,
+#cpu,
+#memory,
+#battery,
+#pulseaudio,
+#clock {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+#tray menu {
+  background: @main-bg;
+}
+
+#privacy-item.screenshare {
+  border-radius: 15px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  background: rgba(196, 77, 59, 0.5);
+}
+
+#privacy-item.audio-in {
+  border-radius: 15px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  background: rgba(240, 148, 54, 0.5);
+}
+
+#battery.low {
+  color: #eed49f;
+}

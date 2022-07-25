@@ -1,0 +1,3 @@
+timeout 600 "swaylock -f -c 202020"
+timeout 1800 "systemctl suspend"
+before-sleep "swaylock -f -c 202020"

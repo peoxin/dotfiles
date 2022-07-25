@@ -1,0 +1,44 @@
+{
+    "MacOS gitignore": {
+        "prefix": "macos",
+        "body": [
+            "# MacOS files",
+            ".DS_Store",
+            "._*"
+        ],
+        "description": "Gitignore for MacOS"
+    },
+    "Python gitignore": {
+        "prefix": "python",
+        "body": [
+            "# Python-generated files",
+            "__pycache__/",
+            "*.py[oc]",
+            "build/",
+            "dist/",
+            "wheels/",
+            "*.egg-info/",
+            "",
+            "# Virtual environments",
+            ".venv"
+        ],
+        "description": "Gitignore for Python projects"
+    },
+    "PyTorch gitignore": {
+        "prefix": "pytorch",
+        "body": [
+            "# PyTorch files",
+            "*.pth"
+        ],
+        "description": "Gitignore for PyTorch"
+    },
+    "Tempfile gitignore": {
+        "prefix": "tempfile",
+        "body": [
+            "# Temporary files",
+            "tmp*",
+            "_tmp*"
+        ],
+        "description": "Gitignore for temporary files"
+    }
+}

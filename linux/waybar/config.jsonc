@@ -1,0 +1,19 @@
+{
+  "layer": "top",
+  "position": "top",
+  "reload_style_on_change": true,
+  "include": ["~/.config/waybar/modules.jsonc"],
+  "modules-left": ["hyprland/workspaces", "hyprland/window", "hyprland/submap"],
+  "modules-center": ["mpris"],
+  "modules-right": [
+    "tray",
+    "privacy",
+    "network",
+    "cpu",
+    "memory",
+    "battery",
+    "pulseaudio",
+    "clock",
+    "custom/dunst",
+  ],
+}

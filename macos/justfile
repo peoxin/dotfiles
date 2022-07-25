@@ -1,0 +1,48 @@
+#!/usr/bin/env just --justfile
+
+# Help message
+help:
+    @echo "Prerequisites for this script:"
+    @echo "    - OS: MacOS"
+    @just --list
+
+# Check if homebrew is available
+_brew_ok:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    # Check if homebrew is available
+    if ! command -v brew &> /dev/null; then
+        echo "[ERROR] homebrew not found"
+        exit 1
+    fi
+    echo "[OK] homebrew is available"
+
+# Install Command Line Tools for Xcode
+xcode-clt:
+    xcode-select --install
+
+# Install homebrew
+homebrew:
+    # Install homebrew
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    # Setup environment variables
+    # See: https://mirrors.tuna.tsinghua.edu.cn/help/homebrew
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+    echo 'export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"' >> ~/.zprofile
+    echo 'export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api"' >> ~/.zprofile
+    echo 'export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"' >> ~/.zprofile
+    echo 'export HOMEBREW_PIP_INDEX_URL="https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"' >> ~/.zprofile
+    source ~/.zprofile && brew update
+    # Setup mirror sources
+    brew tap --custom-remote --force-auto-update homebrew/command-not-found https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-command-not-found.git
+    brew update
+
+# Install fonts
+font: _brew_ok
+    # Chinese fonts
+    brew install --cask font-noto-sans-cjk-sc font-noto-serif-cjk-sc
+    # Symbol fonts
+    brew install --cask font-symbols-only-nerd-font
+    # Monospace fonts
+    brew install --cask font-jetbrains-mono

@@ -1,0 +1,154 @@
+#!/usr/bin/env just --justfile
+
+export CONFIG_DIR := justfile_directory()
+export XDG_CONFIG_HOME := env_var_or_default("XDG_CONFIG_HOME", env_var("HOME") + "/.config")
+pkg_install := if os() == "macos" { "brew install" } else { "sudo pacman -S" }
+pkg_install_brew_cask := if os() == "macos" { "brew install --cask" } else { "sudo pacman -S" }
+
+# Help message
+help:
+    @echo "Prerequisites for this script:"
+    @echo "    - OS: MacOS or Arch Linux"
+    @echo "    - For MacOS, homebrew installed"
+    @just --list
+
+# Check if package manager (homebrew or pacman) is available
+_pkg_mgr:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    if [ "{{ os() }}" = "macos" ]; then
+        # Check if homebrew is available
+        if ! command -v brew &> /dev/null; then
+            echo "[ERROR] homebrew not found"
+            exit 1
+        fi
+        echo "[OK] homebrew is available"
+    else
+        # Check if pacman is available
+        if ! command -v pacman &> /dev/null; then
+            echo "[ERROR] pacman not found"
+            exit 1
+        fi
+        echo "[OK] pacman is available"
+    fi
+
+# Install zsh (setup later)
+zsh-install: _pkg_mgr
+    # Install zsh
+    {{ pkg_install }} zsh
+    # Install oh-my-zsh
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Setup zsh after installation
+zsh-setup: _pkg_mgr
+    # Install plugins for oh-my-zsh
+    git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
+    # Install fzf and zoxide
+    {{ pkg_install }} fzf zoxide
+    # Edit zprofile
+    echo "source $CONFIG_DIR/zsh/profile.zsh" >> ~/.zprofile
+    # Edit zshrc (overwrite)
+    echo "source $CONFIG_DIR/zsh/rc.zsh" > ~/.zshrc
+    # Change login shell to zsh
+    chsh -s $(which zsh)
+
+# Install kitty terminal emulator
+kitty-install: _pkg_mgr
+    # Install kitty
+    {{ pkg_install_brew_cask }} kitty
+    # Symlink kitty configuration
+    mkdir -p $XDG_CONFIG_HOME/kitty
+    ln -s $CONFIG_DIR/kitty/kitty.conf $XDG_CONFIG_HOME/kitty/kitty.conf
+
+# Install theme for kitty
+kitty-theme:
+    # Install catppuccin theme for kitty
+    kitten themes --dump-theme Catppuccin-Macchiato > $XDG_CONFIG_HOME/kitty/Catppuccin-Macchiato.conf
+
+# Install starship prompt
+starship: _pkg_mgr
+    # Install starship
+    {{ pkg_install }} starship
+    # Symlink starship configuration
+    ln -s $CONFIG_DIR/starship/starship.toml $XDG_CONFIG_HOME/starship.toml
+
+sevenzip_pkg := if os() == "macos" { "sevenzip" } else { "7zip" }
+
+# Install yazi
+yazi: _pkg_mgr
+    # Install yazi
+    {{ pkg_install }} yazi
+    # Install essential CLI tools used by yazi
+    {{ pkg_install }} ripgrep fd fzf zoxide jq poppler resvg {{ sevenzip_pkg }} imagemagick ffmpeg
+    # Install plugins for yazi
+    ya pkg add yazi-rs/plugins:git
+    ya pkg add yazi-rs/plugins:max-preview
+    ya pkg add KKV9/compress
+    # Symlink yazi configuration
+    mkdir -p $XDG_CONFIG_HOME/yazi
+    ln -s $CONFIG_DIR/yazi/init.lua $XDG_CONFIG_HOME/yazi/init.lua
+    ln -s $CONFIG_DIR/yazi/yazi.toml $XDG_CONFIG_HOME/yazi/yazi.toml
+    ln -s $CONFIG_DIR/yazi/keymap.toml $XDG_CONFIG_HOME/yazi/keymap.toml
+    # Install catppuccin theme for yazi
+    cd $XDG_CONFIG_HOME/yazi && wget https://raw.githubusercontent.com/catppuccin/yazi/refs/heads/main/themes/macchiato/catppuccin-macchiato-blue.toml -O theme.toml
+    cd $XDG_CONFIG_HOME/yazi && wget https://github.com/catppuccin/bat/blob/main/themes/Catppuccin%20Macchiato.tmTheme
+
+nvim_pkg := if os() == "macos" { "neovim" } else { "nvim" }
+
+# Install neovim
+neovim: _pkg_mgr
+    # Install neovim
+    {{ pkg_install }} {{ nvim_pkg }}
+    # Install essential CLI tools for neovim
+    {{ pkg_install }} ripgrep fd fzf
+    # Symlink neovim configuration
+    mkdir -p $XDG_CONFIG_HOME/nvim
+    ln -s $CONFIG_DIR/nvim/init.lua $XDG_CONFIG_HOME/nvim/init.lua
+    ln -s $CONFIG_DIR/nvim/lua $XDG_CONFIG_HOME/nvim/lua
+    ln -s $CONFIG_DIR/nvim/snippets $XDG_CONFIG_HOME/nvim/snippets
+
+# Install gitui
+gitui: _pkg_mgr
+    # Install gitui
+    {{ pkg_install }} gitui
+    # Symlink gitui configuration
+    mkdir -p $XDG_CONFIG_HOME/gitui
+    ln -s $CONFIG_DIR/gitui/key_bindings.ron $XDG_CONFIG_HOME/gitui/key_bindings.ron
+    # Install catppuccin theme for gitui
+    cd $XDG_CONFIG_HOME/gitui && git clone https://github.com/catppuccin/gitui.git catppuccin && cp catppuccin/themes/catppuccin-macchiato.ron theme.ron && rm -rf catppuccin
+
+# Setup git
+git:
+    # Symlink git configuration
+    ln -s $CONFIG_DIR/git/gitconfig-unix ~/.gitconfig
+    # For windows, manually create a symlink:
+    #   mklink %HOMEPATH%\.gitconfig $CONFIG_DIR\git\gitconfig-windows
+    # !!! IMPORTANT: Change user.name and user.email in ~/.gitconfig to your own values !!!
+
+# Install zellij
+zellij: _pkg_mgr
+    # Install zellij
+    {{ pkg_install }} zellij
+    # Symlink zellij configuration
+    mkdir -p $XDG_CONFIG_HOME/zellij
+    ln -s $CONFIG_DIR/zellij/config.kdl $XDG_CONFIG_HOME/zellij/config.kdl
+
+# Install tmux
+tmux: _pkg_mgr
+    # Install tmux
+    {{ pkg_install }} tmux
+    # Install tpm plugin manager for tmux
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    # Install catppuccin theme for tmux
+    git clone https://github.com/catppuccin/tmux ~/.tmux/plugins/catppuccin/tmux
+    # Symlink tmux configuration
+    ln -s $CONFIG_DIR/tmux/tmux.conf ~/.tmux.conf
+
+# Install user scripts
+user-scripts:
+    # Symlink user scripts to ~/.local/bin
+    mkdir -p ~/.local/bin
+    for script in $CONFIG_DIR/scripts/*.sh; do ln -s $script ~/.local/bin/$(basename $script .sh); chmod u+x $script; done
