@@ -1,0 +1,15 @@
+{
+    "name": "my-snippets",
+    "contributes": {
+        "snippets": [
+            {
+                "language": "gitignore",
+                "path": "gitignore.json"
+            },
+            {
+                "language": "json",
+                "path": "json.json"
+            }
+        ]
+    }
+}

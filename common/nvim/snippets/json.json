@@ -1,0 +1,12 @@
+{
+    "Pyright config": {
+        "prefix": "pyright",
+        "body": [
+            "{",
+            "  \"venvPath\": \".\",",
+            "  \"venv\": \".venv\"",
+            "}"
+        ],
+        "description": "Pyright configuration for venv"
+    }
+}

@@ -1,0 +1,281 @@
+#!/usr/bin/env just --justfile
+
+export CONFIG_DIR := justfile_directory()
+export XDG_CONFIG_HOME := env_var_or_default("XDG_CONFIG_HOME", env_var("HOME") + "/.config")
+export XDG_DATA_HOME := env_var_or_default("XDG_DATA_HOME", env_var("HOME") + "/.local/share")
+aur_helper := `if command -v paru &> /dev/null; then echo "paru"; elif command -v yay &> /dev/null; then echo "yay"; else echo ""; fi`
+
+# Help message
+help:
+    @echo "Prerequisites for this script:"
+    @echo "    - Linux distribution: Arch Linux"
+    @echo "    - AUR helper (paru, yay, etc.) installed"
+    @just --list
+
+# Check if package managers (pacman and AUR helper) are available
+_pkg_mgr:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    # Check if pacman is available
+    if ! command -v pacman &> /dev/null; then
+        echo "[ERROR] pacman not found"
+        exit 1
+    fi
+    echo "[OK] pacman is available"
+
+    # Check if AUR helper is available
+    if [ -z "{{ aur_helper }}" ]; then
+        echo "[ERROR] AUR helper not found"
+        exit 1
+    fi
+    echo "[OK] {{ aur_helper }} is available"
+
+# Create subdirectories in home directory
+home-dirs:
+    # Conventional directories
+    mkdir -p ~/Desktop ~/Downloads ~/Documents ~/Pictures ~/Videos ~/Music
+    # Development directories
+    mkdir -p ~/Projects
+
+# Install CLI tools
+cli: _pkg_mgr
+    # Alternatives to `cd`, `ls`, `cat`, `du`, `ps` and `top`
+    sudo pacman -S zoxide eza bat dust procs bottom
+    # Alternatives to `grep`, `find`, `sed` and `diff`
+    sudo pacman -S ripgrep fd sd git-delta
+    # File manager
+    sudo pacman -S yazi
+    # Download tools
+    sudo pacman -S curl wget aria2
+    # Git tools
+    sudo pacman -S git gitui
+    # Archiving and compression tools
+    sudo pacman -S zip unzip tar zstd xz gzip
+    # Image and video tools
+    sudo pacman -S imagemagick ffmpeg
+    # Man page
+    sudo pacman -S man-db
+    # Other tools
+    sudo pacman -S fastfetch less fzf just watchexec jq
+    sudo pacman -S tealdeer grex tokei hyperfine pastel
+
+# Install GUI applications
+app: _pkg_mgr
+    # Web browser
+    sudo pacman -S firefox
+    {{ aur_helper }} -S zen-browser-bin
+    # File manager
+    sudo pacman -S thunar
+    # Text editor
+    sudo pacman -S zed
+    # Download manager
+    sudo pacman -S qbittorrent
+    # Screenshot
+    {{ aur_helper }} -S grim slurp grimblast-git
+    # Video recording and streaming
+    sudo pacman -S obs-studio
+    # Image viewer
+    sudo pacman -S imv
+    # Image editing
+    sudo pacman -S gimp inkscape
+    # Video player
+    sudo pacman -S mpv vlc vlc-plugins-all
+    # Music player
+    sudo pacman -S go-musicfox
+    # WeChat
+    # HiDPI scaling: https://github.com/hyprwm/hyprland/discussions/7923
+    {{ aur_helper }} -S wechat-bin
+    # Office suite
+    {{ aur_helper }} -S wps-office-cn wps-office-mui-zh-cn ttf-wps-fonts freetype2-wps
+    # Note taking
+    sudo pacman -S obsidian
+
+# Install mpd
+mpd: _pkg_mgr
+    # Install mpd
+    sudo pacman -S mpd
+    # Symlink mpd configuration
+    mkdir -p $XDG_CONFIG_HOME/mpd
+    ln -s $CONFIG_DIR/mpd/mpd.conf $XDG_CONFIG_HOME/mpd/mpd.conf
+    # Create mpd data directories
+    mkdir -p ~/.mpd/playlists
+    # Enable and start mpd service
+    sudo systemctl --user enable --now mpd
+
+# Install ncmpcpp
+ncmpcpp: _pkg_mgr
+    # Install ncmpcpp
+    sudo pacman -S ncmpcpp
+    # Symlink ncmpcpp configuration
+    mkdir -p $XDG_CONFIG_HOME/ncmpcpp
+    ln -s $CONFIG_DIR/ncmpcpp/config $XDG_CONFIG_HOME/ncmpcpp/config
+
+# Install fuzzel
+fuzzel: _pkg_mgr
+    # Install fuzzel
+    sudo pacman -S fuzzel
+    # Symlink fuzzel configuration
+    mkdir -p $XDG_CONFIG_HOME/fuzzel
+    ln -s $CONFIG_DIR/fuzzel/fuzzel.ini $XDG_CONFIG_HOME/fuzzel/fuzzel.ini
+
+# Install dunst
+dunst: _pkg_mgr
+    # Install dunst
+    sudo pacman -S dunst
+    # Symlink dunst configuration
+    mkdir -p $XDG_CONFIG_HOME/dunst
+    ln -s $CONFIG_DIR/dunst/dunstrc $XDG_CONFIG_HOME/dunst/dunstrc
+
+# Install system management tools
+sys-tools: _pkg_mgr
+    # Clipboard manager
+    sudo pacman -S cliphist
+    # Backlight control
+    sudo pacman -S brightnessctl
+    # Auto mount tools
+    sudo pacman -S udisks2 udiskie
+    # Media player control
+    sudo pacman -S playerctl
+    # Bluetooth
+    sudo pacman -S bluez bluez-utils
+    sudo systemctl enable --now bluetooth
+    # Cron
+    sudo pacman -S cronie
+    sudo systemctl enable --now cronie
+    # Pipewire
+    just pipewire
+    # Mesa
+    sudo pacman -S mesa mesa-utils
+
+# Install and setup OpenSSH
+ssh: _pkg_mgr
+    # Install OpenSSH
+    sudo pacman -S openssh
+    # Generate SSH key
+    read -p "SSH key comment: " comment; ssh-keygen -t rsa -C "$comment"
+    # Start and enable SSH service
+    sudo systemctl enable --now sshd
+
+# Install pipewire
+pipewire: _pkg_mgr
+    # Install pipewire and related components
+    sudo pacman -S pipewire wireplumber pipewire-audio pipewire-pulse pipewire-alsa
+    sudo pacman -S noise-suppression-for-voice
+    # Symlink pipewire configuration
+    ln -s $CONFIG_DIR/pipewire $XDG_CONFIG_HOME/pipewire
+    # Enable and start pipewire services
+    sudo systemctl --user enable --now pipewire
+    sudo systemctl --user enable --now pipewire-pulse
+
+# Install Hyprland
+hyprland: _pkg_mgr
+    # Install terminal emulator and fonts before Hyprland
+    sudo pacman -S kitty noto-fonts
+    # Install Hyprland and essential tools
+    sudo pacman -S hyprland xdg-desktop-portal-hyprland pipewire wireplumber hyprpolkitagent qt5-wayland qt6-wayland
+    # Install idle manager and screen locker
+    sudo pacman -S hypridle hyprlock
+    # Install wallpaper manager
+    sudo pacman -S hyprpaper
+    # Install color picker
+    sudo pacman -S hyprpicker
+    # Symlink Hyprland configuration
+    mv $XDG_CONFIG_HOME/hypr/hyprland.conf $XDG_CONFIG_HOME/hypr/hyprland.conf.bak && for file in $CONFIG_DIR/hypr/*.conf; do ln -s $file $XDG_CONFIG_HOME/hypr/$(basename $file); done
+
+# Install waybar
+waybar: _pkg_mgr
+    # Install waybar
+    sudo pacman -S waybar
+    # Symlink waybar configuration
+    ln -s $CONFIG_DIR/waybar $XDG_CONFIG_HOME/waybar
+
+# Install user scripts
+user-scripts:
+    # Symlink user scripts to ~/.local/bin
+    mkdir -p ~/.local/bin
+    for script in $CONFIG_DIR/scripts/*.sh; do ln -s $script ~/.local/bin/$(basename $script .sh); chmod u+x $script; done
+
+# Install development environments
+dev: _pkg_mgr
+    # Rust
+    sudo pacman -S rustup
+    rustup default stable
+    # Python
+    sudo pacman -S python uv
+    just miniconda
+
+# Install Miniconda for Python
+miniconda:
+    # Install Miniconda
+    mkdir -p ~/miniconda3
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+    bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+    rm ~/miniconda3/miniconda.sh
+    # Initialize Miniconda
+    source ~/miniconda3/bin/activate && conda init --all
+    # Disable auto activation of base environment
+    source ~/miniconda3/bin/activate && conda config --set auto_activate false
+
+# Install catppuccin theme for Qt applications
+qt-theme: _pkg_mgr
+    # Install Qt configuration tools
+    sudo pacman -S qt5ct qt6ct kvantum
+    # Download catppuccin theme for kvantum (setup theme in kvantum manager manually)
+    mkdir -p $XDG_DATA_HOME
+    cd $XDG_DATA_HOME && git clone https://github.com/catppuccin/Kvantum.git catppuccin-kvantum
+
+# Install catppuccin theme for GTK applications
+gtk-theme:
+    # Download catppuccin theme for GTK
+    cd ~/Downloads && git clone https://github.com/Fausto-Korpsvart/Catppuccin-GTK-Theme.git
+    # Install GTK theme
+    cd ~/Downloads/Catppuccin-GTK-Theme/themes && sh install.sh -l
+
+# Install catppuccin theme for system cursors
+cursor-theme:
+    #!/usr/bin/env sh
+    theme="catppuccin-macchiato-dark"
+    version="2.0.0"
+    mkdir -p $XDG_DATA_HOME/icons && cd $XDG_DATA_HOME/icons
+    curl -LOsS https://github.com/catppuccin/cursors/releases/download/v${version}/${theme}-cursors.zip
+    unzip ${theme}-cursors.zip && rm ${theme}-cursors.zip
+
+# Install catppuccin theme for GRUB
+grub-theme:
+    # Download and install catppuccin theme for GRUB
+    cd ~/Downloads && git clone https://github.com/catppuccin/grub.git catppuccin-grub && sudo cp -r catppuccin-grub/src/* /usr/share/grub/themes/
+    # Setup theme in GRUB configuration
+    sudo sed -i '/^#GRUB_THEME=/a GRUB_THEME="/usr/share/grub/themes/catppuccin-macchiato-grub-theme/theme.txt"' /etc/default/grub
+    # Update GRUB configuration
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+# Install QEMU/KVM and virt-manager
+vm: _pkg_mgr
+    # Install packages
+    sudo pacman -S qemu-full virt-manager virt-viewer dnsmasq vde2 bridge-utils openbsd-netcat ebtables swtpm
+    # Enable and start libvirt service
+    sudo systemctl enable --now libvirtd.service
+    # Add current user to libvirt group
+    sudo usermod -aG libvirt $(whoami)
+    # (Manual step) Install VirtIO drivers for Windows VMs
+    @echo "VirtIO drivers for Windows VMs: https://fedorapeople.org/groups/virt/virtio-win"
+    # (Manual step) Install SPICE Guest Tools for Windows VMs
+    @echo "SPICE Guest Tools for Windows VMs: https://www.spice-space.org/download.html"
+
+# Install fonts
+font: _pkg_mgr
+    # English fonts
+    sudo pacman -S noto-fonts
+    # Chinese fonts
+    sudo pacman -S noto-fonts-cjk
+    # Symbol fonts
+    sudo pacman -S ttf-nerd-fonts-symbols noto-fonts-emoji
+    # Monospace fonts
+    sudo pacman -S ttf-jetbrains-mono
+
+# Setup fontconfig
+fontconfig:
+    # Symlink fontconfig configuration
+    mkdir -p $XDG_CONFIG_HOME/fontconfig
+    ln -s $CONFIG_DIR/fontconfig/fonts.conf $XDG_CONFIG_HOME/fontconfig/fonts.conf
