@@ -37,8 +37,22 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-bindsym Mod4+s exec --no-startup-id pactl set-sink-port @DEFAULT_SINK@ analog-output-speaker
-bindsym Mod4+h exec --no-startup-id pactl set-sink-port @DEFAULT_SINK@ analog-output-headphones
+
+# More audio control
+mode "audio" {
+    bindsym s exec --no-startup-id pactl set-sink-port @DEFAULT_SINK@ analog-output-speaker
+    bindsym h exec --no-startup-id pactl set-sink-port @DEFAULT_SINK@ analog-output-headphones
+
+    bindsym u exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+    bindsym d exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+    bindsym m exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+    bindsym M exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym Mod4+a mode "default"
+}
+bindsym Mod4+a mode "audio"
 
 # Use xbacklight to adjust backlight.
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 && $refresh_i3status
@@ -225,7 +239,10 @@ exec --no-startup-id "fcitx5"
 
 # Modify keymaps
 exec --no-startup-id "sleep 10; xmodmap $HOME/dotfiles/xorg/.Xmodmap"
-bindsym Mod4+k exec --no-startup-id "xmodmap $HOME/dotfiles/xorg/.Xmodmap"
+bindsym Mod4+Shift+k exec --no-startup-id "xmodmap $HOME/dotfiles/xorg/.Xmodmap"
 
 # Restart polybar
-bindsym Mod4+b exec --no-startup-id "killall polybar && polybar mainbar"
+bindsym Mod4+Shift+b exec --no-startup-id "killall polybar && polybar mainbar"
+
+# Screenshot
+bindsym Mod4+Shift+s exec --no-startup-id "flameshot gui"

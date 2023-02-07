@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
-sudo pacman -Syu > /dev/null
+if [[ ! -d $HOME/.config ]]; then
+    mkdir $HOME/.config
+fi
 
-source install/install_xorg.sh 
-source install/install_i3.sh 
-source install/install_zsh.sh 
-source install/install_clash.sh 
-source install/install_git.sh 
+cd $HOME/dotfiles/install
+for install_script in `ls $HOME/dotfiles/install`; do
+    echo ${install_script}
+    source ${install_script}
+done

@@ -1,24 +1,18 @@
 # dotfiles
 
-## picom
+已有配置包括：
 
-配置文件路径：`~/.config/picom/picom.conf`
+- zsh
+- xorg
+- i3
+- polybar
+- nvim
+- lf
+- rofi
+- picom
+- alacritty
+- mpd & ncmpcpp
+- dunst
+- latte-dock
 
-运行`picom`：`picom --config ~/.config/picom/picom.conf`
-
-## zsh
-
-首先安装`ohmyzsh`：
-
-```shell
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
-
-下载插件：
-
-```shell
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-```
-
-配置文件路径：`~/.zshrc`
+安装方法：`sh install.sh`

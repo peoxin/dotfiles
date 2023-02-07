@@ -3,10 +3,6 @@
 if [[ `pacman -Qi nvim > /dev/null 2>&1` ]]; then
     sudo pacman -S nvim
 fi
-if [[ `pacman -Qi ttf-nerd-fonts-symbols-common > /dev/null 2>&1` ]]; then
-    sudo pacman -S ttf-nerd-fonts-symbols-common 
-fi
-
 if [[ -d $HOME/.config/nvim ]]; then
     mv $HOME/.config/nvim $HOME/.config/nvim.old
 fi
