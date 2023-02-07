@@ -110,6 +110,7 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias gst="git status"
+alias glg="git log --date=iso --format='%C(yellow)%h %Creset- %C(cyan)%s %C(green)(%ad %an)'"
 alias gaa="git add ."
 alias gcm="git commit -m"
 alias gp="git push"
