@@ -9,7 +9,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="agnoster"
+# ZSH_THEME="agnoster"
+# ZSH_THEME="af-magic"
+ZSH_THEME="eastwood"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -75,6 +77,7 @@ plugins=(
     git
     extract
     z
+    sudo
     zsh-syntax-highlighting
     zsh-autosuggestions
 )
@@ -106,9 +109,6 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ra="ranger"
-alias vim="nvim"
-alias vi="nvim"
 alias gst="git status"
 alias gaa="git add ."
 alias gcm="git commit -m"
