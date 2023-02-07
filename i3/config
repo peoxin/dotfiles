@@ -224,6 +224,7 @@ smart_gaps off
 
 # Polybar
 exec --no-startup-id "polybar mainbar"
+bindsym Mod4+Shift+b exec --no-startup-id "killall polybar && polybar mainbar"
 
 # Wallpapers
 exec --no-startup-id "feh --bg-scale --randomize $HOME/Wallpapers"
@@ -233,6 +234,7 @@ exec --no-startup-id "picom"
 
 # Clash
 exec --no-startup-id "clash"
+bindsym Mod4+Shift+c exec "firefox --new-tab clash.razord.top"
 
 # Fcitx5
 exec --no-startup-id "fcitx5" 
@@ -240,9 +242,6 @@ exec --no-startup-id "fcitx5"
 # Modify keymaps
 exec --no-startup-id "sleep 10; xmodmap $HOME/dotfiles/xorg/.Xmodmap"
 bindsym Mod4+Shift+k exec --no-startup-id "xmodmap $HOME/dotfiles/xorg/.Xmodmap"
-
-# Restart polybar
-bindsym Mod4+Shift+b exec --no-startup-id "killall polybar && polybar mainbar"
 
 # Screenshot
 bindsym Mod4+Shift+s exec --no-startup-id "flameshot gui"
