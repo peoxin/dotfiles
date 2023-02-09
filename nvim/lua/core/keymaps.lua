@@ -87,3 +87,6 @@ keymap("n", "<leader>ff", "<cmd>Telescope find_files<CR>") -- find files within 
 keymap("n", "<leader>fg", "<cmd>Telescope live_grep<CR>") -- find string in current working directory as you type
 keymap("n", "<leader>fb", "<cmd>Telescope buffers<CR>") -- list open buffers in current neovim instance
 keymap("n", "<leader>fh", "<cmd>Telescope help_tags<CR>") -- list available help tags
+
+-- Markdown preview
+keymap("n", "<Leader>md", ":MarkdownPreviewToggle<CR>")
