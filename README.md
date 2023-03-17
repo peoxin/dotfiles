@@ -30,6 +30,20 @@
 
 - fcitx5-nord
 
-### pulseaudio
+### Pulseaudio
 
 在 `/etc/pulse/client.conf` 文件中，需要设置 `autospawn = yes`。
+
+### Touchpad
+
+在 `/etc/X11/xorg.conf.d/30-touchpad.conf` 文件中，添加：
+
+```
+Section "InputClass"
+    Identifier "touchpad"
+    Driver "libinput"
+    MatchIsTouchpad "on"
+    Option "Tapping" "on"
+    Option "NaturalScrolling" "true"
+EndSection
+```
