@@ -3,7 +3,6 @@ require("plugins-setup")
 require("core.keymaps")
 require("core.colorscheme")
 
--- require("plugins.plugins")
 require("plugins.lualine")
 require("plugins.telescope")
 require("plugins.nvim-tree")

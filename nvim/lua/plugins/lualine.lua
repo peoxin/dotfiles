@@ -32,12 +32,8 @@ local branch = {
 	icon = "",
 }
 
-local spaces = function()
-	return vim.api.nvim_buf_get_option(0, "shiftwidth")
-end
-
--- local fileformat = function()
--- 	return vim.api.nvim_buf_get_option(0, "fileformat")
+-- local spaces = function()
+-- 	return vim.api.nvim_buf_get_option(0, "shiftwidth")
 -- end
 
 lualine.setup({
@@ -53,7 +49,7 @@ lualine.setup({
 		lualine_a = { "mode" },
 		lualine_b = { branch, diagnostics },
 		lualine_c = { "filename" },
-		lualine_x = { spaces, "encoding", fileformat, filetype },
+		lualine_x = { "encoding", fileformat, filetype },
 		lualine_y = { "location" },
 		lualine_z = { "progress" },
 	},
@@ -61,7 +57,7 @@ lualine.setup({
 		lualine_a = {},
 		lualine_b = {},
 		lualine_c = { "filename" },
-		lualine_x = { spaces, "encoding", fileformat, filetype },
+		lualine_x = { "encoding", fileformat, filetype },
 		lualine_y = {},
 		lualine_z = {},
 	},
