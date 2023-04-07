@@ -52,16 +52,45 @@ window#waybar.hidden {
   margin-top: 5px;
 }
 
-#mpd.disconnected {
-  background-color: transparent;
+#mpd.paused {
+  background-color: #b190b1;
 }
 
 #mpd.stopped {
   background-color: #7882a4;
 }
 
-#mpd.paused {
-  background-color: #51a37a;
+#mpd.disconnected {
+  padding: 0px;
+  background-color: transparent;
+}
+
+#mpris {
+  color: #0f0f0f;
+  background-color: #90b1b1;
+  border-radius: 5px;
+  padding: 0px 8px;
+  margin-top: 5px;
+}
+
+#mpris.paused {
+  background-color: #b190b1;
+}
+
+#mpris.stopped {
+  background-color: #7882a4;
+}
+
+#custom-media {
+  color: #0f0f0f;
+  background-color: #90b1b1;
+  border-radius: 5px;
+  padding: 0px 8px;
+  margin-top: 5px;
+}
+
+#custom-media.Paused {
+  background-color: #b190b1;
 }
 
 #cpu,

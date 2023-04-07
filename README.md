@@ -23,8 +23,20 @@ Set `autospawn = yes` in `/etc/pulse/client.conf` file.
 
 ### Auto mount
 
-Install `udisks2` and `udiskie`, and run `udiskie`.
+```
+sudo pacman -S udisks2 udiskie
+```
+
+Run `udiskie`.
 
 ### Image viewer
 
-Install `imv`.
+```
+sudo pacman -S imv
+```
+
+### Media player control
+
+```
+sudo pacman -S playerctl
+```

@@ -5,7 +5,8 @@
 
     // Modules
     "modules-left": ["wlr/workspaces", "hyprland/submap", "hyprland/window"],
-    "modules-center": ["mpd"],
+    "modules-center": ["mpd", "custom/media"],
+    // "modules-center": ["mpd", mpris"],
     "modules-right": ["cpu", "memory", "pulseaudio", "battery", "network", "clock", "tray"],
 
     // Workspaces
@@ -45,6 +46,37 @@
         "unknown-tag": "N/A",
 
         "tooltip": false,
+    },
+
+    // MPRIS controller
+    "mpris": {
+        "interval": 2,
+
+        // Format
+        "format": "{status_icon} {dynamic}",
+        "format-paused": "{status_icon} {dynamic}",
+        "status-icons": {
+            "playing": "󰐊",
+            "paused": "󰏤",
+            "stopped": "󰓛",
+        },
+
+        "ignored-players": [],
+    },
+
+    // Custom MPRIS controller
+    "custom/media": {
+        "format": "{icon} {}",
+        "format-icons": {
+            "Playing": "󰐊",
+            "Paused": "󰏤",
+        },
+        "return-type": "json",
+
+        "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}}: {{artist}} - {{album}} - {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' --follow",
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl next",
+        "on-click-middle": "playerctl previous",
     },
 
     // CPU
