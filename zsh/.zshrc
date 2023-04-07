@@ -116,3 +116,6 @@ alias glg="git log --date=iso --format='%C(yellow)%h %Creset- %C(cyan)%s %C(gree
 alias gaa="git add ."
 alias gcm="git commit -m"
 alias gp="git push"
+
+# Hyprland alias
+alias hl="Hyprland"

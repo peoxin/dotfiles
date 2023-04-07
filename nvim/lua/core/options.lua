@@ -49,5 +49,5 @@ opt.termguicolors = true
 -- Others
 opt.autochdir = false
 opt.mouse = "a"
-opt.clipboard:append("unnamedplus") -- need to install xclip or other clipboard tools
+opt.clipboard:append("unnamedplus") -- need to install clipboard tools: xclip, cliphist or others
 opt.iskeyword:append("-")

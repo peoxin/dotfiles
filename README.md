@@ -21,16 +21,10 @@ You can use this configuration following the instructions in `setup.md` file in 
 
 Set `autospawn = yes` in `/etc/pulse/client.conf` file.
 
-### Touchpad
+### Auto mount
 
-Add the following contents in `/etc/X11/xorg.conf.d/30-touchpad.conf`:
+Install `udisks2` and `udiskie`, and run `udiskie`.
 
-```
-Section "InputClass"
-    Identifier "touchpad"
-    Driver "libinput"
-    MatchIsTouchpad "on"
-    Option "Tapping" "on"
-    Option "NaturalScrolling" "true"
-EndSection
-```
+### Image viewer
+
+Install `imv`.

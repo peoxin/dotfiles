@@ -30,7 +30,7 @@ bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10 && $refresh_
 # Mode audio
 mode "audio" {
     bindsym s exec --no-startup-id pactl set-sink-port @DEFAULT_SINK@ analog-output-speaker && $refresh_i3status
-    bindsym h exec --no-startup-id pactl set-sink-port @DEFAULT_SINK@ analog-output-headphone && $refresh_i3status
+    bindsym h exec --no-startup-id pactl set-sink-port @DEFAULT_SINK@ analog-output-headphones && $refresh_i3status
 
     bindsym u exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
     bindsym d exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
@@ -213,10 +213,6 @@ exec --no-startup-id "clash"
 
 # Fcitx5
 exec --no-startup-id "fcitx5" 
-
-# Modify keymaps
-exec --no-startup-id "sleep 10; xmodmap $HOME/dotfiles/xorg/.Xmodmap"
-bindsym Mod4+Shift+k exec --no-startup-id "xmodmap $HOME/dotfiles/xorg/.Xmodmap"
 
 # Screenshot
 bindsym Mod4+s exec --no-startup-id "flameshot gui"

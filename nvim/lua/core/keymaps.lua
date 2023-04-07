@@ -29,7 +29,8 @@ keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Close window
-keymap("n", "<S-q>", ":q<CR>", opts)
+keymap("n", "<C-q>", ":q<CR>", opts)
+keymap("n", "<S-q>", ":bd<CR>", opts)
 
 -- Join two lines
 keymap("n", "<Leader>j", "<S-j>", opts)
@@ -47,8 +48,8 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- Move text up and down
-keymap("v", "<C-j>", ":move '>+1<CR>gv=gv", opts)
-keymap("v", "<C-k>", ":move '<-2<CR>gv=gv", opts)
+keymap("v", "<A-j>", ":move '>+1<CR>gv=gv", opts)
+keymap("v", "<A-k>", ":move '<-2<CR>gv=gv", opts)
 
 -- Join lines
 keymap("v", "<Leader>j", "<S-j>", opts)
