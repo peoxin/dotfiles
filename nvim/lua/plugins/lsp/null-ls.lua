@@ -20,6 +20,7 @@ null_ls.setup({
 		formatting.prettier, -- js/ts formatter
 		formatting.stylua, -- lua formatter
 		formatting.black, -- python formatter
+		formatting.rustfmt, -- rust formatter
 	},
 	-- configure format on save
 	on_attach = function(current_client, bufnr)

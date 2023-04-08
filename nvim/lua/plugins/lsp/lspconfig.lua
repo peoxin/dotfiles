@@ -40,7 +40,7 @@ end
 -- used to enable autocompletion (assign to every lsp server config)
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
--- configure pyright server
+-- Configure pyright
 lspconfig["pyright"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
@@ -54,5 +54,14 @@ lspconfig["pyright"].setup({
 				},
 			},
 		},
+	},
+})
+
+-- Configure rust-analyzer
+lspconfig.rust_analyzer.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	settings = {
+        ['rust-analyzer'] = {},
 	},
 })
