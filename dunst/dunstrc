@@ -193,17 +193,17 @@
 [urgency_low]
     frame_color = "#446A46"
     foreground = "#446A46"
-    background = "#97A4AF"
+    background = "#F4F4F4"
     timeout = 4
 
 [urgency_normal]
     frame_color = "#205375"
     foreground = "#205375"
-    background = "#97A4AF"
+    background = "#F4F4F4"
     timeout = 6
 
 [urgency_critical]
     frame_color = "#D61C4E"
     foreground = "#D61C4E"
-    background = "#97A4AF"
+    background = "#F4F4F4"
     timeout = 8

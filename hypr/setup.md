@@ -28,7 +28,7 @@ Install QT wayland support:
 sudo pacman -S qt5-wayland qt6-wayland
 ```
 
-## Useful utilities
+## Useful utilities in wayland
 
 Install clipboard manager `cliphist`:
 
@@ -55,8 +55,14 @@ Install screenshot tools:
 sudo pacman -S grim slurp swappy
 ```
 
-Install color picker tool:
+Install color picker tool `hyprpicker`:
 
 ```
 yay -S hyprpicker-git
+```
+
+Install image viewer `imv`:
+
+```
+sudo pacman -S imv
 ```

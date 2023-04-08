@@ -1,8 +1,9 @@
 import:
-  # - ~/dotfiles/alacritty/palenight.yml
-  # - ~/dotfiles/alacritty/nord.yml
-  - ~/dotfiles/alacritty/tokyo-night-storm.yml
-  # - ~/dotfiles/alacritty/material.yml
+  # Themes
+  # - ~/dotfiles/alacritty/themes/palenight.yml
+  # - ~/dotfiles/alacritty/themes/nord.yml
+  - ~/dotfiles/alacritty/themes/tokyo-night-storm.yml
+  # - ~/dotfiles/alacritty/themes/material.yml
 
 # Font
 font:
