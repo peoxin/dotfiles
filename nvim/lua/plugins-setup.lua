@@ -60,8 +60,8 @@ lazy.setup({
 	"rafamadriz/friendly-snippets", -- useful snippets
 
 	-- LSP
-	"neovim/nvim-lspconfig",
 	"williamboman/mason.nvim",
+	"neovim/nvim-lspconfig",
 	"williamboman/mason-lspconfig.nvim",
 
 	-- Formatter and linter
@@ -78,6 +78,9 @@ lazy.setup({
 		ft = { "markdown" },
 	},
 
-	-- Git
+	-- Git signs
 	"lewis6991/gitsigns.nvim",
+
+	-- Toggle terminal
+	"akinsho/toggleterm.nvim",
 })

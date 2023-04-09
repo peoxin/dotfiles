@@ -1,5 +1,4 @@
 local opts = { noremap = true, silent = true }
-local term_opts = { silent = true }
 local keymap = vim.keymap.set
 
 -- Map space as leader key
@@ -66,11 +65,19 @@ keymap("v", "p", '"_dP', opts)
 keymap("n", "<Leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Telescope
-keymap("n", "<leader>ff", ":Telescope find_files<CR>") -- find files in current working directory
-keymap("n", "<leader>fa", ":Telescope find_files follow=true no_ignore=true hidden=true<CR>") -- find all files
-keymap("n", "<leader>fg", ":Telescope live_grep<CR>") -- find string in current working directory
-keymap("n", "<leader>fb", ":Telescope buffers<CR>") -- list open buffers in current neovim instance
-keymap("n", "<leader>fh", ":Telescope help_tags<CR>") -- list available help tags
+keymap("n", "<Leader>ff", ":Telescope find_files<CR>", opts) -- find files in current working directory
+keymap("n", "<Leader>fa", ":Telescope find_files follow=true no_ignore=true hidden=true<CR>", opts) -- find all files
+keymap("n", "<Leader>fg", ":Telescope live_grep<CR>", opts) -- find string in current working directory
+keymap("n", "<Leader>fb", ":Telescope buffers<CR>", opts) -- list open buffers in current neovim instance
+keymap("n", "<Leader>fh", ":Telescope help_tags<CR>", opts) -- list available help tags
 
 -- Markdown preview
 keymap("n", "<Leader>md", ":MarkdownPreviewToggle<CR>")
+
+-- Toggle terminal
+keymap("n", "<C-]>", [[<Cmd>ToggleTermToggleAll<CR>]], opts)
+keymap("t", "<C-]>", [[<Cmd>ToggleTermToggleAll<CR>]], opts)
+keymap("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
+keymap("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
+keymap("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
+keymap("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)

@@ -12,10 +12,13 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 nvim_tree.setup({
+	sync_root_with_cwd = true,
+
 	update_focused_file = {
 		enable = true,
 		update_cwd = true,
 	},
+
 	renderer = {
 		root_folder_modifier = ":t",
 		icons = {
@@ -44,6 +47,7 @@ nvim_tree.setup({
 			},
 		},
 	},
+
 	diagnostics = {
 		enable = true,
 		show_on_dirs = true,
@@ -54,6 +58,7 @@ nvim_tree.setup({
 			error = "",
 		},
 	},
+
 	view = {
 		width = 30,
 		side = "left",
@@ -61,6 +66,7 @@ nvim_tree.setup({
 			list = {
 				{ key = { "l", "<CR>", "o" }, action = "edit" },
 				{ key = "h", action = "close_node" },
+				{ key = "H", action = "collapse_all" },
 				{ key = "v", action = "vsplit" },
 				{ key = "w", action = "cd" },
 			},

@@ -44,6 +44,15 @@ window#waybar.hidden {
   margin-left: 10px;
 }
 
+#window-limit {
+  color: #0f0f0f;
+  background-color: #a9c6de;
+  border-radius: 5px;
+  padding: 0px 8px;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
 #mpd {
   color: #0f0f0f;
   background-color: #90b1b1;
