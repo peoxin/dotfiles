@@ -5,7 +5,7 @@ if not vim.loop.fs_stat(lazypath) then
 		"clone",
 		"--filter=blob:none",
 		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
+		"--branch=stable",
 		lazypath,
 	})
 end
@@ -23,6 +23,10 @@ lazy.setup({
 
 	-- Colorschemes
 	"folke/tokyonight.nvim",
+	"catppuccin/nvim",
+
+	-- Leap
+	"ggandor/leap.nvim",
 
 	-- Telescope
 	"nvim-telescope/telescope.nvim",
@@ -31,33 +35,30 @@ lazy.setup({
 	"nvim-lualine/lualine.nvim",
 
 	-- Nvim-tree
-	{
-		"nvim-tree/nvim-tree.lua",
-		tag = "nightly",
-	},
+	"nvim-tree/nvim-tree.lua",
 
 	-- Comment
-	"numToStr/Comment.nvim",
+	{ "numToStr/Comment.nvim", config = true },
 
 	-- Surround
-	"kylechui/nvim-surround",
+	{ "kylechui/nvim-surround", config = true },
 
 	-- Treesitter
-	"nvim-treesitter/nvim-treesitter", -- Syntax hightlighting
+	"nvim-treesitter/nvim-treesitter",
 
-	-- Autocompletion
-	"hrsh7th/nvim-cmp", -- completion plugin
-	"hrsh7th/cmp-buffer", -- source for text in buffer
-	"hrsh7th/cmp-path", -- source for file system paths
-	"saadparwaiz1/cmp_luasnip", -- source for luasnip
-	"hrsh7th/cmp-nvim-lsp", -- source for lsp
+	-- Auto completion
+	"hrsh7th/nvim-cmp",
+	"hrsh7th/cmp-buffer",
+	"hrsh7th/cmp-path",
+	"saadparwaiz1/cmp_luasnip",
+	"hrsh7th/cmp-nvim-lsp",
+
+	-- Snippets
+	"L3MON4D3/LuaSnip",
+	"rafamadriz/friendly-snippets",
 
 	-- Autopairs
 	"windwp/nvim-autopairs",
-
-	-- Snippets
-	"L3MON4D3/LuaSnip", -- snippet engine
-	"rafamadriz/friendly-snippets", -- useful snippets
 
 	-- LSP
 	"williamboman/mason.nvim",
@@ -67,6 +68,11 @@ lazy.setup({
 	-- Formatter and linter
 	"jose-elias-alvarez/null-ls.nvim",
 	"jayp0521/mason-null-ls.nvim",
+
+	-- DAP
+	"mfussenegger/nvim-dap",
+	"jay-babu/mason-nvim-dap.nvim",
+	"rcarriga/nvim-dap-ui",
 
 	-- Markdown preview
 	{
@@ -78,7 +84,7 @@ lazy.setup({
 		ft = { "markdown" },
 	},
 
-	-- Git signs
+	-- Gitsigns
 	"lewis6991/gitsigns.nvim",
 
 	-- Toggle terminal

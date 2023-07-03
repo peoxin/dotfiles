@@ -21,13 +21,21 @@ Follow the instructions in `setup.md` file in each folder to setup.
 
 ### Fcitx5 theme
 
-- fcitx5-nord
+- catppuccin/fcitx5
+- tonyfettes/fcitx5-nord
+- Reverier-Xu/FluentDark-fcitx5
 
 ### Pulseaudio
 
 Set `autospawn = yes` in `/etc/pulse/client.conf` file.
 
 ## Tools
+
+### Trash management
+
+```
+sudo pacman -S trash-cli
+```
 
 ### Auto mount
 

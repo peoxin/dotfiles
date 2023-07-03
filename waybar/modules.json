@@ -100,7 +100,9 @@
     "format-ethernet": "{ipaddr}",
     "format-disconnected": "󱛅",
 
-    "tooltip-format": "{ifname}: {ipaddr}"
+    "tooltip-format": "{ifname}: {ipaddr}",
+
+    "on-click": "alacritty -e nmtui"
   },
 
   // Clock

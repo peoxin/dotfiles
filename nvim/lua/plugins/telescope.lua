@@ -3,11 +3,19 @@ if not status_ok then
 	return
 end
 
+local opts = { noremap = true, silent = true }
+local keymap = vim.keymap.set
+
+keymap("n", "<Leader>ff", ":Telescope find_files<CR>", opts)
+keymap("n", "<Leader>fa", ":Telescope find_files follow=true no_ignore=true hidden=true<CR>", opts)
+keymap("n", "<Leader>fg", ":Telescope live_grep<CR>", opts)
+keymap("n", "<Leader>fb", ":Telescope buffers<CR>", opts)
+keymap("n", "<Leader>fh", ":Telescope help_tags<CR>", opts)
+
 local actions = require("telescope.actions")
 
 telescope.setup({
 	defaults = {
-
 		prompt_prefix = " ",
 		selection_caret = " ",
 		path_display = { "smart" },
@@ -26,7 +34,7 @@ telescope.setup({
 				["<Up>"] = actions.move_selection_previous,
 
 				["<CR>"] = actions.select_default,
-				["<C-x>"] = actions.select_horizontal,
+				["<C-h>"] = actions.select_horizontal,
 				["<C-v>"] = actions.select_vertical,
 				["<C-t>"] = actions.select_tab,
 
@@ -50,7 +58,7 @@ telescope.setup({
 				["G"] = actions.move_to_bottom,
 
 				["<CR>"] = actions.select_default,
-				["<C-x>"] = actions.select_horizontal,
+				["<C-h>"] = actions.select_horizontal,
 				["<C-v>"] = actions.select_vertical,
 				["<C-t>"] = actions.select_tab,
 
@@ -64,20 +72,6 @@ telescope.setup({
 			},
 		},
 	},
-	pickers = {
-		-- Default configuration for builtin pickers goes here:
-		-- picker_name = {
-		--   picker_config_key = value,
-		--   ...
-		-- }
-		-- Now the picker_config_key will be applied every time you call this
-		-- builtin picker
-	},
-	extensions = {
-		-- Your extension configuration goes here:
-		-- extension_name = {
-		--   extension_config_key = value,
-		-- }
-		-- please take a look at the readme of the extension you want to configure
-	},
+	pickers = {},
+	extensions = {},
 })

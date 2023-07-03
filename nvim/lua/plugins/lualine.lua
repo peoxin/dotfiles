@@ -32,19 +32,22 @@ local branch = {
 	icon = "",
 }
 
--- local spaces = function()
--- 	return vim.api.nvim_buf_get_option(0, "shiftwidth")
--- end
+local buffers = {
+	"buffers",
+	icons_enabled = false,
+}
 
 lualine.setup({
 	options = {
 		icons_enabled = true,
-		theme = "tokyonight",
+		-- theme = "tokyonight",
+		theme = "catppuccin",
 		section_separators = { left = "", right = "" },
 		component_separators = { left = "", right = "" },
-		disabled_filetypes = { "NvimTree" },
+		disabled_filetypes = {},
 		always_divide_middle = true,
 	},
+
 	sections = {
 		lualine_a = { "mode" },
 		lualine_b = { branch, diagnostics },
@@ -53,6 +56,7 @@ lualine.setup({
 		lualine_y = { "location" },
 		lualine_z = { "progress" },
 	},
+
 	inactive_sections = {
 		lualine_a = {},
 		lualine_b = {},
@@ -61,6 +65,20 @@ lualine.setup({
 		lualine_y = {},
 		lualine_z = {},
 	},
-	tabline = {},
-	extensions = {},
+
+	tabline = {
+		lualine_a = { buffers },
+		lualine_b = {},
+		lualine_c = {},
+		lualine_x = {},
+		lualine_y = {},
+		lualine_z = {},
+	},
+
+	extensions = {
+		"lazy",
+		"nvim-tree",
+		"toggleterm",
+		"nvim-dap-ui",
+	},
 })

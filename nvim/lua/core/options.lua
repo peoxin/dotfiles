@@ -46,7 +46,7 @@ opt.showmode = false
 opt.background = "dark"
 opt.termguicolors = true
 
--- Others
+-- Misc
 opt.autochdir = false
 opt.mouse = "a"
 opt.clipboard:append("unnamedplus") -- need to install clipboard tools: xclip, cliphist or others
