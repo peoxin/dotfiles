@@ -125,6 +125,9 @@ alias gaa="git add ."
 alias gcm="git commit -m"
 alias gp="git push"
 
+# Lazygit alias
+alias lgit="lazygit"
+
 # Hyprland alias
 alias hl="Hyprland"
 

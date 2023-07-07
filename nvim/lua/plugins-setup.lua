@@ -26,7 +26,10 @@ lazy.setup({
 	"catppuccin/nvim",
 
 	-- Leap
-	"ggandor/leap.nvim",
+	-- "ggandor/leap.nvim",
+
+	-- Flash
+	{ import = "plugins.flash" },
 
 	-- Telescope
 	"nvim-telescope/telescope.nvim",

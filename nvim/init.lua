@@ -1,7 +1,7 @@
-require("core.options")
+require("config.options")
+require("config.keymaps")
 require("plugins-setup")
-require("core.keymaps")
-require("core.colorscheme")
+require("config.colorscheme")
 
 require("plugins.lualine")
 require("plugins.telescope")
