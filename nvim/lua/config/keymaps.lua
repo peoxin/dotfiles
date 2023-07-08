@@ -62,7 +62,3 @@ keymap("v", "<S-k>", "5k", opts)
 
 -- Better paste
 keymap("v", "p", '"_dP', opts)
-
--- Plugins --
--- Markdown preview
-keymap("n", "<Leader>md", ":MarkdownPreviewToggle<CR>")

@@ -1,6 +1,7 @@
-local status_ok, leap = pcall(require, "leap")
-if not status_ok then
-	return
-end
-
-leap.add_default_mappings()
+return {
+	"ggandor/leap.nvim",
+	enabled = false,
+	config = function()
+		leap.add_default_mappings()
+	end,
+}

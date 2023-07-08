@@ -1,19 +1,46 @@
-local status_ok, toggleterm = pcall(require, "toggleterm")
-if not status_ok then
-	return
-end
-
-local opts = { noremap = true, silent = true }
-local keymap = vim.keymap.set
-
-keymap({ "n", "t" }, "<C-]>", [[<Cmd>ToggleTermToggleAll<CR>]], opts)
-keymap("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
-keymap("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
-keymap("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
-keymap("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
-
-toggleterm.setup({
-	open_mapping = [[<C-\>]],
-	autochdir = false,
-	direction = "horizontal",
-})
+return {
+	"akinsho/toggleterm.nvim",
+	keys = {
+		{
+			"<C-\\>",
+			[[<Cmd>ToggleTerm<CR>]],
+			mode = { "n", "t" },
+			desc = "Toggle terminal",
+		},
+		{
+			"<C-]>",
+			[[<Cmd>ToggleTermToggleAll<CR>]],
+			mode = { "n", "t" },
+			desc = "Toggle all terminal",
+		},
+		{
+			"<C-h>",
+			[[<Cmd>wincmd h<CR>]],
+			mode = "t",
+			desc = "Go to left window",
+		},
+		{
+			"<C-j>",
+			[[<Cmd>wincmd j<CR>]],
+			mode = "t",
+			desc = "Go to down window",
+		},
+		{
+			"<C-k>",
+			[[<Cmd>wincmd k<CR>]],
+			mode = "t",
+			desc = "Go to up window",
+		},
+		{
+			"<C-l>",
+			[[<Cmd>wincmd l<CR>]],
+			mode = "t",
+			desc = "Go to right window",
+		},
+	},
+	opts = {
+		open_mapping = [[<C-\>]],
+		autochdir = false,
+		direction = "horizontal",
+	},
+}
