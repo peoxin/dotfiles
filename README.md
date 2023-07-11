@@ -17,7 +17,15 @@ Follow the instructions in `setup.md` file in each folder to setup.
 - noto-fonts
 - noto-fonts-cjk
 - ttf-noto-nerd
+
+Suggested coding fonts:
+
 - adobe-source-code-pro-fonts
+- ttf-meslo-nerd
+- ttf-hack
+- ttf-input
+- ttf-dejavu
+- ttf-droid
 
 ### Fcitx5 theme
 

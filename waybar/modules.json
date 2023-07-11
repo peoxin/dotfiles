@@ -8,6 +8,11 @@
     "sort-by-number": true
   },
 
+  // Hyprland workspaces
+  "hyprland/workspaces": {
+    "format": "{id}"
+  },
+
   // Hyprland submap
   "hyprland/submap": {
     "format": "{}",

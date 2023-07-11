@@ -3,8 +3,7 @@
 ```
 sudo pacman -S nvim
 mkdir ~/.config/nvim
-ln -s ~/dotfiles/nvim/init.lua $HOME/.config/nvim/init.lua
-ln -s ~/dotfiles/nvim/lua $HOME/.config/nvim/lua
+ln -s ~/dotfiles/nvim ~/.config/nvim
 ```
 
 ## Example shell script
