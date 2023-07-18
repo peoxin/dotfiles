@@ -118,6 +118,9 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Confirm before rm
+alias rm="rm -i"
+
 # Git aliases
 alias gst="git status"
 alias glg="git log --date=iso --format='%C(yellow)%h %Creset- %C(cyan)%s %C(green)(%ad %an)'"

@@ -107,7 +107,7 @@
 
     "tooltip-format": "{ifname}: {ipaddr}",
 
-    "on-click": "alacritty -e nmtui"
+    "on-click": "networkmanager_dmenu"
   },
 
   // Clock
