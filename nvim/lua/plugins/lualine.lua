@@ -21,14 +21,10 @@ return {
 		}
 		local filetype = {
 			"filetype",
-			icons_enabled = false,
+			-- icons_enabled = false,
 		}
 		local fileformat = {
 			"fileformat",
-			icons_enabled = false,
-		}
-		local buffers = {
-			"buffers",
 			icons_enabled = false,
 		}
 
@@ -55,14 +51,6 @@ return {
 				lualine_b = {},
 				lualine_c = { filename },
 				lualine_x = { "encoding", fileformat, filetype },
-				lualine_y = {},
-				lualine_z = {},
-			},
-			tabline = {
-				lualine_a = { buffers },
-				lualine_b = {},
-				lualine_c = {},
-				lualine_x = {},
 				lualine_y = {},
 				lualine_z = {},
 			},

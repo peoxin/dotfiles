@@ -6,70 +6,81 @@ return {
 		vim.g.loaded_netrw = 1
 		vim.g.loaded_netrwPlugin = 1
 	end,
-	opts = {
-		sync_root_with_cwd = true,
-		update_focused_file = {
-			enable = true,
-			update_cwd = true,
-		},
-		renderer = {
-			root_folder_modifier = ":t",
-			icons = {
-				glyphs = {
-					default = "",
-					symlink = "",
-					folder = {
-						arrow_open = "",
-						arrow_closed = "",
-						default = "",
-						open = "",
-						empty = "",
-						empty_open = "",
-						symlink = "",
-						symlink_open = "",
-					},
-					git = {
-						unstaged = "",
-						staged = "S",
-						unmerged = "",
-						renamed = "➜",
-						untracked = "U",
-						deleted = "",
-						ignored = "◌",
-					},
-				},
-			},
-		},
-		diagnostics = {
-			enable = true,
-			show_on_dirs = true,
-			icons = {
-				hint = "",
-				info = "",
-				warning = "",
-				error = "",
-			},
-		},
-		view = {
-			width = 30,
-			side = "left",
-			mappings = {
-				list = {
-					{ key = { "l", "<CR>", "o" }, action = "edit" },
-					{ key = "h", action = "close_node" },
-					{ key = "H", action = "collapse_all" },
-					{ key = "w", action = "cd" },
-					{ key = "d", action = "" },
-					{ key = "<C-h>", action = "split" },
-				},
-			},
-		},
-		actions = {
-			change_dir = {
+	opts = function()
+		local function on_attach(bufnr)
+			local api = require("nvim-tree.api")
+			local function opts(desc)
+				return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+			end
+			api.config.mappings.default_on_attach(bufnr)
+
+			vim.keymap.set("n", "d", "", { buffer = bufnr })
+			vim.keymap.del("n", "d", { buffer = bufnr })
+			vim.keymap.set("n", "l", api.node.open.edit, opts("Open"))
+			vim.keymap.set("n", "<CR>", api.node.open.edit, opts("Open"))
+			vim.keymap.set("n", "o", api.node.open.edit, opts("Open"))
+			vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("Close Directory"))
+			vim.keymap.set("n", "H", api.tree.collapse_all, opts("Collapse"))
+			vim.keymap.set("n", "w", api.tree.change_root_to_node, opts("CD"))
+			vim.keymap.set("n", "<C-h>", api.node.open.horizontal, opts("Open: Horizontal Split"))
+		end
+
+		return {
+			sync_root_with_cwd = true,
+			update_focused_file = {
 				enable = true,
-				global = true,
-				restrict_above_cwd = false,
+				update_cwd = true,
 			},
-		},
-	},
+			renderer = {
+				root_folder_modifier = ":t",
+				icons = {
+					glyphs = {
+						default = "",
+						symlink = "",
+						folder = {
+							arrow_open = "",
+							arrow_closed = "",
+							default = "",
+							open = "",
+							empty = "",
+							empty_open = "",
+							symlink = "",
+							symlink_open = "",
+						},
+						git = {
+							unstaged = "",
+							staged = "S",
+							unmerged = "",
+							renamed = "➜",
+							untracked = "U",
+							deleted = "",
+							ignored = "◌",
+						},
+					},
+				},
+			},
+			diagnostics = {
+				enable = true,
+				show_on_dirs = true,
+				icons = {
+					hint = "",
+					info = "",
+					warning = "",
+					error = "",
+				},
+			},
+			view = {
+				width = 30,
+				side = "left",
+			},
+			actions = {
+				change_dir = {
+					enable = true,
+					global = true,
+					restrict_above_cwd = false,
+				},
+			},
+			on_attach = on_attach,
+		}
+	end,
 }

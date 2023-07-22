@@ -16,18 +16,21 @@ return {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
 				local keymap = vim.keymap.set
-				keymap("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition", buffer = ev.buf })
-				keymap("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration", buffer = ev.buf })
-				keymap("n", "gI", vim.lsp.buf.implementation, { desc = "Go to implementation", buffer = ev.buf })
-				keymap("n", "gr", vim.lsp.buf.references, { desc = "Find all references", buffer = ev.buf })
-				keymap("n", "gT", vim.lsp.buf.type_definition, { desc = "Go to type definition", buffer = ev.buf })
-				keymap("n", "gk", vim.lsp.buf.hover, { desc = "Hover", buffer = ev.buf })
-				keymap("n", "gH", vim.lsp.buf.signature_help, { desc = "Signature help", buffer = ev.buf })
-				keymap("n", "<Leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol", buffer = ev.buf })
-				keymap("n", "<Leader>ca", vim.lsp.buf.code_action, { desc = "Code action", buffer = ev.buf })
+				local function opts(desc)
+					return { desc = desc, buffer = ev.buf }
+				end
+				keymap("n", "gd", vim.lsp.buf.definition, opts("Go to definition"))
+				keymap("n", "gD", vim.lsp.buf.declaration, opts("Go to declaration"))
+				keymap("n", "gI", vim.lsp.buf.implementation, opts("Go to implementation"))
+				keymap("n", "gr", vim.lsp.buf.references, opts("Find all references"))
+				keymap("n", "gT", vim.lsp.buf.type_definition, opts("Go to type definition"))
+				keymap("n", "gk", vim.lsp.buf.hover, opts("Hover"))
+				keymap("n", "gH", vim.lsp.buf.signature_help, opts("Signature help"))
+				keymap("n", "<Leader>rn", vim.lsp.buf.rename, opts("Rename symbol"))
+				keymap("n", "<Leader>ca", vim.lsp.buf.code_action, opts("Code action"))
 				keymap("n", "<Leader>fm", function()
 					vim.lsp.buf.format({ async = true })
-				end, { desc = "Format file", buffer = ev.buf })
+				end, opts("Format file"))
 			end,
 		})
 

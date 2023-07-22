@@ -1,9 +1,0 @@
-[user]
-    name = peoxin
-    email = peoxin@outlook.com
-
-[init]
-    defaultBranch = main
-
-[core]
-    autocrlf = input
