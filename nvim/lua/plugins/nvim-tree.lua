@@ -9,20 +9,27 @@ return {
 	opts = function()
 		local function on_attach(bufnr)
 			local api = require("nvim-tree.api")
-			local function opts(desc)
-				return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+			local function map(mode, l, r, desc)
+				vim.keymap.set(mode, l, r, {
+					buffer = bufnr,
+					desc = "nvim-tree: " .. desc,
+					noremap = true,
+					silent = true,
+					nowait = true,
+				})
 			end
 			api.config.mappings.default_on_attach(bufnr)
 
-			vim.keymap.set("n", "d", "", { buffer = bufnr })
-			vim.keymap.del("n", "d", { buffer = bufnr })
-			vim.keymap.set("n", "l", api.node.open.edit, opts("Open"))
-			vim.keymap.set("n", "<CR>", api.node.open.edit, opts("Open"))
-			vim.keymap.set("n", "o", api.node.open.edit, opts("Open"))
-			vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("Close Directory"))
-			vim.keymap.set("n", "H", api.tree.collapse_all, opts("Collapse"))
-			vim.keymap.set("n", "w", api.tree.change_root_to_node, opts("CD"))
-			vim.keymap.set("n", "<C-h>", api.node.open.horizontal, opts("Open: Horizontal Split"))
+			map("n", "l", api.node.open.edit, "Open")
+			map("n", "o", api.node.open.edit, "Open")
+			map("n", "<CR>", api.node.open.edit, "Open")
+			map("n", "<C-h>", api.node.open.horizontal, "Open (horizontal split)")
+			map("n", "h", api.node.navigate.parent_close, "Close directory")
+			map("n", "H", api.tree.collapse_all, "Collapse all")
+			map("n", "w", api.tree.change_root_to_node, "CD")
+			map("n", "d", api.fs.cut, "Cut")
+			map("n", "D", api.fs.remove, "Remove")
+			map("n", "?", api.tree.toggle_help, "Toggle help")
 		end
 
 		return {

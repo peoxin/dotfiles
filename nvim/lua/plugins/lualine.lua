@@ -27,6 +27,16 @@ return {
 			"fileformat",
 			icons_enabled = false,
 		}
+		local navic = {
+			function()
+				local space_text = " "
+				local space = "%*%#NavicText#" .. space_text .. "%*"
+				return require("nvim-navic").get_location() .. space
+			end,
+			cond = function()
+				return require("nvim-navic").is_available()
+			end,
+		}
 
 		return {
 			options = {
@@ -56,6 +66,7 @@ return {
 			},
 			winbar = {
 				lualine_c = { "navic" },
+				-- lualine_c = { navic },
 			},
 			extensions = {
 				"lazy",

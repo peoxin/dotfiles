@@ -1,6 +1,7 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	main = "nvim-treesitter.configs",
+	event = "BufEnter",
 	opts = {
 		highlight = { enable = true },
 		indent = { enable = true },

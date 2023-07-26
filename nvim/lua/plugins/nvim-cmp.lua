@@ -45,6 +45,7 @@ return {
 	{ "rafamadriz/friendly-snippets" },
 	{
 		"L3MON4D3/LuaSnip",
+		event = "BufEnter",
 		dependencies = {
 			"rafamadriz/friendly-snippets",
 			config = function()

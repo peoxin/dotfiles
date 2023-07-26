@@ -29,7 +29,7 @@ return {
 			treesitter = true,
 			markdown = true,
 			mason = true,
-			navic = { enabled = true },
+			navic = { enabled = true, custom_bg = "lualine" },
 			cmp = true,
 			which_key = true,
 			native_lsp = {
