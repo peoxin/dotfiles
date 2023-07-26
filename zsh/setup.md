@@ -1,6 +1,9 @@
 ## Setup
 
+Install `zsh` and some plugins:
+
 ```
+# Use brew instead of pacman in macos
 sudo pacman -S zsh
 
 # Install oh-my-zsh and zsh plugins
@@ -11,9 +14,23 @@ git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/p
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 sudo pacman -S fzf zoxide
+```
 
-ln -s ~/dotfiles/linux/zsh/.zprofile ~/.zprofile
-ln -s ~/dotfiles/linux/zsh/.zshrc ~/.zshrc
+Edit `~/.zprofile`:
 
+```
+export DOTFILES="$HOME/dotfiles" # Or other directory where your dotfiles are located
+source $DOTFILES/zsh/env_linux.zsh # Or env_macos.zsh based on your platform
+```
+
+Edit `~/.zshrc` and source configuration files in the middle of your `.zshrc`:
+
+```
+source $DOTFILES/zsh/config.zsh
+```
+
+Change your login shell:
+
+```
 chsh -s /usr/bin/zsh
 ```

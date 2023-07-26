@@ -3,5 +3,5 @@
 ```
 sudo pacman -S ncmpcpp
 mkdir -p ~/.config/ncmpcpp
-ln -s ~/dotfiles/linux/ncmpcpp/config ~/.config/ncmpcpp/config
+ln -s $DOTFILES/linux/ncmpcpp/config ~/.config/ncmpcpp/config
 ```

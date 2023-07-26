@@ -1,12 +1,12 @@
 import:
-  # - ~/dotfiles/alacritty/themes/palenight.yml
-  # - ~/dotfiles/alacritty/themes/nord.yml
-  # - ~/dotfiles/alacritty/themes/tokyo-night-storm.yml
-  # - ~/dotfiles/alacritty/themes/material.yml
-  # - ~/dotfiles/alacritty/themes/catppuccin-latte.yml
-  # - ~/dotfiles/alacritty/themes/catppuccin-mocha.yml
-  - ~/dotfiles/alacritty/themes/catppuccin-macchiato.yml
-  # - ~/dotfiles/alacritty/themes/catppuccin-frappe.yml
+  # - $DOTFILES/alacritty/themes/palenight.yml
+  # - $DOTFILES/alacritty/themes/nord.yml
+  # - $DOTFILES/alacritty/themes/tokyo-night-storm.yml
+  # - $DOTFILES/alacritty/themes/material.yml
+  # - $DOTFILES/alacritty/themes/catppuccin-latte.yml
+  # - $DOTFILES/alacritty/themes/catppuccin-mocha.yml
+  - $DOTFILES/alacritty/themes/catppuccin-macchiato.yml
+  # - $DOTFILES/alacritty/themes/catppuccin-frappe.yml
 
 # Font
 font:

@@ -2,7 +2,7 @@
 
 ```
 sudo pacman -S hyprland hyprpaper
-ln -s ~/dotfiles/linux/hypr ~/.config/hypr
+ln -s $DOTFILES/linux/hypr ~/.config/hypr
 ```
 
 Install XDG desktop portal:

@@ -1,6 +1,11 @@
 local Terminal = require("toggleterm.terminal").Terminal
-local gitui =
-	Terminal:new({ cmd = "gitui", direction = "float", float_opts = { border = "single" }, count = 9, hidden = true })
+local gitui = Terminal:new({
+	cmd = "gitui -t mocha.ron",
+	direction = "float",
+	float_opts = { border = "single" },
+	count = 9,
+	hidden = true,
+})
 
 function _gitui_toggle()
 	gitui:toggle()

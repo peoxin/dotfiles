@@ -2,5 +2,5 @@
 
 ```
 sudo pacman -S rofi
-ln -s ~/dotfiles/linux/rofi ~/.config/rofi
+ln -s $DOTFILES/linux/rofi ~/.config/rofi
 ```

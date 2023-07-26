@@ -2,5 +2,5 @@
 
 ```
 sudo pacman -S wofi
-ln -s ~/dotfiles/linux/wofi ~/.config/wofi
+ln -s $DOTFILES/linux/wofi ~/.config/wofi
 ```

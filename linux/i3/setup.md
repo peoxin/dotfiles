@@ -2,5 +2,5 @@
 
 ```
 sudo pacman -S i3-wm
-ln -s ~/dotfiles/linux/i3 ~/.config/i3
+ln -s $DOTFILES/linux/i3 ~/.config/i3
 ```

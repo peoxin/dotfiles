@@ -2,5 +2,5 @@
 
 ```
 sudo pacman -S polybar
-ln -s ~/dotfiles/linux/polybar ~/.config/polybar
+ln -s $DOTFILES/linux/polybar ~/.config/polybar
 ```

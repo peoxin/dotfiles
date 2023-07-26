@@ -6,8 +6,8 @@
     "output": ["eDP-1"],
 
     "include": [
-      "~/dotfiles/waybar/modules.json",
-      "~/dotfiles/waybar/modules-limit-length.json"
+      "$DOTFILES/linux/waybar/modules.json",
+      "$DOTFILES/linux/waybar/modules-limit-length.json"
     ],
 
     // Modules
@@ -23,7 +23,6 @@
       "tray"
     ]
   },
-
   {
     // Bar settings
     "layer": "top",
@@ -31,8 +30,8 @@
     "output": ["DP-1"],
 
     "include": [
-      "~/dotfiles/waybar/modules.json",
-      "~/dotfiles/waybar/modules-nolimit-length.json"
+      "$DOTFILES/linux/waybar/modules.json",
+      "$DOTFILES/linux/waybar/modules-nolimit-length.json"
     ],
 
     // Modules

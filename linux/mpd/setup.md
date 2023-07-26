@@ -2,5 +2,5 @@
 
 ```
 sudo pacman -S mpd
-ln -s ~/dotfiles/linux/mpd ~/.config/mpd
+ln -s $DOTFILES/linux/mpd ~/.config/mpd
 ```

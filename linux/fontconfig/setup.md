@@ -1,5 +1,5 @@
 ## Setup
 
 ```
-ln -s ~/dotfiles/linux/fontconfig ~/.config/fontconfig
+ln -s $DOTFILES/linux/fontconfig ~/.config/fontconfig
 ```

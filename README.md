@@ -1,11 +1,18 @@
-# dotfiles
+# Dotfiles
 
 ## Usage
 
-The location of the configuration folder should be `~/dotfiles`. Thus, you can run this command:
+The default location of the configuration folder is `~/dotfiles`. Thus, you can run this command:
 
 ```
 cd && git clone https://github.com/peoxin/dotfiles.git
+```
+
+You can also place the configuration folder somewhere else.
+In that case, you need to change the `DOTFILES` environment variable:
+
+```
+export DOTFILES="/other/dotfiles/dir/"
 ```
 
 Follow the instructions in each folder to setup.
@@ -50,4 +57,4 @@ git clone https://github.com/catppuccin/gitui.git
 cp ./gitui/theme/*.ron ~/.config/gitui
 ```
 
-Run `gitui -t <theme>.ron`.
+Use `gitui -t <theme>.ron` to run `gitui` with a theme.

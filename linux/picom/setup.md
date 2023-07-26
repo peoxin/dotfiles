@@ -2,5 +2,5 @@
 
 ```
 sudo pacman -S picom
-ln -s ~/dotfiles/linux/picom ~/.config/picom
+ln -s $DOTFILES/linux/picom ~/.config/picom
 ```

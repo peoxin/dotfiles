@@ -2,5 +2,5 @@
 
 ```
 sudo pacman -S lf perl-file-mimeinfo
-ln -s ~/dotfiles/lf ~/.config/lf
+ln -s $DOTFILES/lf ~/.config/lf
 ```
