@@ -1,64 +1,51 @@
-local opts = { noremap = true, silent = true }
-local keymap = vim.keymap.set
-
 -- Map space as leader key
-keymap("", "<Space>", "<Nop>", opts)
+vim.keymap.set("", "<Space>", "<Nop>", { noremap = true, silent = true })
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Normal --
--- Split window
-keymap("n", "<Leader>sv", ":vsplit<CR>", opts)
-keymap("n", "<Leader>sh", ":split<CR>", opts)
+local function map(mode, l, r, desc)
+	vim.keymap.set(mode, l, r, { desc = desc, noremap = true, silent = true })
+end
 
--- Faster window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+-- Normal Mode --
+map("n", "<Leader>sv", ":vsplit<CR>", "vsplit window")
+map("n", "<Leader>sh", ":split<CR>", "split window")
 
--- Resize with arrows
-keymap("n", "<C-Up>", ":resize +2<CR>", opts)
-keymap("n", "<C-Down>", ":resize -2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+map("n", "<C-h>", "<C-w>h", "Move to left window")
+map("n", "<C-j>", "<C-w>j", "Move to down window")
+map("n", "<C-k>", "<C-w>k", "Move to up window")
+map("n", "<C-l>", "<C-w>l", "Move to right window")
 
--- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+map("n", "<C-Up>", ":resize +2<CR>", "Resize window (+height)")
+map("n", "<C-Down>", ":resize -2<CR>", "Resize window (-height)")
+map("n", "<C-Left>", ":vertical resize -2<CR>", "Resize window (-width)")
+map("n", "<C-Right>", ":vertical resize +2<CR>", "Resize window (+width)")
 
--- Close window or buffer
-keymap("n", "<C-q>", ":q<CR>", opts)
-keymap("n", "<S-q>", ":bd<CR>", opts)
+map("n", "<S-l>", ":bnext<CR>", "Move to next buffer")
+map("n", "<S-h>", ":bprevious<CR>", "Move to previous buffer")
 
--- Save file
-keymap("n", "<C-s>", ":w<CR>", opts)
+map("n", "<C-q>", ":q<CR>", "Close window")
+map("n", "<S-q>", ":bd<CR>", "Close buffer")
 
--- Join two lines
-keymap("n", "<Leader>j", "<S-j>", opts)
+map("n", "<C-s>", ":w<CR>", "Save file")
 
--- Faster curse up and down
-keymap("n", "<S-j>", "5j", opts)
-keymap("n", "<S-k>", "5k", opts)
+map("n", "<Leader>j", "<S-j>", "Join two lines")
 
--- Clear highlights
-keymap("n", "<Leader>h", ":nohlsearch<CR>", opts)
+map("n", "<S-j>", "5j", "Faster up")
+map("n", "<S-k>", "5k", "Faster down")
 
--- Visual --
--- Change indent
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+map("n", "<Leader>h", ":nohlsearch<CR>", "Clear highlights")
 
--- Move text up and down
-keymap("v", "<A-j>", ":move '>+1<CR>gv=gv", opts)
-keymap("v", "<A-k>", ":move '<-2<CR>gv=gv", opts)
+-- Visual Mode --
+map("v", "<", "<gv", "Less indent")
+map("v", ">", ">gv", "More indent")
 
--- Join lines
-keymap("v", "<Leader>j", "<S-j>", opts)
+map("v", "<A-j>", ":move '>+1<CR>gv=gv", "Move lines up")
+map("v", "<A-k>", ":move '<-2<CR>gv=gv", "Move lines down")
 
--- Faster curse up and down
-keymap("v", "<S-j>", "5j", opts)
-keymap("v", "<S-k>", "5k", opts)
+map("v", "<Leader>j", "<S-j>", "Join lines")
 
--- Better paste
-keymap("v", "p", '"_dP', opts)
+map("v", "<S-j>", "5j", "Faster up")
+map("v", "<S-k>", "5k", "Faster down")
+
+map("v", "p", '"_dP', "Paste")
