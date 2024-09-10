@@ -1,4 +1,4 @@
-## Setup
+# Setup
 
 ```shell
 yay -S networkmanager-dmenu-git

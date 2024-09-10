@@ -3,7 +3,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # ZSH_THEME="robbyrussell"
 # ZSH_THEME="eastwood"
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
     git
@@ -27,7 +27,7 @@ fi
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases
+# Set aliases
 alias cd="z"
 alias rm="rm -i"
 
@@ -41,3 +41,6 @@ alias lgit="lazygit"
 alias gitui="gitui -t mocha.ron"
 
 alias hl="Hyprland"
+
+# Init starship prompt
+eval "$(starship init zsh)"

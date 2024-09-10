@@ -1,4 +1,4 @@
-## Setup
+# Setup
 
 ```
 yay -S waybar-hyprland-git

@@ -1,4 +1,4 @@
-## Setup
+# Setup
 
 ```
 sudo pacman -S picom
