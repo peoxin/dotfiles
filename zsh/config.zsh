@@ -29,7 +29,6 @@ fi
 
 # Set aliases
 alias cd="z"
-alias rm="rm -i"
 
 alias gst="git status"
 alias glg="git log --date=iso --format='%C(yellow)%h %Creset- %C(cyan)%s %C(green)(%ad %an)'"
