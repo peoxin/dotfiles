@@ -1,4 +1,4 @@
-# Setup
+# Tmux
 
 ```
 sudo pacman -S tmux

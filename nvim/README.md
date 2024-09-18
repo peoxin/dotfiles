@@ -1,4 +1,4 @@
-# Setup
+# Neovim
 
 ```
 sudo pacman -S nvim

@@ -1,4 +1,4 @@
-# Setup
+# Kitty
 
 ```
 sudo pacman -S kitty

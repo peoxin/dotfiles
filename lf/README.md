@@ -1,4 +1,4 @@
-# Setup
+# Lf
 
 ```
 sudo pacman -S lf perl-file-mimeinfo

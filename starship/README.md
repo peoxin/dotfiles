@@ -1,9 +1,9 @@
-# Setup
+# Starship
 
-Install `starship`:
+Install `starship` prompt:
 ```
-pacman -S starship # arch linux
-brew install starship # macos
+sudo pacman -S starship # On Arch Linux
+brew install starship # On MacOS
 ```
 
 Add the following to the end of `~/.zshrc` to activate `starship`:

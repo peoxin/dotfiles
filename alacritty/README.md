@@ -1,4 +1,4 @@
-# Setup
+# Alacritty
 
 ```
 sudo pacman -S alacritty
