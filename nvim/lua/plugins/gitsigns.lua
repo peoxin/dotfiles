@@ -15,24 +15,20 @@ return {
         current_line_blame = false,
         current_line_blame_formatter = "<author>, <author_time:%R> - <summary>",
 
-        on_attach = function(buffer)
+        on_attach = function(bufnr)
             local gs = require("gitsigns")
             local function map(mode, l, r, desc)
-                vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+                vim.keymap.set(mode, l, r, { buffer = bufnr, desc = desc })
             end
 
             -- Add key bindings for gitsigns
             -- stylua: ignore start
-            map("n", "[h", gs.prev_hunk, "Prev hunk")
-            map("n", "]h", gs.next_hunk, "Next hunk")
-            map("n", "<Leader>gtd", gs.diffthis, "Diff this")
-            map("n", "<Leader>gtD", function() gs.diffthis("~") end, "Diff this HEAD")
-            map("n", "<Leader>gtb", gs.toggle_current_line_blame, "Toggle line blame")
+            map("n", "<Leader>gp", gs.prev_hunk, "Prev hunk")
+            map("n", "<Leader>gn", gs.next_hunk, "Next hunk")
+            map("n", "<Leader>gd", gs.diffthis, "Diff this")
+            map("n", "<Leader>gD", function() gs.diffthis("~") end, "Diff this HEAD")
+            map("n", "<Leader>gb", gs.toggle_current_line_blame, "Toggle line blame")
             -- stylua: ignore end
-
-            -- Add hint for key bindings in which-key
-            local wk = require("which-key")
-            wk.add({ { "<Leader>gt", group = "Git" } })
         end,
     },
 }

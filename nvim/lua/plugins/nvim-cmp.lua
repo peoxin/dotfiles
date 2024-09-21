@@ -14,6 +14,17 @@ return {
                     require("luasnip.loaders.from_vscode").lazy_load()
                 end,
             },
+        },
+        {
+            "zbirenbaum/copilot-cmp",
+            dependencies = {
+                "zbirenbaum/copilot.lua",
+                opts = {
+                    suggestion = { enabled = false },
+                    panel = { enabled = false },
+                }
+            },
+            opts = {},
         }
     },
     init = function()
@@ -36,11 +47,13 @@ return {
                 ["<CR>"] = cmp.mapping.confirm({ select = false }),
             }),
             sources = cmp.config.sources({
+                -- The sequence of sources seems to matter
+                { name = "copilot" },
+                { name = "nvim_lsp", },
                 { name = "buffer" },
                 { name = "path" },
-                { name = "nvim_lsp" },
                 { name = "luasnip" },
-            }),
+            })
         }
     end,
 }

@@ -87,9 +87,5 @@ return {
 
         -- Load fzf extension
         telescope.load_extension("fzf")
-
-        -- Add hint for key bindings in whick-key
-        local wk = require("which-key")
-        wk.add({ { "<Leader>f", group = "Find" } })
     end,
 }

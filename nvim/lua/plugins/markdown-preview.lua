@@ -1,13 +1,10 @@
 return {
     "iamcco/markdown-preview.nvim",
-    event = "VeryLazy",
-    build = function() vim.fn["mkdp#util#install"]() end,
+    build = "cd app && npm install",
+    init = function()
+        vim.g.mkdp_filetypes = { "markdown" }
+    end,
     keys = { { "<Leader>md", "<cmd>MarkdownPreviewToggle<CR>", desc = "Toggle markdown preview" } },
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
-    config = function()
-        -- Add hint for key bindings in which-key
-        local wk = require("which-key")
-        wk.add({ { "<Leader>m", group = "Markdown" } })
-    end
 }

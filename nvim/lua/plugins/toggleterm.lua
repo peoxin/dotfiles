@@ -26,11 +26,4 @@ return {
         -- neovim changes its current working directory
         autochdir = false,
     },
-    config = function(_, opts)
-        require("toggleterm").setup(opts)
-
-        -- Add hint for key bindings in which-key
-        local wk = require("which-key")
-        wk.add({ { "<Leader>t", group = "Terminal" } })
-    end,
 }

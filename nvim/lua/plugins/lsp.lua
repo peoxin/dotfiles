@@ -57,10 +57,6 @@ return {
             end,
         })
 
-        -- Add hint for key bindings in which-key
-        local wk = require("which-key")
-        wk.add({ { "<Leader>c", group = "Code" } })
-
         -- Setup LSP servers
         for server, server_opts in pairs(opts.servers) do
             local capabilities = require("cmp_nvim_lsp").default_capabilities()

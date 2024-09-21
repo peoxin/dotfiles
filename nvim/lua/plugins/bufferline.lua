@@ -29,11 +29,4 @@ return {
             highlights = require("catppuccin.groups.integrations.bufferline").get(),
         }
     end,
-    config = function(_, opts)
-        require("bufferline").setup(opts)
-
-        -- Add hint for key bindings in which-key
-        local wk = require("which-key")
-        wk.add({ { "<leader>b", group = "Buffer" } })
-    end,
 }
