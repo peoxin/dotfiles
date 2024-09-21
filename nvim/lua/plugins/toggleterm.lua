@@ -1,46 +1,36 @@
 return {
-	"akinsho/toggleterm.nvim",
-	keys = {
-		{
-			"<C-\\>",
-			[[<Cmd>ToggleTerm<CR>]],
-			mode = { "n", "t" },
-			desc = "Toggle terminal",
-		},
-		{
-			"<C-]>",
-			[[<Cmd>ToggleTermToggleAll<CR>]],
-			mode = { "n", "t" },
-			desc = "Toggle all terminal",
-		},
-		{
-			"<C-h>",
-			[[<Cmd>wincmd h<CR>]],
-			mode = "t",
-			desc = "Go to left window",
-		},
-		{
-			"<C-j>",
-			[[<Cmd>wincmd j<CR>]],
-			mode = "t",
-			desc = "Go to down window",
-		},
-		{
-			"<C-k>",
-			[[<Cmd>wincmd k<CR>]],
-			mode = "t",
-			desc = "Go to up window",
-		},
-		{
-			"<C-l>",
-			[[<Cmd>wincmd l<CR>]],
-			mode = "t",
-			desc = "Go to right window",
-		},
-	},
-	opts = {
-		open_mapping = [[<C-\>]],
-		autochdir = false,
-		direction = "horizontal",
-	},
+    "akinsho/toggleterm.nvim",
+    keys = {
+        -- Press `Ctrl-D` to exit terminal
+        {
+            "<Leader>tf",
+            mode = { "n", "t" },
+            "<cmd>ToggleTerm direction=float<CR>",
+            desc = "Toggle float terminal",
+        },
+        {
+            "<Leader>t-",
+            mode = { "n", "t" },
+            "<cmd>ToggleTerm direction=horizontal<CR>",
+            desc = "Toggle horizontal terminal",
+        },
+        {
+            "<Leader>t\\",
+            mode = { "n", "t" },
+            "<cmd>ToggleTerm direction=vertical<CR>",
+            desc = "Toggle vertical terminal",
+        },
+    },
+    opts = {
+        -- Don't change directory in terminal when
+        -- neovim changes its current working directory
+        autochdir = false,
+    },
+    config = function(_, opts)
+        require("toggleterm").setup(opts)
+
+        -- Add hint for key bindings in which-key
+        local wk = require("which-key")
+        wk.add({ { "<Leader>t", group = "Terminal" } })
+    end,
 }

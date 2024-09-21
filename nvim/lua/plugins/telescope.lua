@@ -1,84 +1,95 @@
 return {
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-	{
-		"nvim-telescope/telescope.nvim",
-		dependencies = { "nvim-telescope/telescope-fzf-native.nvim" },
-		keys = {
-			{ "<Leader>ff", ":Telescope find_files<CR>", desc = "Find files" },
-			{
-				"<Leader>fa",
-				":Telescope find_files follow=true no_ignore=true hidden=true<CR>",
-				desc = "Find files (include hidden files)",
-			},
-			{ "<Leader>fg", ":Telescope live_grep<CR>", desc = "Find string" },
-			{ "<Leader>fb", ":Telescope buffers<CR>", desc = "Find buffers" },
-			{ "<Leader>fh", ":Telescope help_tags<CR>", desc = "Find help tags" },
-		},
-		opts = function()
-			local actions = require("telescope.actions")
-			return {
-				defaults = {
-					path_display = { "smart" },
+    "nvim-telescope/telescope.nvim",
+    event = "VeryLazy",
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+        { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    },
+    keys = {
+        { "<Leader>ff", "<cmd>Telescope find_files<CR>",             desc = "Find files" },
+        { "<Leader>fF", "<cmd>Telescope find_files hidden=true<CR>", desc = "Find files (include hidden)" },
+        { "<Leader>fg", "<cmd>Telescope live_grep<CR>",              desc = "Find string" },
+        { "<Leader>fG", "<cmd>Telescope live_grep hidden=true<CR>",  desc = "Find string (include hidden)" },
+        { "<Leader>fb", "<cmd>Telescope buffers<CR>",                desc = "Find buffers" },
+        { "<Leader>fd", "<cmd>Telescope diagnostics<CR>",            desc = "Find diagnostics" },
+        { "<Leader>fk", "<cmd>Telescope keymaps<CR>",                desc = "Find keymaps" },
+        { "<Leader>fh", "<cmd>Telescope help_tags<CR>",              desc = "Find help tags" },
+    },
+    opts = function()
+        local actions = require("telescope.actions")
+        return {
+            defaults = {
+                path_display = { "smart" },
 
-					layout_strategy = "horizontal",
-					layout_config = {
-						preview_width = 0.55,
-						preview_cutoff = 60,
-					},
+                -- Configure layout
+                layout_strategy = "horizontal",
+                layout_config = {
+                    preview_width = 0.55,
+                    preview_cutoff = 60,
+                },
 
-					mappings = {
-						i = {
-							["<C-c>"] = actions.close,
+                mappings = {
+                    i = {
+                        -- Close telescope
+                        ["<C-c>"] = actions.close,
 
-							["<Down>"] = actions.move_selection_next,
-							["<Up>"] = actions.move_selection_previous,
+                        -- Navigate results
+                        ["<Up>"] = actions.move_selection_previous,
+                        ["<Down>"] = actions.move_selection_next,
 
-							["<CR>"] = actions.select_default,
-							["<C-h>"] = actions.select_horizontal,
-							["<C-v>"] = actions.select_vertical,
-							["<C-t>"] = actions.select_tab,
+                        -- Open selected item in different ways
+                        ["<CR>"] = actions.select_default,
+                        ["<C-\\>"] = actions.select_vertical,
+                        ["<C--"] = actions.select_horizontal,
+                        ["<C-t>"] = actions.select_tab,
 
-							["<C-u>"] = actions.preview_scrolling_up,
-							["<C-d>"] = actions.preview_scrolling_down,
+                        -- Scroll in preview window
+                        ["<C-u>"] = actions.preview_scrolling_up,
+                        ["<C-d>"] = actions.preview_scrolling_down,
 
-							["<PageUp>"] = actions.results_scrolling_up,
-							["<PageDown>"] = actions.results_scrolling_down,
+                        -- Open help
+                        ["<C-?>"] = actions.which_key,
+                    },
+                    n = {
+                        -- Close telescope
+                        ["<Esc>"] = actions.close,
 
-							["<C-?>"] = actions.which_key,
-						},
-						n = {
-							["<Esc>"] = actions.close,
+                        -- Navigate results
+                        ["<Up>"] = actions.move_selection_previous,
+                        ["<Down>"] = actions.move_selection_next,
+                        ["k"] = actions.move_selection_previous,
+                        ["j"] = actions.move_selection_next,
+                        ["gg"] = actions.move_to_top,
+                        ["G"] = actions.move_to_bottom,
 
-							["<Down>"] = actions.move_selection_next,
-							["<Up>"] = actions.move_selection_previous,
-							["j"] = actions.move_selection_next,
-							["k"] = actions.move_selection_previous,
-							["gg"] = actions.move_to_top,
-							["G"] = actions.move_to_bottom,
+                        -- Open selected item in different ways
+                        ["<CR>"] = actions.select_default,
+                        ["<C-\\"] = actions.select_vertical,
+                        ["<C--"] = actions.select_horizontal,
+                        ["<C-t>"] = actions.select_tab,
 
-							["<CR>"] = actions.select_default,
-							["<C-h>"] = actions.select_horizontal,
-							["<C-v>"] = actions.select_vertical,
-							["<C-t>"] = actions.select_tab,
+                        -- Scroll in preview window
+                        ["<C-u>"] = actions.preview_scrolling_up,
+                        ["<C-d>"] = actions.preview_scrolling_down,
 
-							["<C-u>"] = actions.preview_scrolling_up,
-							["<C-d>"] = actions.preview_scrolling_down,
+                        -- Open help
+                        ["<C-?>"] = actions.which_key,
+                    },
+                },
+            },
+            pickers = {},
+            extensions = {},
+        }
+    end,
+    config = function(_, opts)
+        local telescope = require("telescope")
+        telescope.setup(opts)
 
-							["<PageUp>"] = actions.results_scrolling_up,
-							["<PageDown>"] = actions.results_scrolling_down,
+        -- Load fzf extension
+        telescope.load_extension("fzf")
 
-							["<C-?>"] = actions.which_key,
-						},
-					},
-				},
-				pickers = {},
-				extensions = {},
-			}
-		end,
-	},
-	config = function(_, opts)
-		local telescope = require("telescope")
-		telescope.setup(opts)
-		telescope.load_extension("fzf")
-	end,
+        -- Add hint for key bindings in whick-key
+        local wk = require("which-key")
+        wk.add({ { "<Leader>f", group = "Find" } })
+    end,
 }

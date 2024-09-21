@@ -1,25 +1,39 @@
 return {
-	"akinsho/bufferline.nvim",
-	event = "BufEnter",
-	keys = {
-		{ "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
-		{ "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
-	},
-	opts = function()
-		return {
-			options = {
-				diagnostics = "nvim_lsp",
-				always_show_bufferline = false,
-				offsets = {
-					{
-						filetype = "NvimTree",
-						text = "File Tree",
-						highlight = "Directory",
-						text_align = "center",
-					},
-				},
-			},
-			highlights = require("catppuccin.groups.integrations.bufferline").get(),
-		}
-	end,
+    "akinsho/bufferline.nvim",
+    event = "BufEnter",
+    dependencies = "nvim-tree/nvim-web-devicons",
+    keys = {
+        { "<leader>bp", "<cmd>BufferLineTogglePin<CR>",            desc = "Toggle pin" },
+        { "<leader>bP", "<cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned" },
+    },
+    opts = function()
+        return {
+            options = {
+                always_show_bufferline = false,
+                diagnostics = "nvim_lsp",
+                hover = {
+                    enabled = true,
+                    delay = 100,
+                    reveal = { "close" },
+                },
+                offsets = {
+                    {
+                        filetype = "neo-tree",
+                        text = "File Tree",
+                        highlight = "Directory",
+                        text_align = "center",
+                    },
+                },
+            },
+            -- Use highlights from catppuccin theme
+            highlights = require("catppuccin.groups.integrations.bufferline").get(),
+        }
+    end,
+    config = function(_, opts)
+        require("bufferline").setup(opts)
+
+        -- Add hint for key bindings in which-key
+        local wk = require("which-key")
+        wk.add({ { "<leader>b", group = "Buffer" } })
+    end,
 }

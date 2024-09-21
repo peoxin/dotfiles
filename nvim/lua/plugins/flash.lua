@@ -9,18 +9,18 @@ return {
 	keys = {
 		{
 			"s",
+			mode = { "n", "x", "o" },
 			function()
 				require("flash").jump()
 			end,
-			mode = { "n", "x", "o" },
 			desc = "Flash",
 		},
 		{
 			"S",
+			mode = { "n", "o", "x" },
 			function()
 				require("flash").treesitter()
 			end,
-			mode = { "n", "o", "x" },
 			desc = "Flash Treesitter",
 		},
 	},

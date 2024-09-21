@@ -1,47 +1,28 @@
 return {
 	"nvim-lualine/lualine.nvim",
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	opts = function()
 		local diagnostics = {
 			"diagnostics",
 			sources = { "nvim_diagnostic" },
 			sections = { "error", "warn" },
-			symbols = { error = " ", warn = " " },
+			symbols = { error = " ", warn = " " },
 			colored = false,
 			update_in_insert = false,
-			always_visible = true,
+			always_visible = false,
 		}
-		local branch = {
-			"branch",
-			icons_enabled = true,
-			icon = "",
-		}
-		local filename = {
-			"filename",
-			path = 1,
-		}
-		local filetype = {
-			"filetype",
-			-- icons_enabled = false,
-		}
-		local fileformat = {
-			"fileformat",
-			icons_enabled = false,
-		}
-		local navic = {
-			function()
-				local space_text = " "
-				local space = "%*%#NavicText#" .. space_text .. "%*"
-				return require("nvim-navic").get_location() .. space
-			end,
-			cond = function()
-				return require("nvim-navic").is_available()
-			end,
-		}
+
+		-- Set `path = 1` to show relative path of the file
+		local filename = { "filename", path = 1 }
+
+		-- Set `icons_enabled = false` to disable icons
+		local branch = { "branch", icons_enabled = true, icon = "" }
+		local filetype = { "filetype" }
+		local fileformat = { "fileformat", icons_enabled = false }
 
 		return {
 			options = {
 				icons_enabled = true,
-				-- theme = "tokyonight",
 				theme = "catppuccin",
 				section_separators = { left = "", right = "" },
 				component_separators = { left = "", right = "" },
@@ -65,14 +46,14 @@ return {
 				lualine_z = {},
 			},
 			winbar = {
-				lualine_c = { "navic" },
-				-- lualine_c = { navic },
+				lualine_c = { "aerial" },
 			},
 			extensions = {
 				"lazy",
-				"nvim-tree",
+				"neo-tree",
 				"toggleterm",
-				"nvim-dap-ui",
+				"mason",
+				"fzf",
 			},
 		}
 	end,
