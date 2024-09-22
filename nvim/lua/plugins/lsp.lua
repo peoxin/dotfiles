@@ -21,7 +21,6 @@ return {
                 ensure_installed = {
                     "stylua",
                     "black",
-                    "rustfmt",
                     "prettier",
                 },
                 automatic_installation = true,

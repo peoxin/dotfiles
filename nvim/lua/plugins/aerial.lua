@@ -9,6 +9,10 @@ return {
         { "<leader>cs", "<cmd>AerialToggle!<CR>", desc = "Toggle Symbols outline" },
     },
     opts = {
+        layout = {
+            min_width = 20,
+            max_width = 35,
+        },
         on_attach = function(bufnr)
             -- Jump forwards and backwards between code blocks
             vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })

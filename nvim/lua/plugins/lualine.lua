@@ -1,60 +1,61 @@
 return {
-	"nvim-lualine/lualine.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
-	opts = function()
-		local diagnostics = {
-			"diagnostics",
-			sources = { "nvim_diagnostic" },
-			sections = { "error", "warn" },
-			symbols = { error = " ", warn = " " },
-			colored = false,
-			update_in_insert = false,
-			always_visible = false,
-		}
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = function()
+        local diagnostics = {
+            "diagnostics",
+            sources = { "nvim_diagnostic" },
+            sections = { "error", "warn" },
+            symbols = { error = " ", warn = " " },
+            colored = false,
+            update_in_insert = false,
+            always_visible = false,
+        }
 
-		-- Set `path = 1` to show relative path of the file
-		local filename = { "filename", path = 1 }
+        -- Set `path = 1` to show relative path of the file
+        local filename = { "filename", path = 1 }
 
-		-- Set `icons_enabled = false` to disable icons
-		local branch = { "branch", icons_enabled = true, icon = "" }
-		local filetype = { "filetype" }
-		local fileformat = { "fileformat", icons_enabled = false }
+        -- Set `icons_enabled = false` to disable icons
+        local branch = { "branch", icons_enabled = true, icon = "" }
+        local filetype = { "filetype" }
+        local fileformat = { "fileformat", icons_enabled = false }
 
-		return {
-			options = {
-				icons_enabled = true,
-				theme = "catppuccin",
-				section_separators = { left = "", right = "" },
-				component_separators = { left = "", right = "" },
-				disabled_filetypes = {},
-				always_divide_middle = true,
-			},
-			sections = {
-				lualine_a = { "mode" },
-				lualine_b = { branch, diagnostics },
-				lualine_c = { filename },
-				lualine_x = { "encoding", fileformat, filetype },
-				lualine_y = { "location" },
-				lualine_z = { "progress" },
-			},
-			inactive_sections = {
-				lualine_a = {},
-				lualine_b = {},
-				lualine_c = { filename },
-				lualine_x = { "encoding", fileformat, filetype },
-				lualine_y = {},
-				lualine_z = {},
-			},
-			winbar = {
-				lualine_c = { "aerial" },
-			},
-			extensions = {
-				"lazy",
-				"neo-tree",
-				"toggleterm",
-				"mason",
-				"fzf",
-			},
-		}
-	end,
+        return {
+            options = {
+                icons_enabled = true,
+                theme = "catppuccin",
+                section_separators = { left = "", right = "" },
+                component_separators = { left = "", right = "" },
+                disabled_filetypes = {},
+                always_divide_middle = true,
+            },
+            sections = {
+                lualine_a = { "mode" },
+                lualine_b = { branch, diagnostics },
+                lualine_c = { filename },
+                lualine_x = { "encoding", fileformat, filetype },
+                lualine_y = { "location" },
+                lualine_z = { "progress" },
+            },
+            inactive_sections = {
+                lualine_a = {},
+                lualine_b = {},
+                lualine_c = { filename },
+                lualine_x = { "encoding", fileformat, filetype },
+                lualine_y = {},
+                lualine_z = {},
+            },
+            winbar = {
+                lualine_c = { "aerial" },
+            },
+            extensions = {
+                "aerial",
+                "lazy",
+                "neo-tree",
+                "toggleterm",
+                "mason",
+                "fzf",
+            },
+        }
+    end,
 }

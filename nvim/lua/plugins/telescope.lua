@@ -8,6 +8,7 @@ return {
     keys = {
         { "<Leader>ff", "<cmd>Telescope find_files<CR>",             desc = "Find files" },
         { "<Leader>fF", "<cmd>Telescope find_files hidden=true<CR>", desc = "Find files (include hidden)" },
+        { "<Leader>fr", "<cmd>Telescope oldfiles<CR>",               desc = "Find recent files" },
         { "<Leader>fg", "<cmd>Telescope live_grep<CR>",              desc = "Find string" },
         { "<Leader>fG", "<cmd>Telescope live_grep hidden=true<CR>",  desc = "Find string (include hidden)" },
         { "<Leader>fb", "<cmd>Telescope buffers<CR>",                desc = "Find buffers" },

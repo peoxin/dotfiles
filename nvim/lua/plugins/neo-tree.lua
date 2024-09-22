@@ -9,4 +9,7 @@ return {
         { "<Leader>e", "<cmd>Neotree toggle<CR>", desc = "Toggle file tree" },
         { "<Leader>o", "<cmd>Neotree focus<CR>",  desc = "Focus on file tree" },
     },
+    opts = {
+        window = { width = 35 },
+    }
 }
