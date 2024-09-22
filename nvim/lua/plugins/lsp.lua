@@ -14,18 +14,6 @@ return {
                 automatic_installation = true,
             },
         },
-        {
-            "jayp0521/mason-null-ls.nvim",
-            opts = {
-                -- Auto install the following formatters
-                ensure_installed = {
-                    "stylua",
-                    "black",
-                    "prettier",
-                },
-                automatic_installation = true,
-            },
-        }
     },
     opts = {
         servers = {

@@ -10,6 +10,7 @@ brew install gitui # on macOS
 Symlink keybindings file:
 
 ```
+mkdir -p ~/.config/gitui
 ln -s $DOTFILES/gitui/key_bindings.ron ~/.config/gitui/key_bindings.ron
 ```
 
