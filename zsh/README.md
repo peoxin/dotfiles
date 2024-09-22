@@ -61,3 +61,4 @@ In addition to the tools mentioned in `rc.zsh`, it is also recommended to instal
 - pastel
 - grex
 - just
+- imagemagick

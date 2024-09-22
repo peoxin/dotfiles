@@ -18,7 +18,12 @@ return {
     opts = {
         servers = {
             pyright = {},
-            rust_analyzer = {},
+            rust_analyzer = {
+                on_attach = function()
+                    -- Enable inlay hints automatically when attaching to rust_analyzer
+                    vim.lsp.inlay_hint.enable(true)
+                end,
+            },
         },
     },
     config = function(_, opts)
@@ -34,6 +39,7 @@ return {
                 map("n", "gy", vim.lsp.buf.type_definition, "Go to type definition")
                 map("n", "gI", vim.lsp.buf.implementation, "Go to implementation")
                 map("n", "gr", vim.lsp.buf.references, "Find all references")
+                -- Press `gk` again to enter the hover window
                 map("n", "gk", vim.lsp.buf.hover, "Hover")
                 map("n", "gH", vim.lsp.buf.signature_help, "Signature help")
                 map("n", "<Leader>cr", vim.lsp.buf.rename, "Rename symbol")
@@ -41,6 +47,9 @@ return {
                 map("n", "<Leader>cf", function()
                     vim.lsp.buf.format({ async = true })
                 end, "Format file")
+                map("n", "<Leader>ci", function()
+                    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+                end, "Toggle inlay hints")
             end,
         })
 

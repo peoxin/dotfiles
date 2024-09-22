@@ -11,6 +11,7 @@ return {
         { "<Leader>fr", "<cmd>Telescope oldfiles<CR>",               desc = "Find recent files" },
         { "<Leader>fg", "<cmd>Telescope live_grep<CR>",              desc = "Find string" },
         { "<Leader>fG", "<cmd>Telescope live_grep hidden=true<CR>",  desc = "Find string (include hidden)" },
+        { "<Leader>fs", "<cmd>Telescope lsp_document_symbols<CR>",   desc = "Find document symbols" },
         { "<Leader>fb", "<cmd>Telescope buffers<CR>",                desc = "Find buffers" },
         { "<Leader>fd", "<cmd>Telescope diagnostics<CR>",            desc = "Find diagnostics" },
         { "<Leader>fk", "<cmd>Telescope keymaps<CR>",                desc = "Find keymaps" },
