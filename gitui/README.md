@@ -4,10 +4,10 @@ Install `gitui`:
 
 ```
 sudo pacman -S gitui # on Arch Linux
-brew install gitui # on macOS
+brew install gitui # on MacOS
 ```
 
-Symlink keybindings file:
+Symlink the keybindings file:
 
 ```
 mkdir -p ~/.config/gitui

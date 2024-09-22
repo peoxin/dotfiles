@@ -2,8 +2,8 @@
 
 Install `starship` prompt:
 ```
-sudo pacman -S starship # On Arch Linux
-brew install starship # On MacOS
+sudo pacman -S starship # on Arch Linux
+brew install starship # on MacOS
 ```
 
 Add the following to the end of `~/.zshrc` to activate `starship`:
@@ -11,7 +11,7 @@ Add the following to the end of `~/.zshrc` to activate `starship`:
 eval "$(starship init zsh)"
 ```
 
-Soft link the `starship` configuration file:
+Symlink the configuration file (if exists):
 ```
 ln -s $DOTFILES/starship/starship.toml ~/.config/starship.toml
 ```

@@ -6,7 +6,7 @@ Install `kitty` (update `kitty` with the same command):
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 ```
 
-Symlink configuration file:
+Symlink the configuration file:
 
 ```
 mkdir -p ~/.config/kitty
