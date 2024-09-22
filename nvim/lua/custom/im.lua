@@ -1,15 +1,29 @@
--- Switch input method automatically (fcitx5)
+-- A simple script to switch input method automatically
+-- Supports macOS and Linux (fcitx5)
 
--- Default input method
-local default_im = "keyboard-us"
+-- Get the current operating system
+local os = vim.loop.os_uname().sysname
+
+-- Set the default input method and
+-- the command to get and set the input method
+local default_im, get_im_cmd, set_im_cmd
+if os == "Darwin" then
+    default_im = "com.apple.keylayout.ABC"
+    get_im_cmd = "im-select"
+    set_im_cmd = "im-select"
+else
+    default_im = "keyboard-us"
+    get_im_cmd = "fcitx5-remote -n"
+    set_im_cmd = "fcitx5-remote -s"
+end
 
 local function get_current_im()
-    return vim.fn.system("fcitx5-remote -n")
+    return vim.fn.system(get_im_cmd)
 end
 
 local function set_current_im(im)
-    local cmd = table.concat({ "fcitx5-remote -s", im }, " ")
-    return vim.fn.jobstart(cmd, { detach = true })
+    local cmd = table.concat({ set_im_cmd, im }, " ")
+    vim.fn.jobstart(cmd, { detach = true })
 end
 
 local function switch_to_default_im()
