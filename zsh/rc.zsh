@@ -33,6 +33,7 @@ if command -v eza &> /dev/null; then
     alias ll="eza -l"
     alias la="eza -la"
     alias l="eza -lah"
+    alias tree="eza --tree"
 fi
 
 # Aliases for bat if it is installed.
@@ -87,6 +88,12 @@ if command -v yazi &> /dev/null; then
     	fi
     	rm -f -- "$tmp"
     }
+fi
+
+# Init tmuxifier plugin of tmux if it is installed.
+if [ -d "$HOME/.tmux/plugins/tmuxifier" ]; then
+    export PATH="$HOME/.tmux/plugins/tmuxifier/bin:$PATH"
+    eval "$(tmuxifier init -)"
 fi
 
 # Init starship prompt if it is installed.

@@ -1,6 +1,6 @@
 return {
-	{ "RRethy/vim-illuminate" },
-	{ "kylechui/nvim-surround", opts = {} },
-	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
-	{ "numToStr/Comment.nvim", opts = {} },
+    { "RRethy/vim-illuminate",               event = "BufEnter" },
+    { "kylechui/nvim-surround",              event = "BufEnter", opts = {} },
+    { "lukas-reineke/indent-blankline.nvim", main = "ibl",       event = "BufEnter", opts = {} },
+    { "numToStr/Comment.nvim",               event = "BufEnter", opts = {} },
 }

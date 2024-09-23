@@ -27,19 +27,20 @@ map("n", "<S-q>", "<cmd>bd<CR>", "Close buffer")
 -- Editing --
 map("n", "<S-j>", "5j", "Faster up")
 map("n", "<S-k>", "5k", "Faster down")
+map("n", "<A-j>", "<cmd>move .+1<CR>==", "Move lines down")
+map("n", "<A-k>", "<cmd>move .-2<CR>==", "Move lines up")
 map("n", ";", "<S-j>", "Join two lines")
 map("n", "<Esc>", "<cmd>nohlsearch<CR>", "Clear highlights")
 map("n", "<C-s>", "<cmd>w<CR>", "Save file")
+-- See the configuration of none-ls plugin for more information
+map("n", "<Leader>cw", "<cmd>noautocmd w<CR>", "Save file (without formatting)")
 
 -- Visual Mode --
 map("v", "<S-j>", "5j", "Faster up")
 map("v", "<S-k>", "5k", "Faster down")
-map("v", "<A-j>", "<cmd>move '>+1<CR>gv=gv", "Move lines up")
-map("v", "<A-k>", "<cmd>move '<-2<CR>gv=gv", "Move lines down")
+map("v", "<A-j>", "<cmd>move '>+1<CR>gv=gv", "Move lines down")
+map("v", "<A-k>", "<cmd>move '<-2<CR>gv=gv", "Move lines up")
 map("v", "<", "<gv", "Decrease indent")
 map("v", ">", ">gv", "Increase indent")
 map("v", ";", "<S-j>", "Join lines")
 map("v", "p", '"_dP', "Paste")
-
--- Terminal Mode --
-map("t", "<Esc><Esc>", "<C-\\><C-n>", "Exit terminal mode")

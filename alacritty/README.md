@@ -4,7 +4,7 @@ Install `alacritty`:
 
 ```
 sudo pacman -S alacritty # on Arch Linux
-brew install --cask alacritty --no-quarantine # on MacOS
+brew install alacritty # on MacOS
 ```
 
 Symlink the configuration file:

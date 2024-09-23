@@ -1,8 +1,8 @@
-theme = "catppuccin_mocha"
+theme = "catppuccin_macchiato"
 
 [editor]
-line-number = "relative"
 cursorline = true
+line-number = "relative"
 bufferline = "multiple"
 
 [editor.cursor-shape]
