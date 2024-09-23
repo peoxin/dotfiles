@@ -19,5 +19,5 @@ Install `catppuccin` theme for `gitui`:
 ```
 cd ~/.config/gitui
 git clone https://github.com/catppuccin/gitui.git
-cp gitui/themes/catppuccin-mocha.ron theme.ron
+cp gitui/themes/catppuccin-macchiato.ron theme.ron
 ```

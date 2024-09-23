@@ -13,10 +13,9 @@ mkdir -p ~/.config/kitty
 ln -s $DOTFILES/kitty/kitty.conf ~/.config/kitty/kitty.conf
 ```
 
-Install `catppuccin` theme for `kitty`:
+Install theme for `kitty`.
+Run the following command and select the theme, and choose to place the theme file into kitty configuration directory:
 
 ```
-cd ~/.config/kitty
-git clone https://github.com/catppuccin/kitty.git
-mkdir themes && cp kitty/themes/* themes
+kitty +kitten themes
 ```
