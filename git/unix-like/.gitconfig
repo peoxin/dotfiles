@@ -7,6 +7,7 @@
 
 [core]
     autocrlf = input
+    quotepath = false
     pager = delta
 
 [fetch]
