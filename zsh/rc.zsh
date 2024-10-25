@@ -2,13 +2,12 @@
 if [ -d "$HOME/.oh-my-zsh" ]; then
     export ZSH="$HOME/.oh-my-zsh"
     plugins=(
-        git
         sudo
         extract
         zoxide
+        fzf-tab
         zsh-autosuggestions
         fast-syntax-highlighting
-        fzf-tab
     )
     source $ZSH/oh-my-zsh.sh
 fi
@@ -90,7 +89,7 @@ if command -v yazi &> /dev/null; then
     }
 fi
 
-# Init tmuxifier plugin of tmux if it is installed.
+# Init tmuxifier plugin for tmux if it is installed.
 if [ -d "$HOME/.tmux/plugins/tmuxifier" ]; then
     export PATH="$HOME/.tmux/plugins/tmuxifier/bin:$PATH"
     eval "$(tmuxifier init -)"
