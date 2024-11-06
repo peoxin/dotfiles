@@ -42,6 +42,10 @@ return {
 		},
 	},
 	config = function(_, opts)
+		-- Disable transparent background if using neovide.
+		if vim.g.neovide then
+			opts.transparent_background = false
+		end
 		require("catppuccin").setup(opts)
 		vim.cmd("colorscheme catppuccin")
 	end,

@@ -84,3 +84,14 @@ vim.opt.iskeyword:append("-")
 vim.schedule(function()
 	vim.opt.clipboard:append("unnamedplus")
 end)
+
+-- Settings for neovide
+if vim.g.neovide then
+	vim.o.guifont = "JetBrains Mono:h16"
+	vim.g.neovide_transparency = 0.95
+	vim.g.neovide_window_blurred = true
+	vim.g.neovide_padding_top = 15
+	vim.g.neovide_padding_bottom = 15
+	vim.g.neovide_padding_left = 15
+	vim.g.neovide_padding_right = 15
+end

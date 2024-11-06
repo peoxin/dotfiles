@@ -89,6 +89,15 @@ if command -v yazi &> /dev/null; then
     }
 fi
 
+# Make window decoration transparent for neovide on macOS.
+if command -v neovide &> /dev/null; then
+    if [ "$(uname -s)" = "Darwin" ]; then
+        alias neovide="neovide --frame transparent &"
+    else
+        alias neovide="neovide &"
+    fi
+fi
+
 # Init tmuxifier plugin for tmux if it is installed.
 if [ -d "$HOME/.tmux/plugins/tmuxifier" ]; then
     export PATH="$HOME/.tmux/plugins/tmuxifier/bin:$PATH"
