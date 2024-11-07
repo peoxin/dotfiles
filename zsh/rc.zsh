@@ -70,6 +70,12 @@ if command -v procs &> /dev/null; then
     alias ps="procs"
 fi
 
+# Aliases for kitty terminal if it is installed.
+if [ "$TERM" = "xterm-kitty" ]; then
+    alias ssh="kitten ssh"
+    alias icat="kitten icat"
+fi
+
 # Alias for hyprland, if it is installed on Linux.
 if [ "$(uname -s)" != "Darwin" ] && command -v hyprland &> /dev/null; then
     alias hl="hyprland"

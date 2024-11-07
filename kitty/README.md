@@ -11,11 +11,12 @@ Symlink the configuration file:
 ```
 mkdir -p ~/.config/kitty
 ln -s $DOTFILES/kitty/kitty.conf ~/.config/kitty/kitty.conf
+ln -s $DOTFILES/kitty/ssh.conf ~/.config/kitty/ssh.conf
 ```
 
 Install theme for `kitty`.
 Run the following command and select the theme, and choose to place the theme file into kitty configuration directory:
 
 ```
-kitty +kitten themes
+kitten themes
 ```
