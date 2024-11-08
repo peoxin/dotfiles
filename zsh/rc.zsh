@@ -12,6 +12,9 @@ if [ -d "$HOME/.oh-my-zsh" ]; then
     source $ZSH/oh-my-zsh.sh
 fi
 
+# Alias for proxy setting script.
+alias proxy="source $DOTFILES/scripts/set_proxy.sh"
+
 # Aliases for git if it is installed.
 if command -v git &> /dev/null; then
     alias gst="git status"
