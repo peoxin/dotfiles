@@ -15,6 +15,12 @@ Install plugin manager `tpm`:
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
+Install `catppuccin` theme (optional, see [catppuccin/tmux](https://github.com/catppuccin/tmux)):
+
+```
+git clone https://github.com/catppuccin/tmux ~/.tmux/plugins/catppuccin/tmux
+```
+
 Symlink the configuration file:
 
 ```
