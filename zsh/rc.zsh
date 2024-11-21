@@ -18,7 +18,8 @@ alias proxy="source $DOTFILES/scripts/set_proxy.sh"
 # Aliases for git if it is installed.
 if command -v git &> /dev/null; then
     alias gst="git status"
-    alias glg="git log --date=iso --format='%C(yellow)%h %Creset- %C(cyan)%s %C(green)(%ad %an)'"
+    alias glg="git log --date=iso --format='%C(yellow)%h %Creset%s %C(dim)%ad %an'"
+    alias ggraph="git log --all --graph --oneline --decorate"
     alias gaa="git add ."
     alias gcm="git commit -m"
     alias gp="git push"
@@ -65,7 +66,7 @@ fi
 
 # Aliases for bottom if it is installed.
 if command -v btm &> /dev/null; then
-    alias top="btm"
+    alias top="btm --basic"
 fi
 
 # Aliases for procs if it is installed.

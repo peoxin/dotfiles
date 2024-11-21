@@ -16,17 +16,6 @@ return {
 				})
 			end,
 		},
-		{
-			"zbirenbaum/copilot-cmp",
-			dependencies = {
-				"zbirenbaum/copilot.lua",
-				opts = {
-					suggestion = { enabled = false },
-					panel = { enabled = false },
-				},
-			},
-			opts = {},
-		},
 	},
 	init = function()
 		vim.opt.completeopt = "menu,menuone,noselect"
@@ -40,16 +29,13 @@ return {
 				end,
 			},
 			mapping = cmp.mapping.preset.insert({
-				["<S-Tab>"] = cmp.mapping.select_prev_item(),
-				["<Tab>"] = cmp.mapping.select_next_item(),
+				["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+				["<Tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
 				["<C-u>"] = cmp.mapping.scroll_docs(-4),
 				["<C-d>"] = cmp.mapping.scroll_docs(4),
-				["<C-Space>"] = cmp.mapping.complete(),
-				["<CR>"] = cmp.mapping.confirm({ select = false }),
+				["<CR>"] = cmp.mapping.confirm({ select = true }),
 			}),
 			sources = cmp.config.sources({
-				-- The sequence of sources seems to matter
-				{ name = "copilot" },
 				{ name = "nvim_lsp" },
 				{ name = "buffer" },
 				{ name = "path" },
