@@ -7,10 +7,11 @@ return {
 			enabled = true,
 			auto_trigger = true,
 			keymap = {
-				accept = "<A-;>",
-				accept_line = "<A-=>",
-				prev = "<A-[>",
-				next = "<A-]>",
+				accept = "<Right>",
+				accept_line = "<A-Right>",
+				prev = "<Up>",
+				next = "<Down>",
+				dismiss = "<Left>",
 			},
 		},
 		filetypes = {
