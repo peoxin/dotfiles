@@ -8,10 +8,21 @@ cli-install:
     sudo pacman -S git gitui 
     # Image and video tools
     sudo pacman -S imagemagick ffmpeg
+    # SSH
+    sudo pacman -S openssh
     # Other tools
-    sudo pacman -S wget just watchexec tealdeer grex tokei hyperfine pastel
+    sudo pacman -S wget fzf just watchexec tealdeer grex tokei hyperfine pastel
 
 # Install all the GUI applications
 app-install:
     # Web browser
     sudo pacman -S firefox
+
+# Install and setup OpenSSH
+ssh-install-setup:
+    # Install OpenSSH
+    sudo pacman -S openssh
+    # Generate SSH key
+    read -p "SSH key comment: " comment; ssh-keygen -t rsa -C "$comment"
+    # Start and enable the SSH service
+    sudo systemctl enable --now sshd
