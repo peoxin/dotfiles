@@ -8,10 +8,10 @@ cli-install:
     sudo pacman -S git gitui 
     # Image and video tools
     sudo pacman -S imagemagick ffmpeg
-    # SSH
-    sudo pacman -S openssh
+    # File browser
+    sudo pacman -S yazi
     # Other tools
-    sudo pacman -S wget fzf just watchexec tealdeer grex tokei hyperfine pastel
+    sudo pacman -S wget less fzf just watchexec tealdeer grex tokei hyperfine pastel
 
 # Install all the GUI applications
 app-install:

@@ -1,9 +1,10 @@
 # Kitty
 
-Install `kitty` (update `kitty` with the same command):
+Install `kitty`:
 
 ```
-curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+sudo pacman -S kitty # On Arch Linux
+brew install --cask kitty # On MacOS
 ```
 
 Symlink the configuration file:
