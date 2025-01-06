@@ -2,19 +2,17 @@
 
 ## Usage
 
-The default location of the configuration folder is `~/dotfiles`.
-Thus, you can run this command:
+The default directory of the configuration is `~/dotfiles`, and you can clone the repository to that location:
 
 ```
-cd && git clone https://github.com/peoxin/dotfiles.git
+git clone https://github.com/peoxin/dotfiles.git ~/dotfiles
 ```
 
-You can also place the configuration folder somewhere else.
-Wherever you place it, you then need to set the `DOTFILES` environment variable to that location:
+You can also place the configuration somewhere else.
+Wherever you place it, you need to set the `DOTFILES` environment variable:
 
 ```
-export DOTFILES="$HOME/dotfiles" # by default
-export DOTFILES="/path/to/dotfiles" # your custom location
+export DOTFILES="/path/to/dotfiles"
 ```
 
-Finally, you can follow the instructions in each subfolder to setup the configuration.
+After that, you can install the configuration following the instructions in each folder.

@@ -1,3 +1,5 @@
+export PATH="$HOME/.local/bin:$PATH"
+
 if [ "$(uname -s)" = "Darwin" ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -10,7 +12,7 @@ else
     export XMODIFIERS=@im=fcitx
 fi
 
-# Preferred editor for local and remote sessions.
+# Editor for local and remote sessions.
 if [ -n $SSH_CONNECTION ]; then
     export EDITOR="nvim"
 else

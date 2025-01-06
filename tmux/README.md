@@ -63,7 +63,7 @@ Pane management:
 
 ```
 prefix + \      # split pane right
-prefix + -      # split pane below
+prefix + -      # split pane down
 prefix + ;      # select previous pane
 prefix + o      # select next pane
 prefix + arrow  # select pane by arrow key
@@ -106,7 +106,7 @@ tmuxifier edit-session session-name   # edit configured session
 tmuxifier load-session session-name   # load configured session
 ```
 
-Multiple users sharing a session.
+Multiple users can share a tmux session.
 If users login in the same account, just attach to the target session.
 If users login in different accounts:
 

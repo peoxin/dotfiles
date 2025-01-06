@@ -18,6 +18,6 @@ Install `catppuccin` theme for `alacritty`:
 
 ```
 cd ~/.config/alacritty
-git clone https://github.com/catppuccin/alacritty.git
-mkdir themes && cp alacritty/*.toml themes
+git clone https://github.com/catppuccin/alacritty.git catppuccin
+mkdir themes && cp catppuccin/*.toml themes
 ```

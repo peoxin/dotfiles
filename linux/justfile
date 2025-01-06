@@ -1,0 +1,17 @@
+# Install all the CLI tools
+cli-install:
+    # Alternative to `cd`, `ls`, `cat`, `du`, `ps` and `top`
+    sudo pacman -S zoxide eza bat dust procs bottom
+    # Alternative to `grep`, `find`, `sed` and `diff`
+    sudo pacman -S ripgrep fd sd git-delta
+    # Git tools
+    sudo pacman -S git gitui 
+    # Image and video tools
+    sudo pacman -S imagemagick ffmpeg
+    # Other tools
+    sudo pacman -S wget just watchexec tealdeer grex tokei hyperfine pastel
+
+# Install all the GUI applications
+app-install:
+    # Web browser
+    sudo pacman -S firefox

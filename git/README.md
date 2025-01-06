@@ -1,6 +1,6 @@
 # Git
 
-On Unix-like systems (linux and macOS), run this command:
+On Unix-like systems (Linux and MacOS), run this command:
 
 ```
 ln -s $DOTFILES/git/unix-like/.gitconfig ~/.gitconfig
@@ -9,5 +9,5 @@ ln -s $DOTFILES/git/unix-like/.gitconfig ~/.gitconfig
 On Windows, run this command:
 
 ```
-ln -s $DOTFILES/git/windows/.gitconfig ~/.gitconfig
+mklink %HOMEPATH%\.gitconfig %DOTFILES%\git\windows\.gitconfig
 ```

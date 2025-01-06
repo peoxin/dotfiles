@@ -12,9 +12,6 @@ if [ -d "$HOME/.oh-my-zsh" ]; then
     source $ZSH/oh-my-zsh.sh
 fi
 
-# Alias for proxy setting script.
-alias proxy="source $DOTFILES/scripts/set_proxy.sh"
-
 # Aliases for git if it is installed.
 if command -v git &> /dev/null; then
     alias gst="git status"
@@ -99,7 +96,7 @@ if command -v yazi &> /dev/null; then
     }
 fi
 
-# Make window decoration transparent for neovide on macOS.
+# Make window decoration transparent for neovide on MacOS.
 if command -v neovide &> /dev/null; then
     if [ "$(uname -s)" = "Darwin" ]; then
         alias neovide="neovide --frame transparent &"

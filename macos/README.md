@@ -14,9 +14,7 @@ Install `homebrew`:
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-To configurate `homebrew`, refer to [Tuna Homebrew Help](https://mirrors.tuna.tsinghua.edu.cn/help/homebrew).
-
-Setup mirror sourcefor `homebrew`:
+Setup mirror source for `homebrew`:
 
 ```
 brew tap --custom-remote --force-auto-update homebrew/cask-fonts https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask-fonts.git
@@ -26,6 +24,8 @@ brew tap --custom-remote --force-auto-update homebrew/services https://mirrors.t
 
 brew update
 ```
+
+Visit [Tuna Homebrew Help](https://mirrors.tuna.tsinghua.edu.cn/help/homebrew) for more information.
 
 ## Fonts
 
