@@ -1,0 +1,125 @@
+{
+    "hyprland/workspaces": {
+        "active-only": false,
+        "all-outputs": false,
+        "format": "{name}",
+        "sort-by": "default",
+        "show-special": true,
+    },
+    "hyprland/window": {
+        "format": "{class}",
+        "separate-outputs": true,
+    },
+    "hyprland/submap": {
+        "format": "{}",
+    },
+    "cpu": {
+        "interval": 10,
+        "format": " {usage}%",
+        "tooltip": false,
+    },
+    "memory": {
+        "interval": 20,
+        "format": " {percentage}%",
+        "tooltip": false,
+    },
+    "network": {
+        "interval": 30,
+        "format-ethernet": "",
+        "format-wifi": "",
+        "format-disconnected": "",
+        "tooltip-format-wifi": "{essid}",
+    },
+    "battery": {
+        "full-at": 97,
+        "interval": 60,
+        "states": {
+            "low": 20,
+        },
+        "format": "{icon} {capacity}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "tooltip-format": "{time}",
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%{format_source}",
+        "format-muted": " {format_source}",
+        "format-bluetooth": "{icon} {volume}%{format_source}",
+        "format-bluetooth-muted": " {format_source}",
+        "format-icons": {
+            "headphone": "",
+            "headset": "",
+            "default": [
+                "",
+                ""
+            ],
+        },
+        "format-source": " ",
+        "format-source-muted": " ",
+        "scroll-step": 5,
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+    },
+    "clock": {
+        "interval": 60,
+        "format": " {:%H:%M}",
+        "format-alt": " {:%Y-%m-%d %a}",
+        "timezone": "Asia/Shanghai",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "left",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
+            },
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down",
+        },
+    },
+    "tray": {
+        "icon-size": 18,
+        "spacing": 8,
+    },
+    "mpd": {
+        "interval": 2,
+        "unknown-tag": "N/A",
+        "format": "{stateIcon} {elapsedTime:%M:%S}/{totalTime:%M:%S} {filename}",
+        "format-disconnected": "",
+        "format-stopped": "",
+        "state-icons": {
+            "playing": "",
+            "paused": "",
+        },
+    },
+    "mpris": {
+        "interval": 2,
+        "format": "{status_icon}  {title} - {artist}",
+        "status-icons": {
+            "playing": "",
+            "paused": "",
+            "stopped": "",
+        },
+    },
+    "custom/dunst": {
+        "format": "",
+        "on-click": "dunstctl history-pop",
+        "on-click-right": "dunstctl close-all",
+        "tooltip": false,
+    },
+}

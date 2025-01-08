@@ -12,6 +12,11 @@ if [ -d "$HOME/.oh-my-zsh" ]; then
     source $ZSH/oh-my-zsh.sh
 fi
 
+# Alias for setting environment variables about proxy.
+if command -v set-proxy &> /dev/null; then
+    alias proxy="source set-proxy"
+fi
+
 # Aliases for git if it is installed.
 if command -v git &> /dev/null; then
     alias gst="git status"

@@ -26,5 +26,5 @@ sudo pacman -S hyprpicker
 Symlink the configuration files:
 
 ```
-rm -rf ~/.config/hypr && ln -s $DOTFILES/linux/hypr ~/.config/hypr
+mv ~/.config/hypr/hyprland.conf ~/.config/hypr/hyprland.conf.bak && for file in $DOTFILES/linux/hypr/*.conf; do ln -s $file ~/.config/hypr/$(basename $file); done
 ```

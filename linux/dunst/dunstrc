@@ -1,209 +1,88 @@
-# See dunst(5) for all configuration options
-
 [global]
-    ### Monitor ###
-
+    # Monitor
     monitor = 0
-
-    # Display notification on focused monitor.
-    # Modes: mouse, keyboard, none
-    # Monitor option will be ignored if not set to none.
     follow = none
 
-    ### Geometry ###
-
-    # Width
-    width = (0, 300) # Dynamic width
-
-    # Maximum height of a single notification
-    height = 300
-
-    # Position
+    # Geometry
+    width = (0, 300)
+    height = (0, 500)
     origin = top-right
-
-    # Offset from the origin
     offset = 10x40
 
-    # Scale factor (0 means auto-detect)
-    scale = 0
-
-    ### Appearance ###
- 
-    # Transparency (X11 only)
-    transparency = 5
- 
-    # Padding between text and separator
-    padding = 8
-
-    # Horizontal padding
-    horizontal_padding = 8
-
-    # Padding between text and icon
-    text_icon_padding = 2
-
-    # Corner radius of the notification window
-    corner_radius = 3
-
-    # Frame width around notification window (0 means disable)
+    # Appearance
+    padding = 10
+    horizontal_padding = 10
+    text_icon_padding = 10
+    corner_radius = 5
     frame_width = 3
-
-    # Separator line height between notifications (0 means disable)
-    # If gap_size is greater than 0, this setting will be ignored.
     separator_height = 2
-
-    # Separator line color
-    # Modes: auto, foreground, frame, color_value
     separator_color = frame
 
-    # Maximum number of notification (0 means no limit)
-    notification_limit = 0
-
-    # Show hidden message number (because of notification_limit)
-    indicate_hidden = true
-
-    # Sort messages by urgency
-    sort = true
-
-    ### Progress bar ###
-
-    progress_bar = true
-
-    # Progress bar height
-    progress_bar_height = 10
-
-    # Frame width of progress bar
-    progress_bar_frame_width = 1
-
-    # Minimum width of progress bar
-    progress_bar_min_width = 150
-
-    # Maximum width of progress bar
-    progress_bar_max_width = 300
-
-    ### Text ###
-
+    # Text
     font = Monospace 12
-
     markup = full
-
-    # Text format
     format = "<b>%s</b>\n%b"
-
-    # Line height
     line_height = 0
-
-    # Alignment of message text
-    # Modes: left, center, right
     alignment = left
-
-    # Vertical alignment of message text and icon
-    # Modes: top, center, bottom
     vertical_alignment = center
-
-    # Specify where to make an ellipsis in long lines.
-    # Modes: start, middle, end
     ellipsize = middle
-
-    # Show age of message if message is older than show_age_threshold.
-    # -1 means disable.
-    show_age_threshold = 60
-
-    # Ignore newlines '\n' in notifications.
     ignore_newline = false
-
-    # Stack together notifications with the same content.
-    stack_duplicates = true
-
-    # Hide the count of stacked notifications with the same content.
-    hide_duplicate_count = false
-
-    # Display indicators for URLs (U) and actions (A).
     show_indicators = true
 
-    ### Icons ###
-
+    # Icons
     enable_recursive_icon_lookup = true
-
     icon_theme = Adwaita
-
-    # Icons alignment: left, right, top, off
     icon_position = left
-
-    # Scale small icons up to this size (0 means disable)
     min_icon_size = 32
+    max_icon_size = 32
 
-    # Scale larger icons down to this size (0 means disable)
-    max_icon_size = 128
+    # Progress bar
+    progress_bar = true
+    progress_bar_height = 10
+    progress_bar_min_width = 150
+    progress_bar_max_width = 300
+    progress_bar_frame_width = 1
 
-    ### History ###
-
-    # Should a notification popped up from history be sticky or timeout
-    # as if it would normally do.
+    # Notification
+    notification_limit = 20
+    indicate_hidden = true
+    sort = true
+    show_age_threshold = 60
+    stack_duplicates = true
+    hide_duplicate_count = false
     sticky_history = true
-
-    # Maximum amount of notifications kept in history
     history_length = 20
 
-    ### Misc/Advanced ###
-
-    # Dmenu path
-    dmenu = /usr/bin/dmenu -p dunst:
-
-    # Browser for opening urls in context menu
-    browser = /usr/bin/xdg-open
-
-    # Always run rule-defined scripts, even if the notification is suppressed
-    always_run_script = true
-
-    # Define the title of the windows spawned by dunst
-    title = Dunst
-
-    # Define the class of the windows spawned by dunst
-    class = Dunst
-
-    # Ignore the dbus closeNotification message.
-    # Useful to enforce the timeout set by dunst configuration. Without this
-    # parameter, an application may close the notification sent before the
-    # user defined timeout.
-    ignore_dbusclose = false
-
-    ### Wayland ###
-
-    # Uncomment this if you want to let notications appear under fullscreen
-    # applications (default: overlay)
-    # layer = top
-
-    # Set this to true to use X11 output on Wayland.
-    force_xwayland = false
-
-    ### Mouse ###
-
+    # Mouse
     mouse_left_click = close_current
     mouse_middle_click = do_action, close_current
     mouse_right_click = close_all
 
-[experimental]
-    # Calculate the dpi to use on a per-monitor basis.
-    # If this setting is enabled the Xft.dpi value will be ignored and instead
-    # dunst will attempt to calculate an appropriate dpi value for each monitor
-    # using the resolution and physical size. This might be useful in setups
-    # where there are multiple screens with very different dpi values.
-    per_monitor_dpi = false
+    # Misc/Advanced
+    dmenu = /usr/bin/dmenu -p dunst:
+    browser = /usr/bin/xdg-open
+    always_run_script = true
+    ignore_dbusclose = false
+
+    # Wayland
+    layer = top
+    force_xwayland = false
+
+# Catppuccin macchiato theme
+[global]
+frame_color = "#8aadf4"
+separator_color= frame
+highlight = "#8aadf4"
 
 [urgency_low]
-    frame_color = "#446A46"
-    foreground = "#446A46"
-    background = "#F4F4F4"
-    timeout = 4
+background = "#24273a"
+foreground = "#cad3f5"
 
 [urgency_normal]
-    frame_color = "#205375"
-    foreground = "#205375"
-    background = "#F4F4F4"
-    timeout = 6
+background = "#24273a"
+foreground = "#cad3f5"
 
 [urgency_critical]
-    frame_color = "#D61C4E"
-    foreground = "#D61C4E"
-    background = "#F4F4F4"
-    timeout = 8
+background = "#24273a"
+foreground = "#cad3f5"
+frame_color = "#f5a97f"

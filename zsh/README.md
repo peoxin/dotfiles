@@ -51,19 +51,3 @@ Roload `zsh` configuration:
 source ~/.zprofile
 source ~/.zshrc
 ```
-
-## Command Line Tools
-
-In addition to the tools mentioned in `rc.zsh`, it is also recommended to install the following:
-
-- sd
-- gitui
-- tealdeer
-- hyperfine
-- tokei
-- pastel
-- grex
-- just
-- watchexec
-- imagemagick
-- ffmpeg
