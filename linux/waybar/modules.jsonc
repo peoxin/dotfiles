@@ -16,23 +16,23 @@
     "cpu": {
         "interval": 10,
         "format": " {usage}%",
-        "tooltip": false,
     },
     "memory": {
         "interval": 20,
         "format": " {percentage}%",
-        "tooltip": false,
+        "tooltip-format": "Total: {total:.1f}GiB\nUsed: {used:.1f}GiB\nAvail: {avail:.1f}GiB",
     },
     "network": {
-        "interval": 30,
+        "interval": 20,
         "format-ethernet": "",
         "format-wifi": "",
         "format-disconnected": "",
         "tooltip-format-wifi": "{essid}",
+        "tooltip-format-disconnected": "Network disconnected",
     },
     "battery": {
         "full-at": 97,
-        "interval": 60,
+        "interval": 20,
         "states": {
             "low": 20,
         },
@@ -44,9 +44,12 @@
             "",
             ""
         ],
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "tooltip-format": "{time}",
+        "format-charging": "",
+        "format-plugged": "",
+        "format-full": "",
+        "tooltip-format": "{timeTo}",
+        "tooltip-format-charging": "{capacity}% {timeTo}",
+        "tooltip-format-plugged": "{capacity}% {timeTo}",
     },
     "pulseaudio": {
         "format": "{icon} {volume}%{format_source}",
@@ -68,22 +71,21 @@
         "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
     },
     "clock": {
-        "interval": 60,
+        "interval": 30,
         "format": " {:%H:%M}",
         "format-alt": " {:%Y-%m-%d %a}",
         "timezone": "Asia/Shanghai",
-        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "tooltip-format": "<tt>{calendar}</tt>",
         "calendar": {
             "mode": "month",
             "mode-mon-col": 3,
-            "weeks-pos": "left",
+            "weeks-pos": "",
             "on-scroll": 1,
             "format": {
-                "months": "<span color='#ffead3'><b>{}</b></span>",
-                "days": "<span color='#ecc6d9'><b>{}</b></span>",
-                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-                "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
+                "months": "<span color='#b7bdf8'><b>{}</b></span>",
+                "weekdays": "<span color='#8aadf4'><b>{}</b></span>",
+                "days": "<span color='#b8c0e0'><b>{}</b></span>",
+                "today": "<span color='#ed8796'><b><u>{}</u></b></span>",
             },
         },
         "actions": {
@@ -95,6 +97,23 @@
     "tray": {
         "icon-size": 18,
         "spacing": 8,
+    },
+    "privacy": {
+        "icon-size": 18,
+        "icon-spacing": 4,
+        "transition-duration": 250,
+        "modules": [
+            {
+                "type": "screenshare",
+                "tooltip": true,
+                "tooltip-icon-size": 18
+            },
+            {
+                "type": "audio-in",
+                "tooltip": true,
+                "tooltip-icon-size": 18
+            }
+        ]
     },
     "mpd": {
         "interval": 2,
@@ -115,6 +134,8 @@
             "paused": "",
             "stopped": "",
         },
+        "title-len": 30,
+        "artist-len": 20,
     },
     "custom/dunst": {
         "format": "",

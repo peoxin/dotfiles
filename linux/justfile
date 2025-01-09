@@ -23,14 +23,19 @@ app-install:
     # Web browser
     sudo pacman -S firefox
     # Screenshot tools
-    sudo pacman -S grim slurp
-    mkdir -p ~/.local/bin && cd ~/.local/bin && wget https://github.com/hyprwm/contrib/blob/main/grimblast/grimblast && chmod u+x grimblast
-    # Image viewer
-    sudo pacman -S imv
+    paru -S grim slurp grimblast-git
+    # Screen recorder
+    sudo pacman -S obs-studio
+    # Image and video viewer
+    sudo pacman -S imv mpv
+    # Image editor
+    sudo pacman -S gimp
     # WeChat
     paru -S wechat
     # Music player
     sudo pacman -S go-musicfox
+    # Text editor
+    sudo pacman -S zed
 
 # Install and setup OpenSSH
 ssh-install-setup:
@@ -43,10 +48,6 @@ ssh-install-setup:
 
 # Install and setup all the system tools
 system-tools-install-setup:
-    # Multimedia framework
-    sudo pacman -S pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack lib32-pipewire lib32-pipewire-jack
-    systemctl enable --now pipewire --user
-    systemctl enable --now pipewire-pulse --user
     # Clipboard manager
     sudo pacman -S cliphist
     # Backlight control
@@ -58,6 +59,9 @@ system-tools-install-setup:
     # Bluetooth
     sudo pacman -S bluez bluez-utils
     sudo systemctl enable --now bluetooth
+    # Cron
+    sudo pacman -S cronie
+    sudo systemctl enable --now cronie
 
 # Install all the development environments
 dev-install:

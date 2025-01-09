@@ -7,7 +7,7 @@
     width = (0, 300)
     height = (0, 500)
     origin = top-right
-    offset = 10x40
+    offset = 10x10
 
     # Appearance
     padding = 10
@@ -46,7 +46,7 @@
     # Notification
     notification_limit = 20
     indicate_hidden = true
-    sort = true
+    sort = update
     show_age_threshold = 60
     stack_duplicates = true
     hide_duplicate_count = false
