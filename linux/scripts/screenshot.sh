@@ -7,4 +7,5 @@ command=$(printf '%s\n' "${commands[@]}" | fuzzel -d -p "Screenshot command:")
 target=$(printf '%s\n' "${targets[@]}" | fuzzel -d -p "Screenshot target:")
 [ -z "$target" ] && exit 0
 
+sleep 1
 grimblast --notify $command $target

@@ -30,8 +30,9 @@ app-install:
     sudo pacman -S imv mpv
     # Image editor
     sudo pacman -S gimp
-    # WeChat
-    paru -S wechat
+    # WeChat 
+    # HiDPi scaling: https://github.com/hyprwm/hyprland/discussions/7923
+    paru -S wechat-bin
     # Music player
     sudo pacman -S go-musicfox
     # Text editor
