@@ -2,6 +2,7 @@
 if [ -d "$HOME/.oh-my-zsh" ]; then
     export ZSH="$HOME/.oh-my-zsh"
     plugins=(
+        vi-mode
         sudo
         extract
         zoxide
