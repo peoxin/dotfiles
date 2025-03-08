@@ -31,7 +31,7 @@ return {
 				theme = "catppuccin",
 				section_separators = { left = "", right = "" },
 				component_separators = { left = "", right = "" },
-				disabled_filetypes = {},
+				disabled_filetypes = { "Avante", "AvanteInput", "AvanteSelectedFiles" },
 				always_divide_middle = true,
 			},
 			sections = {
