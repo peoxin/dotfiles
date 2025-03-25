@@ -31,7 +31,7 @@ return {
 				theme = "catppuccin",
 				section_separators = { left = "", right = "" },
 				component_separators = { left = "", right = "" },
-				disabled_filetypes = { "Avante", "AvanteInput", "AvanteSelectedFiles" },
+				disabled_filetypes = { "Avante", "AvanteInput", "AvanteSelectedFiles", "snacks_terminal" },
 				always_divide_middle = true,
 			},
 			sections = {
@@ -55,8 +55,6 @@ return {
 			extensions = {
 				"aerial",
 				"lazy",
-				"neo-tree",
-				"toggleterm",
 				"mason",
 				"fzf",
 			},

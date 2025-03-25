@@ -1,14 +1,11 @@
 {
-  "name": "my-snippets",
-  "engines": {
-    "vscode": "^1.11.0"
-  },
-  "contributes": {
-    "snippets": [
-      {
-        "language": "all",
-        "path": "./python/config.json"
-      }
-    ]
-  }
+    "name": "my-snippets",
+    "contributes": {
+        "snippets": [
+            {
+                "language": "all",
+                "path": "./python/config.json"
+            }
+        ]
+    }
 }

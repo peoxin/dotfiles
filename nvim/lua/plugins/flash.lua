@@ -2,20 +2,10 @@ return {
 	"folke/flash.nvim",
 	event = "BufEnter",
 	keys = {
-		{
-			"s",
-			function()
-				require("flash").jump()
-			end,
-			desc = "Flash",
-		},
-		{
-			"S",
-			function()
-				require("flash").treesitter()
-			end,
-			desc = "Flash Treesitter",
-		},
+        -- stylua: ignore start
+		{ "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+		{ "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash treesitter" },
+		-- stylua: ignore end
 	},
 	opts = {
 		modes = {

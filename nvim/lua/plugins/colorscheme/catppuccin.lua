@@ -10,15 +10,12 @@ return {
 		transparent_background = true,
 		integrations = {
 			aerial = true,
-			cmp = true,
+			blink_cmp = true,
 			flash = true,
 			gitsigns = true,
 			illuminate = { enabled = true },
-			indent_blankline = { enabled = true, colored_indent_levels = true },
 			markdown = true,
 			mason = true,
-			neotree = true,
-			telescope = { enabled = true },
 			treesitter = true,
 			which_key = true,
 			native_lsp = {
@@ -38,6 +35,10 @@ return {
 				inlay_hints = {
 					background = true,
 				},
+			},
+			snacks = {
+				enabled = true,
+				indent_scope_color = "text",
 			},
 		},
 	},

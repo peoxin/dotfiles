@@ -1,7 +1,5 @@
--- Highlight what was yanked for a short period of time
+-- Highlight what was yanked
 vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight what was yanked",
-	group = vim.api.nvim_create_augroup("UserHighlightYanked", { clear = true }),
 	callback = function()
 		vim.highlight.on_yank()
 	end,
