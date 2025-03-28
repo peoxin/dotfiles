@@ -3,8 +3,12 @@
     "contributes": {
         "snippets": [
             {
-                "language": "all",
-                "path": "./python/config.json"
+                "language": "gitignore",
+                "path": "gitignore.json"
+            },
+            {
+                "language": "json",
+                "path": "json.json"
             }
         ]
     }
