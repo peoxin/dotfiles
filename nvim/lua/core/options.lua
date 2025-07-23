@@ -2,9 +2,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Has a nerd font installed or not
-vim.g.have_nerd_font = true
-
 -- Enable mouse
 vim.opt.mouse = "a"
 vim.opt.mousemoveevent = true

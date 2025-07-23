@@ -58,19 +58,18 @@ return {
 		{ "<Leader>tt", function() Snacks.terminal() end, desc = "Terminal" },
 		{ "<Leader>tg", function() Snacks.terminal("gitui") end, desc = "GitUI" },
 		{ "<Leader>tb", function() Snacks.terminal("btm") end, desc = "Bottom" },
-		{ "<Leader>ty", function() Snacks.terminal("yazi") end, desc = "Yazi" },
         -- LSP
-        { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto definition" },
-        { "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto declaration" },
-        { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto type definition" },
-        { "gI", function() Snacks.picker.lsp_implementations() end, desc = "Goto implementation" },
-        { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
+        { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Go to definition" },
+        { "gD", function() Snacks.picker.lsp_declarations() end, desc = "Go to declaration" },
+        { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Go to type definition" },
+        { "gI", function() Snacks.picker.lsp_implementations() end, desc = "Go to implementation" },
+        { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "Go to references" },
         { "<Leader>fs", function() Snacks.picker.lsp_symbols() end, desc = "LSP symbols" },
         { "<Leader>fS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP workspace symbols" },
 		-- Other
         { "<Leader>bD", function() Snacks.bufdelete.other() end, desc = "Delete other buffers" },
-        { "]r", function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
-        { "[r", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
+        { "]r", function() Snacks.words.jump(vim.v.count1) end, desc = "Next reference", mode = { "n", "t" } },
+        { "[r", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev reference", mode = { "n", "t" } },
 		-- stylua: ignore end
 	},
 	opts = {
