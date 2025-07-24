@@ -10,8 +10,7 @@ Install the following packages:
 
 ```
 # Hyprland and essential tools
-sudo pacman -S hyprland xdg-desktop-portal-hyprland pipewire wireplumber qt5-wayland qt6-wayland
-paru -S hyprpolkitagent
+sudo pacman -S hyprland xdg-desktop-portal-hyprland pipewire wireplumber hyprpolkitagent qt5-wayland qt6-wayland
 
 # Idle manager and screen locker
 sudo pacman -S hypridle hyprlock
