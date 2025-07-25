@@ -1,4 +1,4 @@
--- VSCode Neovim Configuration
+-- Lazy configuration for VSCode Neovim
 
 -- Install `lazy.nvim` plugin manager if it doesn't exist
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -15,6 +15,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Setup `lazy.nvim`
+-- Only load specific plugins for VSCode Neovim
 require("lazy").setup({
 	spec = {
 		{ import = "plugins.flash" },

@@ -3,10 +3,6 @@
 -- See: https://marketplace.visualstudio.com/items?itemName=asvetliakov.vscode-neovim#keybinding-passthroughs
 local vscode = require("vscode")
 
--- Set <space> as the leader key
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 -- Shortcut for the keymap function
 local function map(mode, l, r, desc)
 	vim.keymap.set(mode, l, r, { desc = desc, noremap = true, silent = true })
