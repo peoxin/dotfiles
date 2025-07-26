@@ -59,7 +59,7 @@
     mouse_right_click = close_all
 
     # Misc/Advanced
-    dmenu = /usr/bin/fuzzel -p dunst:
+    dmenu = /usr/bin/fuzzel -d -p dunst:
     browser = /usr/bin/xdg-open
     always_run_script = true
     ignore_dbusclose = false

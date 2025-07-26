@@ -1,6 +1,6 @@
 [user]
-	name = peoxin
-	email = peoxin@outlook.com
+    name = peoxin
+    email = peoxin@outlook.com
 
 [init]
     defaultBranch = main

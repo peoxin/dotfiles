@@ -1,11 +1,11 @@
-# Linux Configuration
+# Common Configuration
 
-This directory contains configuration files and setup scripts for Arch Linux.
+This directory contains configuration files and setup scripts for cross-platform applications.
 
 ## Prerequisites
 
-- Linux distribution: Arch Linux
-- AUR helper (paru, yay, etc.) installed
+- OS: MacOS or Arch Linux
+- For MacOS, homebrew installed
 
 ## Quick Start
 

@@ -1,32 +1,5 @@
 # Tmux
 
-## Installation
-
-Install `tmux`:
-
-```
-sudo pacman -S tmux # on Arch Linux
-brew install tmux # on MacOS
-```
-
-Install plugin manager `tpm`:
-
-```
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-```
-
-Install `catppuccin` theme (optional, see [catppuccin/tmux](https://github.com/catppuccin/tmux)):
-
-```
-git clone https://github.com/catppuccin/tmux ~/.tmux/plugins/catppuccin/tmux
-```
-
-Symlink the configuration file:
-
-```
-ln -s $DOTFILES/tmux/.tmux.conf ~/.tmux.conf
-```
-
 ## Usage
 
 Session management in shell:

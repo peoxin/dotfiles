@@ -1,18 +1,15 @@
 # Dotfiles
 
-## Usage
+A collection of configuration files and setup scripts for various tools and applications across different operating systems.
 
-The default directory of the configuration is `~/dotfiles`, and you can clone the repository to that location:
+## Installation
 
-```
+Clone this repository to your local machine:
+
+```sh
 git clone https://github.com/peoxin/dotfiles.git ~/dotfiles
 ```
 
-You can also place the configuration somewhere else.
-Wherever you place it, you need to set the `DOTFILES` environment variable:
+You can also clone it to any other preferred location on your system.
 
-```
-export DOTFILES="/path/to/dotfiles"
-```
-
-After that, you can install the configuration following the instructions in each folder.
+Navigate to subdirectories and follow the installation instructions provided in each folder's documentation.
