@@ -85,7 +85,6 @@ yazi: _pkg_mgr
     {{ pkg_install }} ripgrep fd fzf zoxide jq poppler resvg {{ sevenzip_pkg }} imagemagick ffmpeg
     # Install plugins for yazi
     ya pkg add yazi-rs/plugins:git
-    ya pkg add yazi-rs/plugins:max-preview
     ya pkg add KKV9/compress
     # Symlink yazi configuration
     mkdir -p $XDG_CONFIG_HOME/yazi
