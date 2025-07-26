@@ -14,7 +14,8 @@ This directory contains configuration files and setup scripts for cross-platform
 Install the `just` command runner if you haven't already:
 
 ```sh
-sudo pacman -S just
+brew install just # MacOS
+sudo pacman -S just # Arch Linux
 ```
 
 View all available commands:

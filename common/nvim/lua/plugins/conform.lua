@@ -10,6 +10,7 @@ return {
 		formatters_by_ft = {
 			lua = { "stylua" },
 			sh = { "shfmt" },
+			just = { "just" },
 			python = { "ruff_organize_imports", "ruff_format" },
 			rust = { "rustfmt", lsp_format = "fallback" },
 			javascript = { "prettier" },
