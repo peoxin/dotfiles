@@ -88,17 +88,15 @@ if [ "$(uname -s)" != "Darwin" ] && command -v hyprland &> /dev/null; then
     alias hl="hyprland"
 fi
 
-# Change the current working directory when exiting Yazi,
-# use command `y` instead of `yazi` to enable this feature.
+# Change current working directory when exiting yazi.
 # See: https://yazi-rs.github.io/docs/quick-start#shell-wrapper
 if command -v yazi &> /dev/null; then
-    function y {
-    	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-    	yazi "$@" --cwd-file="$tmp"
-    	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-    		builtin cd -- "$cwd"
-    	fi
-    	rm -f -- "$tmp"
+    function y() {
+        local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+        yazi "$@" --cwd-file="$tmp"
+        IFS= read -r -d '' cwd < "$tmp"
+        [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+        rm -f -- "$tmp"
     }
 fi
 
