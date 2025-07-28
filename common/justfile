@@ -151,3 +151,9 @@ user-scripts:
     # Symlink user scripts to ~/.local/bin
     mkdir -p ~/.local/bin
     for script in $CONFIG_DIR/scripts/*.sh; do ln -s $script ~/.local/bin/$(basename $script .sh); chmod u+x $script; done
+
+# Setup tridactyl extension for Firefox
+tridactyl:
+    # Symlink tridactyl configuration
+    mkdir -p $XDG_CONFIG_HOME/tridactyl
+    ln -s $CONFIG_DIR/firefox/tridactylrc $XDG_CONFIG_HOME/tridactyl/tridactylrc

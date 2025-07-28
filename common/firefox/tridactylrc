@@ -1,0 +1,52 @@
+unbind --mode=normal t
+unbind --mode=normal w
+unbind --mode=normal p
+unbind --mode=normal P
+unbind --mode=normal b
+unbind --mode=normal a
+unbind --mode=normal A
+
+" Open URL in new tab
+bind O fillcmdline tabopen
+
+" Open URL in new window
+bind wo fillcmdline winopen
+
+# Edit and open current URL in current tab
+bind go composite get_current_url | fillcmdline_notrail open
+
+# Edit and open current URL in new tab
+bind gO composite get_current_url | fillcmdline_notrail tabopen
+
+" Open URL from clipboard in current tab
+bind pp clipboard open
+
+" Open URL from clipboard in new tab
+bind Pp clipboard tabopen
+
+" Open URL from clipboard in new window
+bind wp js navigator.clipboard.readText().then(url => tri.excmds.winopen(url))
+
+" Select and open tab
+bind T fillcmdline tab
+
+" Select and open bookmark in current tab
+bind b fillcmdline bmarks
+
+" Select and open bookmark in new tab
+set completions.Bmark.autoselect false
+bind B fillcmdline bmarks -t
+
+" Add bookmark
+bind M composite get_current_url | fillcmdline bmark
+
+" Copy title to clipboard
+bind yt clipboard yanktitle
+
+" Zoom in/out and reset zoom
+bind + zoom +10 true
+bind - zoom -10 true
+bind = zoom 100
+
+" Setup theme
+colourscheme --url https://raw.githubusercontent.com/devnullvoid/tridactyl/main/themes/catppuccin-mocha-cli.css catppuccin-mocha-cli
