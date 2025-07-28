@@ -4,7 +4,7 @@
     "all-outputs": false,
     "format": "{name}",
     "sort-by": "default",
-    "show-special": true,
+    "show-special": false,
     "on-scroll-up": "hyprctl dispatch workspace -1",
     "on-scroll-down": "hyprctl dispatch workspace +1",
   },
