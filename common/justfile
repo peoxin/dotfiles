@@ -157,3 +157,16 @@ tridactyl:
     # Symlink tridactyl configuration
     mkdir -p $XDG_CONFIG_HOME/tridactyl
     ln -s $CONFIG_DIR/firefox/tridactylrc $XDG_CONFIG_HOME/tridactyl/tridactylrc
+
+# Install qutebrowser
+qutebrowser:
+    # Install qutebrowser
+    {{ pkg_install_brew_cask }} qutebrowser
+    # Symlink qutebrowser configuration
+    mkdir -p $XDG_CONFIG_HOME/qutebrowser
+    ln -s $CONFIG_DIR/qutebrowser/config.py $XDG_CONFIG_HOME/qutebrowser/config.py
+
+# Import bookmarks into qutebrowser (overwrite)
+qutebrowser-import-bookmarks bookmark:
+    # Import bookmarks (overwrite)
+    python /usr/share/qutebrowser/scripts/importer.py -b {{ bookmark }} > $XDG_CONFIG_HOME/qutebrowser/bookmarks/urls
