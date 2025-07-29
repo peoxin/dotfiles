@@ -29,6 +29,7 @@ c.content.media.audio_video_capture = "ask"
 c.content.media.video_capture = "ask"
 c.content.persistent_storage = "ask"
 c.content.notifications.enabled = "ask"
+c.content.javascript.clipboard = "access-paste"
 
 # Enable/Disable private browsing by default
 c.content.private_browsing = False
@@ -155,6 +156,10 @@ config.bind("M", "cmd-set-text -s :quickmark-add {url:pretty}")
 config.bind("zi", "zoom-in")
 config.bind("zo", "zoom-out")
 config.bind("zz", "zoom")
+
+# Translate
+config.bind("<Alt+T>", "spawn --userscript translate", mode="normal")
+config.bind("<Alt+T>", "spawn --userscript translate --text", mode="caret")
 
 # Install catppuccin theme if not exists
 if not os.path.exists(config.configdir / "theme.py"):
