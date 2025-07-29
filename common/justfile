@@ -165,6 +165,8 @@ qutebrowser:
     # Symlink qutebrowser configuration
     mkdir -p $XDG_CONFIG_HOME/qutebrowser
     ln -s $CONFIG_DIR/qutebrowser/config.py $XDG_CONFIG_HOME/qutebrowser/config.py
+    ln -s $CONFIG_DIR/qutebrowser/userscripts $XDG_CONFIG_HOME/qutebrowser/userscripts
+    for script in $XDG_CONFIG_HOME/qutebrowser/userscripts/*; do chmod u+x $script; done
 
 # Import bookmarks into qutebrowser (overwrite)
 qutebrowser-import-bookmarks bookmark:
