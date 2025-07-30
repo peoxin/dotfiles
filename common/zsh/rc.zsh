@@ -29,6 +29,13 @@ if command -v git &> /dev/null; then
 fi
 
 # Aliases for z if it is installed.
+# Aliases for jujutsu if it is installed.
+if command -v jj &> /dev/null; then
+    alias jst="jj st"
+    alias jsh="jj show"
+    alias jlg="jj log"
+fi
+
 if command -v z &> /dev/null; then
     alias cd="z"
 fi

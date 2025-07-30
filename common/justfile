@@ -129,6 +129,15 @@ git:
     #   mklink %HOMEPATH%\.gitmessage $CONFIG_DIR\git\gitmessage
     # !!! IMPORTANT: Change user.name and user.email in ~/.gitconfig to your own values !!!
 
+# Install jujutsu
+jujutsu:
+    # Install jujutsu
+    {{ pkg_install }} jujutsu
+    # Symlink jujutsu configuration
+    mkdir -p $XDG_CONFIG_HOME/jj
+    ln -s $CONFIG_DIR/jj/config.toml $XDG_CONFIG_HOME/jj/config.toml 
+    # !!! IMPORTANT: Change user.name and user.email to your own values !!!
+
 # Install zellij
 zellij: _pkg_mgr
     # Install zellij

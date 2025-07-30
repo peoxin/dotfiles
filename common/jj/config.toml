@@ -1,0 +1,85 @@
+[user]
+name = "peoxin"
+email = "peoxin@outlook.com"
+
+[revsets]
+log = "::"
+
+[ui]
+default-command = ["log", "-r", "present(@) | ancestors(@, 3)", "--no-pager"]
+diff-editor = ":builtin"
+conflict-marker-style = "snapshot"
+
+[[--scope]]
+--when.commands = ["status"]
+[--scope.ui]
+paginate = "never"
+
+[templates]
+draft_commit_description = '''
+concat(
+  coalesce(description, default_commit_description, "\n"),
+  surround(
+    "\nJJ: This commit contains the following changes:\n", "",
+    indent("JJ:     ", diff.summary()),
+  ),
+)
+'''
+
+[template-aliases]
+default_commit_description = '''
+"JJ: <type>(<scope>)!: <description> (72 characters maximum)
+JJ: |<--- preferably using up to 50 characters --->|<------------------->|
+
+JJ: Optional <body>
+JJ: |<------------- try limiting to 72 characters per line ------------->|
+
+JJ: Optional <footer>
+
+JJ: ----- END COMMIT MESSAGE -----
+JJ:
+JJ: Conventional Commits Cheatsheet (https://www.conventionalcommits.org)
+JJ:
+JJ: <type> indicates what kind of commit this is.
+JJ: It can be one of:
+JJ:   - feat        for new features introduced (i.e. MINOR in SemVer standard)
+JJ:   - fix         for bug-fixes (i.e. PATCH in SemVer standard)
+JJ:   - build       for changes in build system or environment
+JJ:   - ci          for configuring continuous integration systems
+JJ:   - test        for adding new tests or correcting defective tests
+JJ:   - docs        for changes in documentation only
+JJ:   - refactor    for rewriting or restructuring of code that does not affect API behavior
+JJ:   - perf        for performance-enhancing refactors
+JJ:   - style       for changes in code styles and no changes in logic
+JJ:   - chore       for miscellaneous tasks
+JJ:   - revert      for reverting commits made previously
+JJ:
+JJ: <scope> describes a section of the codebase where this change is applied and is optional.
+JJ: Note that allowed content of this section depends on the specific project.
+JJ: Issue identifiers are not valid scopes.
+JJ:
+JJ: Inserting \"!\" before the colon indicates that this commit introduces a breaking change.
+JJ: It is equivalent to a bump in MAJOR in SemVer standard.
+JJ: With this, the breaking change indicator in <footer> becomes optional.
+JJ:
+JJ: <description> contains a concise description of the change.
+JJ: The content should be in imperative mood, as if \"This commit will...\" is prepended.
+JJ: Do not capitalize the beginning of the sentence, and full stop (.) is omitted.
+JJ:
+JJ: <body> provides additional contextual information about the code changes and is optional.
+JJ: Multiple paragraphs separated by an empty line are allowed here.
+JJ: Sentences should be in imperative mood with proper capitalization and full stops (.).
+JJ:
+JJ: <footer> is a list of key-value pairs that store \"metadata\" of a commit.
+JJ: There are three types of a footer:
+JJ:   - Breaking change indicator     verbatim \"BREAKING CHANGE:\", followed by a <description>
+JJ:   - Automatic issue management    such as \"Close #123\", \"Reference #123\", \"See #123\", etc.
+JJ:   - Email-like metadata           such as \"Signed-off-by:\", \"Co-authored-by\", etc.
+JJ:
+JJ: There are three exceptions to the subject line rules:
+JJ:   1. \"Initial commit\"     for the first commit in a git repository
+JJ:   2. \"Merge branch...\"    as it is the default commit message for automatic merges
+JJ:   3. \"Revert...\"          as it is the default commit message for reverting commits
+JJ: 
+"
+'''
