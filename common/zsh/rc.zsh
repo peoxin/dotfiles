@@ -13,7 +13,7 @@ if [ -d "$HOME/.oh-my-zsh" ]; then
     source $ZSH/oh-my-zsh.sh
 fi
 
-# Alias for setting environment variables about proxy.
+# Alias for setting proxy.
 if command -v set-proxy &> /dev/null; then
     alias proxy="source set-proxy"
 fi
@@ -28,7 +28,6 @@ if command -v git &> /dev/null; then
     alias gp="git push"
 fi
 
-# Aliases for z if it is installed.
 # Aliases for jujutsu if it is installed.
 if command -v jj &> /dev/null; then
     alias jst="jj st"
@@ -36,6 +35,7 @@ if command -v jj &> /dev/null; then
     alias jlg="jj log"
 fi
 
+# Aliases for zoxide if it is installed.
 if command -v z &> /dev/null; then
     alias cd="z"
 fi
@@ -90,7 +90,7 @@ if [ "$TERM" = "xterm-kitty" ]; then
     alias icat="kitten icat"
 fi
 
-# Alias for hyprland, if it is installed on Linux.
+# Alias for hyprland if it is installed on Linux.
 if [ "$(uname -s)" != "Darwin" ] && command -v hyprland &> /dev/null; then
     alias hl="hyprland"
 fi
