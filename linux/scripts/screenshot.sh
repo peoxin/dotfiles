@@ -1,10 +1,11 @@
-#!/usr/bin/sh
+#!/usr/bin/env bash
 
-commands=("copy" "save" "copysave" "edit")
+actions=("copy" "save" "copysave" "edit")
+action=$(printf '%s\n' "${actions[@]}" | fuzzel -d -p "Screenshot:")
+[ -z "$action" ] && exit 0
+
 targets=("screen" "area")
-command=$(printf '%s\n' "${commands[@]}" | fuzzel -d -p "Screenshot command:")
-[ -z "$command" ] && exit 0
-target=$(printf '%s\n' "${targets[@]}" | fuzzel -d -p "Screenshot target:")
+target=$(printf '%s\n' "${targets[@]}" | fuzzel -d -p "Target:")
 [ -z "$target" ] && exit 0
 
 sleep 1

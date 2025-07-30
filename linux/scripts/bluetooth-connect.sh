@@ -1,9 +1,9 @@
-#!/usr/bin/sh
+#!/usr/bin/env bash
 
 devices=$(bluetoothctl devices | rg Device | sd "Device\s+" "")
 device_names=$(echo "$devices" | awk '{$1=""; print substr($0,2)}')
 
-device_name=$(echo "$device_names" | fuzzel -d -p "Select device: ")
+device_name=$(echo "$device_names" | fuzzel -d -p "Connect: ")
 [ -z "$device_name" ] && exit 0
 
 device_mac=$(echo "$devices" | awk -v name="$selected_name" '$0 ~ name {print $1}')
