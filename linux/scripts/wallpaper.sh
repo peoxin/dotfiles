@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 wallpaper_dir="$HOME/.local/share/wallpapers"
 wallpaper=$(cd $wallpaper_dir && fd -e png -e jpg . | fuzzel -d -p "Wallpaper: ")

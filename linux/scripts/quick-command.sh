@@ -1,15 +1,14 @@
-#!/usr/bin/sh
+#!/usr/bin/env bash
 
 commands=(
+    "audio"
+    "power"
+    "clipboard"
     "screenshot"
-    "clipboard-history"
-    "audio-control"
+    "wallpaper"
     "network-connect"
     "bluetooth-connect"
     "unmount-usb-device"
-    "power-management"
-    "pick-wallpaper"
-    "switch-light-dark-mode"
 )
 command=$(printf '%s\n' "${commands[@]}" | fuzzel -d -p "Command: ")
 [ -z "$command" ] && exit 0
