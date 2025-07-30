@@ -1,13 +1,16 @@
 [user]
-	name = peoxin
-	email = peoxin@outlook.com
+name = peoxin
+email = peoxin@outlook.com
 
 [init]
-    defaultBranch = main
+defaultBranch = main
 
 [core]
-    autocrlf = true
-    quotepath = false
+autocrlf = true
+quotepath = false
 
 [fetch]
-    prune = true
+prune = true
+
+[commit]
+template = ~/.gitmessage

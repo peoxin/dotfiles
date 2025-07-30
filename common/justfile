@@ -123,8 +123,10 @@ gitui: _pkg_mgr
 git:
     # Symlink git configuration
     ln -s $CONFIG_DIR/git/gitconfig-unix ~/.gitconfig
-    # For windows, manually create a symlink:
+    ln -s $CONFIG_DIR/git/gitmessage ~/.gitmessage
+    # For windows, manually create symlinks:
     #   mklink %HOMEPATH%\.gitconfig $CONFIG_DIR\git\gitconfig-windows
+    #   mklink %HOMEPATH%\.gitmessage $CONFIG_DIR\git\gitmessage
     # !!! IMPORTANT: Change user.name and user.email in ~/.gitconfig to your own values !!!
 
 # Install zellij
