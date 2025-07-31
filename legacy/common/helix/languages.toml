@@ -1,6 +1,0 @@
-[[language]]
-name = "python"
-language-servers = [ "pyright" ]
-formatter = { command = "black", args = ["--quiet", "-"] }
-auto-format = true
-indent = { unit = "    ", tab-width = 4 }
