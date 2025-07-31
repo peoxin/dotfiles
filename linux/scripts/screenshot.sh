@@ -9,4 +9,11 @@ target=$(printf '%s\n' "${targets[@]}" | fuzzel -d -p "Target:")
 [ -z "$target" ] && exit 0
 
 sleep 1
-grimblast --notify $command $target
+case $action in
+edit)
+    grimblast save $target - | swappy -f -
+    ;;
+*)
+    grimblast --notify $command $target
+    ;;
+esac
