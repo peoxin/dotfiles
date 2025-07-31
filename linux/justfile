@@ -161,12 +161,13 @@ ssh: _pkg_mgr
 pipewire: _pkg_mgr
     # Install pipewire and related components
     sudo pacman -S pipewire wireplumber pipewire-audio pipewire-pulse pipewire-alsa
-    sudo pacman -S noise-suppression-for-voice
     # Symlink pipewire configuration
     ln -s $CONFIG_DIR/pipewire $XDG_CONFIG_HOME/pipewire
     # Enable and start pipewire services
     sudo systemctl --user enable --now pipewire
     sudo systemctl --user enable --now pipewire-pulse
+    # Install noise cancellation tool
+    {{ aur_helper }} -S noisetorch
 
 # Install Hyprland
 hyprland: _pkg_mgr
