@@ -72,7 +72,7 @@ app: _pkg_mgr
     # Download manager
     sudo pacman -S qbittorrent
     # Screenshot
-    {{ aur_helper }} -S grim slurp grimblast-git
+    {{ aur_helper }} -S grimblast-git swappy
     # Video recording and streaming
     sudo pacman -S obs-studio
     # Image viewer
