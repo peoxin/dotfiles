@@ -4,22 +4,8 @@ return {
 	keys = {
         -- stylua: ignore start
 		{ "<Leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
-		-- stylua: ignore end
 		-- Find picker
-		{
-			"<Leader>ff",
-			function()
-				local remote_connections = require("remote-sshfs.connections")
-				local remote_api = require("remote-sshfs.api")
-				if remote_connections.is_connected() then
-					remote_api.find_files()
-				else
-					Snacks.picker.smart()
-				end
-			end,
-			desc = "Files",
-		},
-        -- stylua: ignore start
+		{ "<Leader>ff", function() Snacks.picker.smart() end, desc = "Files" },
         { "<Leader>fF", function() Snacks.picker.files({ hidden = true }) end, desc = "Files (include hidden)" },
         { "<Leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
         { "<Leader>fd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
@@ -38,21 +24,7 @@ return {
         -- Grep picker
         { "<Leader>sb", function() Snacks.picker.lines() end, desc = "Current buffer" },
         { "<Leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Opened buffers" },
-		-- stylua: ignore end
-		{
-			"<Leader>sg",
-			function()
-				local remote_connections = require("remote-sshfs.connections")
-				local remote_api = require("remote-sshfs.api")
-				if remote_connections.is_connected() then
-					remote_api.live_grep()
-				else
-					Snacks.picker.grep()
-				end
-			end,
-			desc = "Grep",
-		},
-        -- stylua: ignore start
+		{ "<Leader>sg", function() Snacks.picker.grep() end, desc = "Grep" },
         { "<Leader>sw", function() Snacks.picker.grep_word() end, desc = "Words", mode = { "n", "x" } },
         -- Terminal
 		{ "<Leader>tt", function() Snacks.terminal() end, desc = "Terminal" },

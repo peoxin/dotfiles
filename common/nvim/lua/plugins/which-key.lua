@@ -12,7 +12,6 @@ return {
 			{ "<Leader>c", group = "Code" },
 			{ "<Leader>f", group = "Find" },
 			{ "<Leader>g", group = "Git" },
-			{ "<Leader>r", group = "Remote" },
 			{ "<Leader>s", group = "Search" },
 			{ "<Leader>t", group = "Terminal" },
 		})
