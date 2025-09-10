@@ -1,32 +1,24 @@
 return {
-    "akinsho/bufferline.nvim",
-    event = "BufEnter",
-    dependencies = "nvim-tree/nvim-web-devicons",
-    keys = {
-        { "<leader>bp", "<cmd>BufferLineTogglePin<CR>",            desc = "Toggle pin" },
-        { "<leader>bP", "<cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned" },
-    },
-    opts = function()
-        return {
-            options = {
-                always_show_bufferline = false,
-                diagnostics = "nvim_lsp",
-                hover = {
-                    enabled = true,
-                    delay = 100,
-                    reveal = { "close" },
-                },
-                offsets = {
-                    {
-                        filetype = "neo-tree",
-                        text = "File Tree",
-                        highlight = "Directory",
-                        text_align = "center",
-                    },
-                },
-            },
-            -- Use highlights from catppuccin theme
-            highlights = require("catppuccin.groups.integrations.bufferline").get(),
-        }
-    end,
+	"akinsho/bufferline.nvim",
+	event = "VeryLazy",
+	dependencies = {
+		"nvim-mini/mini.icons",
+		"catppuccin/nvim",
+	},
+	opts = {
+		options = {
+			always_show_bufferline = false,
+			diagnostics = "nvim_lsp",
+			hover = {
+				enabled = true,
+				delay = 100,
+				reveal = { "close" },
+			},
+		},
+	},
+	config = function(_, opts)
+		local highlights = require("catppuccin.groups.integrations.bufferline").get_theme()
+		vim.tbl_deep_extend("force", opts, { highlights = highlights })
+		require("bufferline").setup(opts)
+	end,
 }

@@ -1,6 +1,6 @@
 return {
-	"echasnovski/mini.surround",
-	event = "BufEnter",
+	"nvim-mini/mini.surround",
+	event = "VeryLazy",
 	opts = {
 		mappings = {
 			add = "ys",

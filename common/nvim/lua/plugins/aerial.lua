@@ -1,9 +1,9 @@
 return {
 	"stevearc/aerial.nvim",
-	event = "BufEnter",
+	event = "VeryLazy",
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter",
-		"nvim-tree/nvim-web-devicons",
+		"nvim-mini/mini.icons",
 	},
 	keys = {
 		{ "<Leader>cs", "<cmd>AerialToggle!<CR>", desc = "Toggle symbols outline" },
@@ -14,7 +14,7 @@ return {
 			max_width = 35,
 		},
 		on_attach = function(bufnr)
-			-- Jump forwards and backwards between code blocks
+			-- Jump between code blocks
 			vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
 			vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
 		end,

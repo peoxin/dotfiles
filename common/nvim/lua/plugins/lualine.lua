@@ -1,6 +1,7 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
+	event = "VeryLazy",
+	dependencies = "nvim-mini/mini.icons",
 	opts = function()
 		local diagnostics = {
 			"diagnostics",

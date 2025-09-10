@@ -1,7 +1,7 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	main = "nvim-treesitter.configs",
 	event = "BufEnter",
+	main = "nvim-treesitter.configs",
 	init = function()
 		-- Folding based on treesitter
 		vim.wo.foldenable = false
@@ -9,23 +9,8 @@ return {
 		vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 	end,
 	opts = {
+		auto_install = true,
 		highlight = { enable = true },
 		indent = { enable = true },
-		auto_install = true,
-		ensure_installed = {
-			"lua",
-			"python",
-			"rust",
-			"cpp",
-			"javascript",
-			"typescript",
-			"bash",
-			"html",
-			"css",
-			"json",
-			"yaml",
-			"markdown",
-			"gitignore",
-		},
 	},
 }

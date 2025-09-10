@@ -1,6 +1,7 @@
 return {
 	"folke/snacks.nvim",
 	lazy = false,
+	priority = 1000,
 	keys = {
         -- stylua: ignore start
 		{ "<Leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
@@ -39,6 +40,7 @@ return {
         { "<Leader>fs", function() Snacks.picker.lsp_symbols() end, desc = "LSP symbols" },
         { "<Leader>fS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP workspace symbols" },
 		-- Other
+        { "gp", function() Snacks.image.hover() end, desc = "Preview image" },
         { "<Leader>bD", function() Snacks.bufdelete.other() end, desc = "Delete other buffers" },
         { "]r", function() Snacks.words.jump(vim.v.count1) end, desc = "Next reference", mode = { "n", "t" } },
         { "[r", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev reference", mode = { "n", "t" } },
@@ -58,5 +60,9 @@ return {
 		indent = { animate = { enabled = false } },
 		bufdelete = { enabled = true },
 		words = { enabled = true },
+		image = {
+			enabled = true,
+			doc = { inline = false, float = false },
+		},
 	},
 }
