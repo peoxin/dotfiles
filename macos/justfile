@@ -41,8 +41,8 @@ homebrew:
 # Install fonts
 font: _brew_ok
     # Chinese fonts
-    brew install --cask font-noto-sans-cjk-sc font-noto-serif-cjk-sc
+    brew install font-noto-sans-cjk-sc font-noto-serif-cjk-sc
     # Symbol fonts
-    brew install --cask font-symbols-only-nerd-font
+    brew install font-symbols-only-nerd-font
     # Monospace fonts
-    brew install --cask font-jetbrains-mono
+    brew install font-jetbrains-mono

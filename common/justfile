@@ -3,7 +3,6 @@
 export CONFIG_DIR := justfile_directory()
 export XDG_CONFIG_HOME := env_var_or_default("XDG_CONFIG_HOME", env_var("HOME") + "/.config")
 pkg_install := if os() == "macos" { "brew install" } else { "sudo pacman -S" }
-pkg_install_brew_cask := if os() == "macos" { "brew install --cask" } else { "sudo pacman -S" }
 
 # Help message
 help:
@@ -58,7 +57,7 @@ zsh-setup: _pkg_mgr
 # Install kitty terminal emulator
 kitty-install: _pkg_mgr
     # Install kitty
-    {{ pkg_install_brew_cask }} kitty
+    {{ pkg_install }} kitty
     # Symlink kitty configuration
     mkdir -p $XDG_CONFIG_HOME/kitty
     ln -s $CONFIG_DIR/kitty/kitty.conf $XDG_CONFIG_HOME/kitty/kitty.conf
@@ -172,7 +171,7 @@ tridactyl:
 # Install qutebrowser
 qutebrowser:
     # Install qutebrowser
-    {{ pkg_install_brew_cask }} qutebrowser
+    {{ pkg_install }} qutebrowser
     # Symlink qutebrowser configuration
     mkdir -p $XDG_CONFIG_HOME/qutebrowser
     ln -s $CONFIG_DIR/qutebrowser/config.py $XDG_CONFIG_HOME/qutebrowser/config.py
