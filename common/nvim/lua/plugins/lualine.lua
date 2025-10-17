@@ -17,7 +17,7 @@ return {
 		local filename = { "filename", path = 1 }
 
 		-- Set `icons_enabled = false` to disable icons
-		local branch = { "branch", icons_enabled = true, icon = "" }
+		local branch = { "branch", icons_enabled = true, icon = "󰘬" }
 		local filetype = { "filetype" }
 		local fileformat = { "fileformat", icons_enabled = false }
 

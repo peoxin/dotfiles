@@ -8,7 +8,8 @@ return {
 	opts = {
         -- stylua: ignore
 		heading = {
-			icons = { "󰝤 ", "󰝤󰝤 ", "󰝤󰝤󰝤 ", "󰝤󰝤󰝤󰝤 ", "󰝤󰝤󰝤󰝤󰝤 ", "󰝤󰝤󰝤󰝤󰝤󰝤 " },
+			-- icons = { "󰝤 ", "󰝤󰝤 ", "󰝤󰝤󰝤 ", "󰝤󰝤󰝤󰝤 ", "󰝤󰝤󰝤󰝤󰝤 ", "󰝤󰝤󰝤󰝤󰝤󰝤 " },
+			icons = { "# ", "## ", "### ", "#### ", "##### ", "###### " },
 			signs = false,
             render_modes = true,
 		},
