@@ -10,7 +10,7 @@
     ../../modules/nix-core.nix
   ];
 
-  # Configure network settings.
+  # Network settings.
   networking.hostName = "msi-desktop";
   networking.networkmanager.enable = true;
 
