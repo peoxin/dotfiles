@@ -1,0 +1,311 @@
+// Input device configuration.
+input {
+    keyboard {
+        xkb {
+            layout "us"
+            // Map CapsLock to Escape key.
+            options "caps:escape"
+        }
+    }
+
+    mouse {
+        // Pointer acceleration speed (-1.0 to 1.0)
+        accel-speed -0.6
+        // Enable pointer acceleration.
+        accel-profile "adaptive"
+    }
+
+    touchpad {
+        // Tap to click.
+        tap
+        // Disable when typing.
+        dwt
+        // Enable tap-and-drag.
+        drag true
+        // Lifting the finger off for a short time while dragging
+        // will not drop the dragged item.
+        drag-lock
+        // Enable natural scrolling.
+        natural-scroll
+        // Pointer acceleration speed (-1.0 to 1.0)
+        accel-speed 0.0
+        // Enable pointer acceleration.
+        accel-profile "adaptive"
+        // Use two-finger scrolling.
+        scroll-method "two-finger"
+    }
+}
+
+// Output device (monitor) configuration.
+output "DP-1" {
+    // Resolution and refresh rate.
+    mode "1920x1080@239.760"
+    // Scaling factor.
+    scale 1.1
+    // Transform allows to rotate the output.
+    transform "normal"
+    // Position of the output in the global coordinate space.
+    // Output scale and rotation has to be taken into account for positioning:
+    // outputs are sized in logical, or scaled, pixels.
+    position x=0 y=0
+}
+
+// Layout settings influence how windows are positioned and sized.
+layout {
+    // Gaps around windows in pixels.
+    gaps 10
+    // Center the column when changing focus or not.
+    center-focused-column "never"
+    // The widths that "switch-preset-column-width" toggles between.
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+    // The heights that "switch-preset-window-height" toggles between.
+    preset-window-heights {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+    // The default width of the new windows.
+    default-column-width { proportion 0.5; }
+    // How the focus ring looks.
+    focus-ring {
+        // How many logical pixels the ring extends out from the windows.
+        width 2
+        // Color of the ring on the active monitor.
+        active-color "#c6a0f6ee"
+        // Color of the ring on inactive monitors.
+        inactive-color "#595959aa"
+    }
+    // Border is similar to the focus ring, but always visible.
+    border {
+        off
+    }
+    // Drop shadows for windows.
+    shadow {
+        on
+        // Softness controls the shadow blur radius.
+        softness 30
+        // The distance to expand the window rectangle.
+        spread 5
+        // The distance to offset the shadow from the window.
+        offset x=0 y=5
+        // The color of the shadow.
+        color "#1a1a1aee"
+    }
+    // Struts shrink the area occupied by windows (outer gaps).
+    struts {
+        // Use negative values for left and right to avoid the next window
+        // to the side peeking out.
+        left -2
+        right -2
+        top 4
+        bottom 4
+    }
+}
+
+// Ask the clients to omit their client-side decorations if possible.
+prefer-no-csd
+
+// Animation settings.
+animations {
+    // Slow down all animations by this factor. Values below 1 speed them up.
+    slowdown 1.0
+}
+
+// Spawn processes at startup.
+spawn-at-startup "hypridle"
+spawn-at-startup "dunst"
+spawn-at-startup "udiskie" "&"
+spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
+spawn-at-startup "fcitx5"
+spawn-sh-at-startup "swaybg -i ~/Pictures/Wallpapers/default.png"
+
+// Settings for the "Important Hotkeys" overlay.
+hotkey-overlay {
+    // Disable the overlay pop-up at startup.
+    skip-at-startup
+}
+
+// Override environment variables for processes spawned by niri.
+environment {
+    QT_QPA_PLATFORM "wayland;xcb"
+}
+
+// The path where screenshots are saved.
+screenshot-path "~/Pictures/Screenshots/Screenshot %Y-%m-%d %H-%M-%S.png"
+
+// Keybindings.
+binds {
+    // Show hotkeys overlay (Mod + ?)
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    // Run applications.
+    Mod+Return hotkey-overlay-title="Terminal" { spawn "ghostty"; }
+    Mod+Space hotkey-overlay-title="App Launcher" { spawn "fuzzel"; }
+    Mod+Semicolon hotkey-overlay-title="Quick Command" { spawn "quick-command"; }
+    Mod+Shift+M hotkey-overlay-title="Lock Screen" { spawn "hyprlock"; }
+    Mod+X hotkey-overlay-title="Color Picker" { spawn "hyprpicker" "-a" "-f" "hex"; }
+
+    // Close the active window.
+    Mod+Shift+Q repeat=false { close-window; }
+    // Quit Niri.
+    Mod+Shift+E { quit; }
+
+    // Toggle the overview.
+    Mod+O repeat=false { toggle-overview; }
+
+    // Switch focus between the current and the previous workspace.
+    Mod+Tab { focus-workspace-previous; }
+
+    // Move focus with Mod + Keys
+    Mod+H { focus-column-left; }
+    Mod+L { focus-column-right; }
+    Mod+J { focus-window-or-workspace-down; }
+    Mod+K { focus-window-or-workspace-up; }
+    Mod+Left  { focus-column-left; }
+    Mod+Right { focus-column-right; }
+    Mod+Down { focus-window-or-workspace-down; }
+    Mod+Up   { focus-window-or-workspace-up; }
+    Mod+U { focus-workspace-down; }
+    Mod+I { focus-workspace-up; }
+    Mod+Home { focus-column-first; }
+    Mod+End  { focus-column-last; }
+
+    // Move active target with Mod + Shift + Keys
+    Mod+Shift+H { move-column-left; }
+    Mod+Shift+L { move-column-right; }
+    Mod+Shift+J { move-window-down-or-to-workspace-down; }
+    Mod+Shift+K { move-window-up-or-to-workspace-up; }
+    Mod+Shift+Left  { move-column-left; }
+    Mod+Shift+Right { move-column-right; }
+    Mod+Shift+Down { move-window-down-or-to-workspace-down; }
+    Mod+Shift+Up   { move-window-up-or-to-workspace-up; }
+    Mod+Shift+U { move-column-to-workspace-down; }
+    Mod+Shift+I { move-column-to-workspace-up; }
+    Mod+Shift+Home { move-column-to-first; }
+    Mod+Shift+End  { move-column-to-last; }
+    Mod+Shift+Page_Down { move-workspace-down; }
+    Mod+Shift+Page_Up   { move-workspace-up; }
+
+    // Move focus between monitors with Mod + Ctrl + Keys
+    Mod+Ctrl+H { focus-monitor-left; }
+    Mod+Ctrl+J { focus-monitor-down; }
+    Mod+Ctrl+K { focus-monitor-up; }
+    Mod+Ctrl+L { focus-monitor-right; }
+    Mod+Ctrl+Left  { focus-monitor-left; }
+    Mod+Ctrl+Down  { focus-monitor-down; }
+    Mod+Ctrl+Up    { focus-monitor-up; }
+    Mod+Ctrl+Right { focus-monitor-right; }
+
+    // Move active column to monitor with Mod + Shift + Ctrl + Keys
+    Mod+Shift+Ctrl+H { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+J { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+K { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+L { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+
+    // Move focus with Mod + Mouse wheel
+    Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp   cooldown-ms=150 { focus-workspace-up; }
+    Mod+Shift+WheelScrollDown { focus-column-right; }
+    Mod+Shift+WheelScrollUp   { focus-column-left; }
+
+    // Switch workspace with Mod + number
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+
+    // Move column to workspace with Mod + Shift + number
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+
+    // Move the focused window in and out of a column.
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+
+    // Consume one window from the right to the bottom of the focused column.
+    Mod+Comma  { consume-window-into-column; }
+    // Expel the bottom window from the focused column to the right.
+    Mod+Period { expel-window-from-column; }
+
+    // Resize the focused target.
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+    // Expand the focused column to take up all available space.
+    Mod+Ctrl+F { expand-column-to-available-width; }
+
+    // Finer width and height adjustments.
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    // Center the focused column.
+    Mod+C { center-column; }
+    // Center all fully visible columns on screen.
+    Mod+Shift+C { center-visible-columns; }
+
+    // Move the focused window between the floating and the tiling layout.
+    Mod+V { toggle-window-floating; }
+    // Switch focus between floating and tiling layout.
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+
+    // Toggle tabbed column display mode.
+    Mod+W { toggle-column-tabbed-display; }
+
+    // Powers off the monitors. To turn them back on, do any input.
+    Mod+Shift+P { power-off-monitors; }
+
+    // Open the built-in screenshot tool.
+    Print { screenshot; }
+    Mod+S { screenshot; }
+    // Take a screenshot of the focused screen or window.
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+
+    // Audio keybindings.
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+
+    // Backlight keybindings.
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%+"; }
+
+    // Avoid a buggy application holding session hostage.
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+}
+
+// Enable rounded corners for all windows.
+window-rule {
+    geometry-corner-radius 10
+    clip-to-geometry true
+}
+
+// Open the Firefox picture-in-picture player as floating by default.
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}

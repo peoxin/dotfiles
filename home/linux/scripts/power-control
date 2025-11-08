@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+declare -A actions=(
+    ["Lock"]="loginctl lock-session"
+    ["Logout"]="loginctl terminate-session $XDG_SESSION_ID"
+    ["Poweroff"]="systemctl poweroff"
+    ["Reboot"]="systemctl reboot"
+    ["Suspend"]="systemctl suspend"
+    ["Hibernate"]="systemctl hibernate"
+    ["Hybrid Sleep"]="systemctl hybrid-sleep"
+)
+
+selected=$(printf '%s\n' "${!actions[@]}" | fuzzel -d -w 20 -p "Power: ")
+[ -z "$selected" ] && exit 0
+
+${actions[$selected]}

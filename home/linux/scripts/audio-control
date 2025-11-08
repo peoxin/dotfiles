@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+
+prompt_select() {
+    local prompt="$1"
+    local options=$(cat)
+    local width=$(echo "$options" | wc -L | awk '{w=$1+1; print (w<20?20:(w>80?80:w))}')
+    echo "$options" | fuzzel -d -w $width -p "$prompt"
+}
+
+actions=(
+    "Sink | Active"
+    "Sink | Select"
+    "Sink | Volume Up"
+    "Sink | Volume Down"
+    "Sink | Toggle Mute"
+    "Source | Active"
+    "Source | Select"
+    "Source | Volume Up"
+    "Source | Volume Down"
+    "Source | Toggle Mute"
+)
+action=$(printf '%s\n' "${actions[@]}" | prompt_select "Audio: ")
+[ -z "$action" ] && exit 0
+
+get_default_sink() {
+    wpctl inspect @DEFAULT_AUDIO_SINK@ | grep "node.description" | cut -d'"' -f2
+}
+
+get_default_source() {
+    wpctl inspect @DEFAULT_AUDIO_SOURCE@ | grep "node.description" | cut -d'"' -f2
+}
+
+get_sink_lines() {
+    wpctl status | awk '/Audio/,/Video/' | awk '/Sinks/,/Sources/' | grep -E '[0-9]+\.'
+}
+
+get_all_sinks() {
+    echo "$(get_sink_lines)" | sed -E 's/^\s*│\s*\*?\s*[0-9]+\.\s*//' | sed -E 's/\s*\[vol.*\]//'
+}
+
+get_source_lines() {
+    wpctl status | awk '/Audio/,/Video/' | awk '/Sources/,/Filters/' | grep -E '[0-9]+\.'
+}
+
+get_all_sources() {
+    echo "$(get_source_lines)" | sed -E 's/^\s*│\s*\*?\s*[0-9]+\.\s*//' | sed -E 's/\s*\[vol.*\]//'
+}
+
+case "$action" in
+"Sink | Active")
+    sink=$(get_default_sink)
+    sink_line=$(echo "$(get_sink_lines)" | grep -F "$sink")
+    volume=$(echo "$sink_line" | grep -oE 'vol: [0-9.]+' | cut -d' ' -f2)
+    notify-send "Active Sink" "$sink\nVolume: $volume"
+    ;;
+"Source | Active")
+    source=$(get_default_source)
+    source_line=$(echo "$(get_source_lines)" | grep -F "$source")
+    volume=$(echo "$source_line" | grep -oE 'vol: [0-9.]+' | cut -d' ' -f2)
+    notify-send "Active Source" "$source\nVolume: $volume"
+    ;;
+"Sink | Select")
+    sink=$(echo "$(get_all_sinks)" | prompt_select "Select Sink: ")
+    [ -z "$sink" ] && exit 0
+
+    sink_id=$(echo "$(get_sink_lines)" | grep -F "$sink" | grep -oE '[0-9]+' | head -1)
+    wpctl set-default "$sink_id"
+    notify-send "Select Sink" "$sink"
+    ;;
+"Source | Select")
+    source=$(echo "$(get_all_sources)" | prompt_select "Select Source: ")
+    [ -z "$source" ] && exit 0
+
+    source_id=$(echo "$(get_source_lines)" | grep -F "$source" | grep -oE '[0-9]+' | head -1)
+    wpctl set-default "$source_id"
+    notify-send "Select Source" "$source"
+    ;;
+"Sink | Volume Up")
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+
+    ;;
+"Sink | Volume Down")
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-
+    ;;
+"Source | Volume Up")
+    wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 0.1+
+    ;;
+"Source | Volume Down")
+    wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 0.1-
+    ;;
+"Sink | Toggle Mute")
+    wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+    ;;
+"Source | Toggle Mute")
+    wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+    ;;
+*) ;;
+esac

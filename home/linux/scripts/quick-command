@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+declare -A commands=(
+    ["Audio"]="audio-control"
+    ["Power"]="power-control"
+    ["Clipboard"]="clipboard-history"
+    ["Screenshot"]="screenshot"
+    ["Wallpaper"]="wallpaper"
+    ["Network"]="network-connect"
+    ["Bluetooth"]="bluetooth-connect"
+    ["Unmount USB"]="unmount-usb-device"
+)
+
+selected=$(printf '%s\n' "${!commands[@]}" | fuzzel -d -w 20 -p "Command: ")
+[ -z "$selected" ] && exit 0
+
+${commands[$selected]}
