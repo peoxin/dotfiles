@@ -40,6 +40,7 @@
   };
 
   # Define user accounts.
+  system.primaryUser = "peoxin";
   users.users.peoxin = {
     home = "/Users/peoxin";
   };
