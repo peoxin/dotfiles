@@ -2,7 +2,9 @@
   pkgs,
   inputs,
   ...
-}: {
+}: let
+  pkgs-stable = inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+in {
   imports = [
     inputs.catppuccin.homeModules.catppuccin
     ./ssh.nix
@@ -58,7 +60,7 @@
     cmake
     meson
     ninja
-    inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.xmake
+    pkgs-stable.xmake
     clang
     nodejs_24
     python315
