@@ -8,6 +8,7 @@
   imports =
     [
       inputs.catppuccin.homeModules.catppuccin
+      inputs.zen-browser.homeModules.beta
       ./ssh.nix
       ../../home/common/fish
       ../../home/common/zsh
@@ -25,7 +26,6 @@
     ++ (
       if hostConfig.os == "nixos"
       then [
-        inputs.zen-browser.homeModules.beta
         ../../home/linux/hypr
         ../../home/linux/waybar
         ../../home/linux/fuzzel
