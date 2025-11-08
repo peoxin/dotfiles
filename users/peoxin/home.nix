@@ -10,8 +10,6 @@
     ../../home/common/zsh
     ../../home/common/yazi
     ../../home/common/starship
-    ../../home/common/kitty
-    ../../home/common/ghostty
     ../../home/common/nvim
     ../../home/common/git
     ../../home/common/jj
