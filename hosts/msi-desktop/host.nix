@@ -1,7 +1,7 @@
 {
   os = "nixos";
   homeManagerConfigs = {
-    peoxin = ../../users/peoxin/home.nix;
+    peoxin = ../../users/peoxin/home-nixos.nix;
   };
   configs = [
     ./configuration.nix
