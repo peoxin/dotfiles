@@ -72,7 +72,7 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     shell = pkgs.bash;
-    packages = with pkgs; [];
+    packages = [];
   };
 
   # NEVER change this value after the initial install, for any reason.

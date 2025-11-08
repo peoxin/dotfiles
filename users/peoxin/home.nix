@@ -42,13 +42,6 @@
       else []
     );
 
-  # Set the username and home directory.
-  home.username = "peoxin";
-  home.homeDirectory =
-    if hostConfig.os == "darwin"
-    then "/Users/peoxin"
-    else "/home/peoxin";
-
   # Configure user directories.
   xdg.userDirs.enable = true;
   xdg.userDirs.createDirectories = true;
