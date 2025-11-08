@@ -7,7 +7,7 @@
     ../../modules/fonts.nix
     ../../modules/packages.nix
     ../../modules/nvidia.nix
-    ../../modules/nix-settings.nix
+    ../../modules/nix-core.nix
   ];
 
   # Configure network settings.
