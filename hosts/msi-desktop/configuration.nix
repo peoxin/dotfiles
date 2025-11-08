@@ -54,6 +54,8 @@
     hyprpicker
     hyprcursor
     swaybg
+    grimblast
+    swappy
     inputs.noctalia.packages.${stdenv.hostPlatform.system}.default
   ];
   programs.git.enable = true;
