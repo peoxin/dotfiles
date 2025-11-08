@@ -8,7 +8,9 @@
   networking.hostName = "macbookpro-m1";
 
   # Define user accounts.
-  users.users.peoxin = {};
+  users.users.peoxin = {
+    home = "/Users/peoxin";
+  };
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
