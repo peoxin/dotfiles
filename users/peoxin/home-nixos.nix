@@ -6,6 +6,8 @@
   imports = [
     inputs.zen-browser.homeModules.beta
     ./home.nix
+    ../../home/common/kitty
+    ../../home/common/ghostty
     ../../home/linux/hypr
     ../../home/linux/waybar
     ../../home/linux/fuzzel
