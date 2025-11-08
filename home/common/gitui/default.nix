@@ -1,13 +1,14 @@
 {
   config,
   pkgs,
-  pkgs-stable,
+  inputs,
   ...
 }: let
   configDir = "${config.home.homeDirectory}/dotfiles/home/common/gitui";
   create_symlink = path: {
     source = config.lib.file.mkOutOfStoreSymlink path;
   };
+  pkgs-stable = inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in {
   home.packages =
     if pkgs.stdenv.isDarwin
