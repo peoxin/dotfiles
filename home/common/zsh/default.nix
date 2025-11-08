@@ -6,8 +6,8 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     envExtra = ''
+      export EDITOR=nvim
       export PATH=$PATH:$HOME/dotfiles/home/common/scripts:$HOME/dotfiles/home/linux/scripts
-      export EDITOR="nvim"
     '';
     shellAliases = {
       cd = "z";

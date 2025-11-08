@@ -9,6 +9,7 @@
     ../../modules/packages.nix
     ../../modules/fonts.nix
     ../../modules/nix-core.nix
+    ../../modules/brew-mirror.nix
   ];
 
   # Network settings.
