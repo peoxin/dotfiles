@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "nixpkgs/nixos-25.05";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,6 +28,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-stable,
     home-manager,
     nix-darwin,
     ...
@@ -44,7 +46,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              extraSpecialArgs = specialArgs;
+              extraSpecialArgs = inputs // specialArgs;
               users =
                 builtins.mapAttrs (username: configPath: import configPath)
                 (hostConfig.homeManagerConfigs or {});

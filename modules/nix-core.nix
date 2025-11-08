@@ -16,7 +16,7 @@
     # Garbage collection for saving disk space.
     gc = {
       automatic = true;
-      options = "--delete-older-than 1w";
+      options = "--delete-older-than 14d";
     };
   };
 }
