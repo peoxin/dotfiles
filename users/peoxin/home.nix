@@ -58,7 +58,7 @@
     cmake
     meson
     ninja
-    xmake
+    inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.xmake
     clang
     nodejs_24
     python315
