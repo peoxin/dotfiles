@@ -45,6 +45,32 @@
     pastel
     imagemagick
     ffmpeg
+    pandoc
+    typst
+    hugo
+
+    # PDF viewer
+    zathura
+
+    # Development
+    uv
+    rustup
+    cmake
+    meson
+    ninja
+    xmake
+    clang
+    nodejs_24
+    python315
+
+    # Code formatters
+    ruff # python
+
+    # Not installed for now
+    # helix
+    # lazygit
+    # presenterm
+    # black
   ];
 
   # CAREFULLY change this value only if you know what you're doing.

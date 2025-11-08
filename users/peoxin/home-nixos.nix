@@ -41,9 +41,5 @@
     wechat
     wpsoffice-cn
     clash-verge-rev
-
-    # Development
-    python315
-    rustup
   ];
 }

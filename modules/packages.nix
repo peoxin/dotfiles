@@ -13,6 +13,7 @@
     zstd
     xz
     gzip
+    p7zip
 
     # Compiler
     gcc
