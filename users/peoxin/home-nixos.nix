@@ -29,13 +29,16 @@
     # GUI applications
     typora
     obsidian
+    zed-editor
     obs-studio
     gimp
+    inkscape
     imv
     mpv
     vlc
     wechat
     wpsoffice-cn
+    qbittorrent
     clash-verge-rev
   ];
 }

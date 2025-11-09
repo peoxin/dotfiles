@@ -52,12 +52,7 @@ in {
     pandoc
     typst
     hugo
-
-    # GUI applications
-    zed-editor
     zathura
-    qbittorrent
-    inkscape
 
     # Development
     uv

@@ -15,6 +15,22 @@
   # Network settings.
   networking.hostName = "macbookpro-m1";
 
+  # Enable sudo authentication using Touch ID.
+  security.pam.enableSudoTouchIdAuth = true;
+
+  # Map Caps Lock to Escape key.
+  system.keyboard.remapCapsLockToEscape = true;
+
+  # List packages installed in system profile.
+  environment.systemPackages = with pkgs; [
+    # GUI applications
+    raycast
+    zed-editor
+    zathura
+    qbittorrent
+    inkscape
+  ];
+
   # Use homebrew to install extra packages.
   homebrew = {
     enable = true;
