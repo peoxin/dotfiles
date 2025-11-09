@@ -8,6 +8,9 @@
   };
 in {
   environment.variables = mirrorEnv;
+  environment.interactiveShellInit = ''
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  '';
 
   # Set environment variables for nix-darwin before run `brew bundle`.
   system.activationScripts.homebrew.text = let
