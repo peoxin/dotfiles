@@ -18,13 +18,16 @@
   # Enable sudo authentication using Touch ID.
   security.pam.services.sudo_local.touchIdAuth = true;
 
-  # Map Caps Lock to Escape key.
-  system.keyboard.remapCapsLockToEscape = true;
+  # Keyboard settings.
+  system.keyboard = {
+    enableKeyMapping = true;
+    # Map Caps Lock to Escape key.
+    remapCapsLockToEscape = true;
+  };
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     # GUI applications
-    raycast
     zed-editor
     zathura
     qbittorrent
@@ -51,6 +54,7 @@
     casks = [
       "vlc"
       "gimp"
+      "raycast"
       "obsidian"
       "typora"
       "pixpin"
