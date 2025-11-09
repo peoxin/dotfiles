@@ -57,6 +57,7 @@
       "qbittorrent"
       "qlmarkdown"
       "the-unarchiver"
+      "clash-verge-rev"
     ];
   };
 
