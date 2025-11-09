@@ -33,9 +33,13 @@
       "macism"
     ];
     casks = [
+      "vlc"
       "gimp"
-      "inkscape"
+      "obsidian"
+      "typora"
+      "pixpin"
       "qlmarkdown"
+      "the-unarchiver"
     ];
   };
 

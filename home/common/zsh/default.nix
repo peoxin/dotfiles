@@ -1,6 +1,5 @@
-{ pkgs, ... }:
-{
-  home.packages = [ pkgs.zsh-fzf-tab ];
+{pkgs, ...}: {
+  home.packages = [pkgs.zsh-fzf-tab];
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;

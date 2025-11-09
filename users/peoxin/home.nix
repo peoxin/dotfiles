@@ -17,6 +17,8 @@ in {
     ../../home/common/jj
     ../../home/common/gitui
     ../../home/common/zellij
+    ../../home/common/kitty
+    ../../home/common/ghostty
     ../../home/common/firefox
   ];
 
@@ -51,8 +53,11 @@ in {
     typst
     hugo
 
-    # PDF viewer
+    # GUI applications
+    zed-editor
     zathura
+    qbittorrent
+    inkscape
 
     # Development
     uv

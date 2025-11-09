@@ -1,14 +1,13 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
     fcitx5 = {
       waylandFrontend = true;
       addons = with pkgs; [
-          kdePackages.fcitx5-chinese-addons
-          catppuccin-fcitx5
-        ];
+        kdePackages.fcitx5-chinese-addons
+        catppuccin-fcitx5
+      ];
       settings.inputMethod = {
         "Groups/0" = {
           Name = "Default";

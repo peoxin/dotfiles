@@ -1,5 +1,8 @@
-{ pkgs, lib, ... }:
 {
+  pkgs,
+  lib,
+  ...
+}: {
   programs.fish = {
     enable = true;
     shellAliases = {
@@ -47,14 +50,14 @@
         src = pkgs.fishPlugins.plugin-sudope.src;
       }
       {
-          name = "fish-extract";
-          src = pkgs.fetchFromGitHub {
-            owner = "shoriminimoe";
-            repo = "fish-extract";
-            rev = "b1204fa0a7c1e317c74f8f428e34dd29252754f7";
-            sha256 = "17l2xj0csmkd9c7fhm125cwwxf51ci5w73igsmhmblidqwhp40n6";
-          };
-        }
+        name = "fish-extract";
+        src = pkgs.fetchFromGitHub {
+          owner = "shoriminimoe";
+          repo = "fish-extract";
+          rev = "b1204fa0a7c1e317c74f8f428e34dd29252754f7";
+          sha256 = "17l2xj0csmkd9c7fhm125cwwxf51ci5w73igsmhmblidqwhp40n6";
+        };
+      }
     ];
   };
 

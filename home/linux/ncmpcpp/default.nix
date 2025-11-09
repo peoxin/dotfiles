@@ -1,4 +1,3 @@
-{ ... }:
-{
+{...}: {
   programs.ncmpcpp.enable = true;
 }

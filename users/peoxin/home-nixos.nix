@@ -6,8 +6,6 @@
   imports = [
     inputs.zen-browser.homeModules.beta
     ./home.nix
-    ../../home/common/kitty
-    ../../home/common/ghostty
     ../../home/linux/hypr
     ../../home/linux/waybar
     ../../home/linux/fuzzel
@@ -29,12 +27,10 @@
   programs.zen-browser.enable = true;
   home.packages = with pkgs; [
     # GUI applications
-    zed-editor
+    typora
     obsidian
-    qbittorrent
     obs-studio
     gimp
-    inkscape
     imv
     mpv
     vlc
