@@ -28,10 +28,8 @@
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     # GUI applications
-    zed-editor
     zathura
     qbittorrent
-    inkscape
   ];
 
   # Use homebrew to install extra packages.
@@ -52,8 +50,10 @@
       "macism"
     ];
     casks = [
+      "zed"
       "vlc"
       "gimp"
+      "inkscape"
       "raycast"
       "obsidian"
       "typora"
