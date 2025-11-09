@@ -7,6 +7,18 @@
     HOMEBREW_PIP_INDEX_URL = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple";
   };
 in {
+  homebrew = {
+    enable = true;
+    onActivation = {
+      # Enable homebrew to auto-update itself and all formulae.
+      autoUpdate = true;
+      # Enable homebrew to upgrade outdated packages.
+      upgrade = true;
+      # Uninstall all packages not listed in the generated brewfile.
+      cleanup = "zap";
+    };
+  };
+
   environment.variables = mirrorEnv;
   environment.interactiveShellInit = ''
     eval "$(/opt/homebrew/bin/brew shellenv)"

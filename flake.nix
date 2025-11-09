@@ -1,15 +1,15 @@
 {
-  description = "NixOS configuration of Haoxiang Pei";
+  description = "NixOS & Nix-Darwin configuration of Haoxiang Pei";
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "nixpkgs/nixos-25.05";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin.url = "github:catppuccin/nix";
@@ -28,17 +28,24 @@
   outputs = {
     self,
     nixpkgs,
-    nixpkgs-stable,
-    home-manager,
     nix-darwin,
+    home-manager,
     ...
   } @ inputs: let
     # Helper function to generate system configuration.
     mkSystem = hostName: hostConfig: let
-      specialArgs = {inherit inputs hostConfig;};
-      systemType = hostConfig.os or "nixos";
+      system = hostConfig.system or "x86_64-linux";
 
-      # System agnostic configuration.
+      specialArgs = {
+        inherit inputs hostConfig;
+        # Input settings.
+        pkgs-stable = import inputs.nixpkgs-stable {
+          inherit system;
+          config.allowUnfree = true;
+        };
+      };
+
+      # Module configuration for current host.
       commonModules =
         [
           {nixpkgs.config.allowUnfree = true;}
@@ -59,16 +66,16 @@
       # Specific configuration for current system type.
       systemConfig =
         {
-          nixos = {
+          "x86_64-linux" = {
             builder = nixpkgs.lib.nixosSystem;
             homeManagerModule = home-manager.nixosModules.home-manager;
           };
-          darwin = {
+          "aarch64-darwin" = {
             builder = nix-darwin.lib.darwinSystem;
             homeManagerModule = home-manager.darwinModules.home-manager;
           };
         }.${
-          systemType
+          system
         };
     in
       systemConfig.builder {
@@ -77,13 +84,16 @@
       };
 
     # Automatically discover all host configurations.
-    hostNames = builtins.attrNames (builtins.readDir ./hosts);
+    hostDirs = builtins.attrNames (builtins.readDir ./hosts);
     hostConfigs = builtins.listToAttrs (
-      map (hostName: {
+      map (hostDir: let
+        hostConfig = import ./hosts/${hostDir}/host.nix;
+        hostName = hostConfig.hostName or hostDir;
+      in {
         name = hostName;
-        value = import ./hosts/${hostName}/host.nix;
+        value = hostConfig;
       })
-      hostNames
+      hostDirs
     );
 
     # Build all host configurations.
@@ -93,11 +103,11 @@
     groupBySystem = systemType:
       nixpkgs.lib.filterAttrs (
         name: _:
-          (hostConfigs.${name}.os or "nixos") == systemType
+          (hostConfigs.${name}.system or "x86_64-linux") == systemType
       )
       allSystems;
   in {
-    nixosConfigurations = groupBySystem "nixos";
-    darwinConfigurations = groupBySystem "darwin";
+    nixosConfigurations = groupBySystem "x86_64-linux";
+    darwinConfigurations = groupBySystem "aarch64-darwin";
   };
 }

@@ -6,6 +6,10 @@
   imports = [
     inputs.zen-browser.homeModules.beta
     ./home.nix
+    ../../modules/linux/home/qt.nix
+    ../../modules/linux/home/gtk.nix
+    ../../modules/linux/home/cursor.nix
+    ../../modules/linux/home/fcitx5.nix
     ../../home/linux/hypr
     ../../home/linux/waybar
     ../../home/linux/fuzzel
@@ -14,10 +18,6 @@
     ../../home/linux/ncmpcpp
     ../../home/linux/niri
     ../../home/linux/fontconfig
-    ../../home/linux/modules/fcitx5.nix
-    ../../home/linux/modules/qt.nix
-    ../../home/linux/modules/gtk.nix
-    ../../home/linux/modules/cursor.nix
   ];
 
   # Configure user directories.

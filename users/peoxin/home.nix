@@ -1,10 +1,9 @@
 {
   pkgs,
   inputs,
+  pkgs-stable,
   ...
-}: let
-  pkgs-stable = inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-in {
+}: {
   imports = [
     inputs.catppuccin.homeModules.catppuccin
     ./ssh.nix
