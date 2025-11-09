@@ -26,11 +26,7 @@
   };
 
   # List packages installed in system profile.
-  environment.systemPackages = with pkgs; [
-    # GUI applications
-    zathura
-    qbittorrent
-  ];
+  environment.systemPackages = with pkgs; [];
 
   # Use homebrew to install extra packages.
   homebrew = {
@@ -58,6 +54,7 @@
       "obsidian"
       "typora"
       "pixpin"
+      "qbittorrent"
       "qlmarkdown"
       "the-unarchiver"
     ];
