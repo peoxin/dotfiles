@@ -16,7 +16,7 @@
   networking.hostName = "macbookpro-m1";
 
   # Enable sudo authentication using Touch ID.
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   # Map Caps Lock to Escape key.
   system.keyboard.remapCapsLockToEscape = true;
