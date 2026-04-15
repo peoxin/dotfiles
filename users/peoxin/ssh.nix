@@ -23,6 +23,13 @@
         port = 7109;
         user = "peihaoxiang";
       };
+      "showee" = {
+        hostname = "210.12.12.8";
+        port = 3040;
+        user = "peihaoxiang";
+        serverAliveInterval = 30;
+        serverAliveCountMax = 6;
+      };
     };
   };
 }

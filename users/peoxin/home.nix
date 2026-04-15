@@ -53,7 +53,7 @@
     pandoc
     typst
     hugo
-    zathura
+    # zathura
     ouch
 
     # Development
@@ -69,6 +69,10 @@
 
     # Code formatters
     ruff # python
+
+    # AI agent
+    opencode
+    # openclaw
 
     # Not installed for now
     # helix

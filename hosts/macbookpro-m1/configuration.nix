@@ -41,6 +41,7 @@
       "the-unarchiver"
       "clash-verge-rev"
       "squirrel-app"
+      "claude-code"
     ];
   };
 

@@ -7,6 +7,7 @@
     envExtra = ''
       export EDITOR=nvim
       export PATH=$PATH:$HOME/dotfiles/home/common/scripts:$HOME/dotfiles/home/linux/scripts
+      export ZAIWEN_API_KEY="sk-4vj67js89rxfpnra5sorsmdcaqv63pg6ei7734dgmfpmpm6s"
     '';
     shellAliases = {
       cd = "z";
