@@ -61,7 +61,7 @@ Create the parent directories and the real directories that also contain
 machine-local or generated files:
 
 ```sh
-mkdir -p "$HOME/.config" "$HOME/.config/yazi" "$HOME/.local/bin" "$HOME/.ssh"
+mkdir -p "$HOME/.config" "$HOME/.config/jj" "$HOME/.config/yazi" "$HOME/.local/bin" "$HOME/.ssh"
 ```
 
 | Software | Command |
@@ -70,7 +70,7 @@ mkdir -p "$HOME/.config" "$HOME/.config/yazi" "$HOME/.local/bin" "$HOME/.ssh"
 | SSH | `ln -s "$HOME/dotfiles/config/ssh/config" "$HOME/.ssh/config"` |
 | Ghostty | `ln -s "$HOME/dotfiles/config/ghostty" "$HOME/.config/ghostty"` |
 | GitUI | `ln -s "$HOME/dotfiles/config/gitui" "$HOME/.config/gitui"` |
-| Jujutsu | `ln -s "$HOME/dotfiles/config/jj" "$HOME/.config/jj"` |
+| Jujutsu | `ln -s "$HOME/dotfiles/config/jj/config.toml" "$HOME/.config/jj/config.toml"` |
 | Kitty | `ln -s "$HOME/dotfiles/config/kitty" "$HOME/.config/kitty"` |
 | Neovim | `ln -s "$HOME/dotfiles/config/nvim" "$HOME/.config/nvim"` |
 | Starship | `ln -s "$HOME/dotfiles/config/starship/starship.toml" "$HOME/.config/starship.toml"` |

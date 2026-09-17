@@ -26,7 +26,7 @@ brew install zsh
 brew install git git-delta jj gitui
 
 # Editors, terminal workspaces and file navigation.
-brew install neovim zellij yazi ouch
+brew install neovim zellij herdr yazi ouch
 
 # Prompt, directory and file inspection tools.
 brew install starship zoxide eza bat fd dust procs bottom sd ripgrep
@@ -47,7 +47,7 @@ brew install imagemagick ffmpeg poppler resvg pandoc typst hugo
 brew install uv rustup cmake meson ninja llvm node python ruff
 
 # Agent and input-source tools.
-brew install opencode macism
+brew install opencode pi-coding-agent macism
 ```
 
 Run `rustup default stable` when a default Rust toolchain is wanted.
@@ -64,11 +64,11 @@ brew install --cask zed raycast obsidian typora mos pixpin
 # Media and creative applications.
 brew install --cask vlc gimp inkscape
 
-# Downloads, archives, networking and input methods.
-brew install --cask qbittorrent qlmarkdown the-unarchiver clash-verge-rev squirrel-app
+# Downloads, archives, networking.
+brew install --cask qbittorrent qlmarkdown the-unarchiver clash-verge-rev
 
 # Coding agent.
-brew install --cask claude-code
+brew install --cask claude-code codex
 ```
 
 ## Fonts
@@ -89,18 +89,6 @@ on the next login. When migrating from a Nix-managed Mac, clear an inherited
 `ZDOTDIR` that still points to an old Home Manager directory before opening the
 new shell configuration.
 
-## Manual System Settings
-
-Map Caps Lock to Escape for the current login session:
-
-```sh
-hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":30064771129,"HIDKeyboardModifierMappingDst":30064771113}]}'
-```
-
-Configure persistent keyboard remapping and Touch ID for `sudo` manually in
-macOS. Retire nix-darwin and uninstall Nix with the instructions for the
-installer originally used; this repository does not alter a running Nix
-installation.
 
 ## Checks And Updates
 

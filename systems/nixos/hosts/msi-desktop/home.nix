@@ -33,7 +33,7 @@ in {
     "fuzzel".source = link "config/fuzzel";
     "ghostty".source = link "config/ghostty";
     "gitui".source = link "config/gitui";
-    "jj".source = link "config/jj";
+    "jj/config.toml".source = link "config/jj/config.toml";
     "kitty".source = link "config/kitty";
     "niri".source = link "config/niri";
     "nvim".source = link "config/nvim";
