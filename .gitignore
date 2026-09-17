@@ -1,0 +1,7 @@
+# Local metadata and generated artifacts.
+.DS_Store
+.jj/
+/result
+/result-*
+__pycache__/
+*.py[cod]

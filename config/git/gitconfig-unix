@@ -1,0 +1,31 @@
+[user]
+name = peoxin
+email = peoxin@outlook.com
+
+[init]
+defaultBranch = main
+
+[core]
+autocrlf = input
+quotepath = false
+# Minimal servers may not have Delta or Less installed yet.
+pager = "if command -v delta >/dev/null 2>&1; then delta; elif command -v less >/dev/null 2>&1; then less -FRX; else cat; fi"
+
+[fetch]
+prune = true
+
+[commit]
+template = ~/.gitmessage
+
+[interactive]
+diffFilter = "if command -v delta >/dev/null 2>&1; then delta --color-only; else cat; fi"
+
+[delta]
+navigate = true
+line-numbers = true
+file-style = omit
+hunk-header-style = file line-number syntax
+
+# Local identity and pager overrides do not need to be committed.
+[include]
+path = ~/.gitconfig.local

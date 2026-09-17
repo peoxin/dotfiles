@@ -1,0 +1,4 @@
+# Keep login and non-login Bash sessions consistent.
+if [ -r "$HOME/.profile" ]; then . "$HOME/.profile"; fi
+if [ -r "$HOME/.bashrc" ]; then . "$HOME/.bashrc"; fi
+if [ -r "$HOME/.bash_profile.local" ]; then . "$HOME/.bash_profile.local"; fi
