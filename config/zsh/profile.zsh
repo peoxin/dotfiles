@@ -4,5 +4,3 @@ if [[ -x /opt/homebrew/bin/brew ]]; then
 elif [[ -x /usr/local/bin/brew ]]; then
     eval "$(/usr/local/bin/brew shellenv)"
 fi
-
-if [[ -r "$HOME/.zprofile.local" ]]; then source "$HOME/.zprofile.local"; fi

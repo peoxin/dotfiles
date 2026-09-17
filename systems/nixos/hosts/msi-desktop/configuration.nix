@@ -47,8 +47,6 @@
   };
 
   programs = {
-    bash.enable = true;
-    fish.enable = true;
     zsh.enable = true;
     git.enable = true;
     firefox.enable = true;
@@ -90,8 +88,7 @@
     isNormalUser = true;
     home = "/home/peoxin";
     extraGroups = ["wheel" "networkmanager"];
-    # Fish is the login shell; Bash no longer needs to exec another shell.
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
   };
 
   # Keep the version used at the initial installation.

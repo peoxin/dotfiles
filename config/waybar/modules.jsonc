@@ -17,17 +17,6 @@
   "hyprland/submap": {
     "format": "{}",
   },
-  "mpd": {
-    "interval": 2,
-    "unknown-tag": "N/A",
-    "format": "{stateIcon} {elapsedTime:%M:%S}/{totalTime:%M:%S} {filename}",
-    "format-disconnected": "",
-    "format-stopped": "",
-    "state-icons": {
-      "playing": "",
-      "paused": "",
-    },
-  },
   "mpris": {
     "interval": 2,
     "format": "{status_icon}  {title} - {artist}",

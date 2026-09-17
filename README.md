@@ -8,8 +8,8 @@ and at `/home/peoxin/dotfiles` on the NixOS host.
 
 ```text
 config/          Native application configuration and manual linking guide
-bin/common/      Personal commands shared by desktop systems
-bin/linux/       Linux desktop commands
+commands/common/ Personal commands shared by desktop systems
+commands/linux/  Linux desktop commands
 systems/arch/    Arch Linux package and system setup
 systems/macos/   macOS package and system setup
 systems/nixos/   NixOS flake operations and host configuration

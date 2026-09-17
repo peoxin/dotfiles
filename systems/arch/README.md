@@ -7,7 +7,7 @@ and service management is intentionally manual.
 
 ```sh
 # Shells, version control, editors and terminal applications.
-sudo pacman -S --needed bash zsh fish git git-delta jujutsu gitui neovim tmux zellij starship yazi ouch
+sudo pacman -S --needed bash zsh git git-delta jujutsu gitui neovim zellij starship yazi ouch
 
 # Modern command-line tools.
 sudo pacman -S --needed zoxide eza bat dust procs bottom ripgrep fd sd fzf jq just direnv mise
@@ -26,7 +26,7 @@ sudo pacman -S --needed base-devel cmake meson ninja clang rustup python uv node
 
 ```sh
 # Applications available in the official repositories.
-sudo pacman -S --needed kitty ghostty firefox qutebrowser thunar zed obs-studio gimp inkscape imv mpv vlc qbittorrent obsidian
+sudo pacman -S --needed kitty ghostty firefox thunar zed obs-studio gimp inkscape imv mpv vlc qbittorrent obsidian
 
 # Optional AUR applications; use yay instead of paru when preferred.
 paru -S --needed zen-browser-bin wechat-bin wps-office-cn wps-office-mui-zh-cn ttf-wps-fonts freetype2-wps
@@ -69,18 +69,6 @@ systemctl --user enable --now pipewire.socket pipewire-pulse.socket wireplumber.
 sudo systemctl enable --now NetworkManager bluetooth
 ```
 
-## Music
-
-Deploy the shared configuration before enabling MPD; see
-[the configuration guide](../../config/README.md).
-
-```sh
-# MPD, its terminal client and writable state directories.
-sudo pacman -S --needed mpd ncmpcpp
-mkdir -p "$HOME/.mpd/playlists" "$HOME/Music"
-systemctl --user enable --now mpd
-```
-
 ## Virtualization
 
 ```sh
@@ -99,7 +87,7 @@ mkdir -p "$HOME/Desktop" "$HOME/Downloads" "$HOME/Documents" "$HOME/Pictures" "$
 ## Configuration And Plugins
 
 Follow the [shared configuration guide](../../config/README.md) for symlinks and
-optional shell, tmux, Fish and Yazi plugins. Hyprland expects machine-local
+optional Zsh and Yazi plugins. Hyprland expects machine-local
 `~/.config/hypr/monitor.conf` and `~/.config/hypr/input.conf`; create them before
 starting Hyprland, even if they are empty.
 

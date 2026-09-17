@@ -123,12 +123,6 @@ if command -v neovide &> /dev/null; then
     fi
 fi
 
-# Init tmuxifier plugin for tmux if it is installed.
-if [ -d "$HOME/.tmux/plugins/tmuxifier" ]; then
-    export PATH="$HOME/.tmux/plugins/tmuxifier/bin:$PATH"
-    eval "$(tmuxifier init -)"
-fi
-
 # Init starship prompt if it is installed.
 if command -v starship &> /dev/null; then
     eval "$(starship init zsh)"
@@ -137,5 +131,3 @@ fi
 if command -v direnv &> /dev/null; then
     eval "$(direnv hook zsh)"
 fi
-
-if [[ -r "$HOME/.zshrc.local" ]]; then source "$HOME/.zshrc.local"; fi

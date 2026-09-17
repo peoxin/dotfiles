@@ -21,12 +21,12 @@ brew tap laishulu/homebrew
 ## Command-Line Packages
 
 ```sh
-# Shells and version-control tools.
-brew install bash zsh fish
+# Shell and version-control tools.
+brew install zsh
 brew install git git-delta jj gitui
 
-# Editors, terminal multiplexers and file navigation.
-brew install neovim tmux zellij yazi ouch
+# Editors, terminal workspaces and file navigation.
+brew install neovim zellij yazi ouch
 
 # Prompt, directory and file inspection tools.
 brew install starship zoxide eza bat fd dust procs bottom sd ripgrep
@@ -56,7 +56,7 @@ Run `rustup default stable` when a default Rust toolchain is wanted.
 
 ```sh
 # Terminals and browsers.
-brew install --cask ghostty kitty qutebrowser firefox zen
+brew install --cask ghostty kitty firefox zen
 
 # Editors, productivity and window utilities.
 brew install --cask zed raycast obsidian typora mos pixpin
@@ -82,7 +82,7 @@ brew install --cask font-symbols-only-nerd-font font-jetbrains-mono font-maple-m
 ## Configuration And Plugins
 
 Follow the [shared configuration guide](../../config/README.md) for all symlinks
-and optional shell, tmux, Fish and Yazi plugins.
+and optional Zsh and Yazi plugins.
 
 The shared Zsh profile detects Homebrew in both `/opt/homebrew` and `/usr/local`
 on the next login. When migrating from a Nix-managed Mac, clear an inherited

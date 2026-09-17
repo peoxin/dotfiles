@@ -21,9 +21,11 @@ require a rebuild; reload the affected application instead. Directories that
 also contain generated or machine-local content are linked recursively into a
 real target directory.
 
-The source-to-target mapping is declared directly in `home.nix`. See the
-[shared configuration guide](../../config/README.md) for the manual-platform
-layout, but do not run its link commands on NixOS.
+The source-to-target mapping is declared directly in `home.nix`. Zsh startup
+files are the exception: create the three real wrapper files described in the
+[shared configuration guide](../../config/README.md), so machine-specific
+settings remain writable and outside the repository. Do not run the guide's
+symbolic-link commands on NixOS.
 
 ## Evaluate And Build
 
@@ -63,6 +65,4 @@ sudo nix-collect-garbage --delete-older-than 14d
 ```
 
 Home Manager uses the `.backup` suffix when a managed target already exists.
-Resolve old backup files manually before switching. MPD keeps its writable
-database and playlists in `~/.mpd`; copy an existing database there when
-migrating.
+Resolve old backup files manually before switching.
