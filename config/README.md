@@ -61,13 +61,12 @@ Create the parent directories and the real directories that also contain
 machine-local or generated files:
 
 ```sh
-mkdir -p "$HOME/.config" "$HOME/.config/jj" "$HOME/.config/yazi" "$HOME/.local/bin" "$HOME/.ssh"
+mkdir -p "$HOME/.config" "$HOME/.config/jj" "$HOME/.config/yazi" "$HOME/.local/bin"
 ```
 
 | Software | Command |
 | --- | --- |
 | Git | `ln -s "$HOME/dotfiles/config/git/gitconfig-unix" "$HOME/.gitconfig"`<br>`ln -s "$HOME/dotfiles/config/git/gitmessage" "$HOME/.gitmessage"` |
-| SSH | `ln -s "$HOME/dotfiles/config/ssh/config" "$HOME/.ssh/config"` |
 | Ghostty | `ln -s "$HOME/dotfiles/config/ghostty" "$HOME/.config/ghostty"` |
 | GitUI | `ln -s "$HOME/dotfiles/config/gitui" "$HOME/.config/gitui"` |
 | Jujutsu | `ln -s "$HOME/dotfiles/config/jj/config.toml" "$HOME/.config/jj/config.toml"` |
@@ -131,7 +130,6 @@ Keep credentials and machine-specific settings outside version control:
 - `~/.config/hypr/monitor.conf` and `~/.config/hypr/input.conf` for display and
   input settings.
 - `~/.gitconfig.local` for Git overrides.
-- `~/.ssh/config.local` for additional SSH hosts and identities.
 
 The previous Zsh module contained a committed API credential. It has been
 removed from the working tree, but the credential must still be rotated because

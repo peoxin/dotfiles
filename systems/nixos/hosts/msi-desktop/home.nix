@@ -13,7 +13,6 @@ in {
   home.file = {
     ".gitconfig".source = link "config/git/gitconfig-unix";
     ".gitmessage".source = link "config/git/gitmessage";
-    ".ssh/config".source = link "config/ssh/config";
     ".local/bin/set-proxy".source = link "commands/common/set-proxy";
     ".local/bin/audio-control".source = link "commands/linux/audio-control";
     ".local/bin/audio-pactl".source = link "commands/linux/audio-pactl";
